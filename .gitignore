@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Ignore apikey file in the src folder
+src/services/apiKey.jsx
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
