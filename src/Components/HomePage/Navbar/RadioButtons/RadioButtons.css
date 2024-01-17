@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
+
+
+:root {
+  --black-12: rgba(31, 31, 31, 1);
+  --grey-75: rgba(191, 191, 191, 1);
+  --black-06: rgba(15, 15, 15, 1);
+  --black-10: rgba(26, 26, 26, 1);
+}
+
+
+
+.mydict div {
+  display: flex;
+  font-family: 'Manrope', sans-serif;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--black-06);
+  flex-wrap: nowrap;
+  border: 3px solid var(--black-12);
+  border-radius: 10px;
+}
+
+.mydict input[type="radio"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.mydict input[type="radio"]:checked+span {
+  border-radius: 10px;
+  background-color: var(--black-10);
+  z-index: 1;
+  color: rgba(255, 255, 255, 1);
+}
+
+label span {
+  display: block;
+  cursor: pointer;
+  background-color: var(--black-06);
+  padding: 0.675vw .95vw;
+  position: relative;
+  margin-left: .0625vw;
+  letter-spacing: .05em;
+  color: var(--grey-75);
+  text-align: center;
+  transition: background-color .5s ease;
+  padding: 1.5vw;
+}
+
+@media only screen and (max-width: 600px) {}
