@@ -14,9 +14,11 @@ const Navbar = () => {
         <RadioButtons />
       </div>
       <div className="search_favorites_container">
-        <IoSearch size={30} />
-        <MdFavoriteBorder size={30} />
-        <ToggleNavigation />
+        <div className="abladabla">
+          <IoSearch size={30} />
+          <MdFavoriteBorder size={30} />
+          <ToggleNavigation />
+        </div>
       </div>
     </div>
   );

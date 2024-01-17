@@ -7,18 +7,32 @@
   justify-content: space-around;
   position: fixed;
 
-  div {
+  .wave_logo,
+  .buttons_container,
+  .search_favorites_container {
     margin: 10px;
   }
 
-  .search_favorites_container {
+  .abladabla {
+    position: absolute;
+    top: 1.7rem;
+    right: 2rem;
     display: flex;
     justify-content: center;
     flex-direction: row;
   }
 }
 @media only screen and (max-width: 600px) {
-  .buttons_container {
-    display: none;
+  .navbar_container {
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .buttons_container {
+    width: 100%;
+  }
+
+  // .buttons_container {
+  //   display: none;
+  // }
 }

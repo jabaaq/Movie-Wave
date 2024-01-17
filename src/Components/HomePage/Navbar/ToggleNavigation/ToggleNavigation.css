@@ -1,6 +1,9 @@
+.toggleButton {
+    display: none;
+}
+
 #checkbox2 {
     display: none;
-
 }
 
 .toggle2 {
@@ -57,4 +60,10 @@
 #checkbox2:checked+.toggle2 {
     transition-duration: .5s;
     transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 600px) {
+    .toggleButton {
+        display: block;
+    }
 }

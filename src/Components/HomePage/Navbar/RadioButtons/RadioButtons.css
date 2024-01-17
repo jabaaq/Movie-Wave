@@ -8,7 +8,11 @@
   --black-10: rgba(26, 26, 26, 1);
 }
 
-
+.mydict {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
 .mydict div {
   display: flex;
@@ -49,7 +53,22 @@ label span {
   color: var(--grey-75);
   text-align: center;
   transition: background-color .5s ease;
-  padding: 1.5vw;
+  padding: 1.5vw 1.5vw;
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+  .mydict div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    width: 100%;
+    background-color: black;
+    /* flex-wrap: nowrap; */
+  }
+
+  label span {
+    padding: 2.5vw 30vw;
+    background-color: black;
+  }
+}
