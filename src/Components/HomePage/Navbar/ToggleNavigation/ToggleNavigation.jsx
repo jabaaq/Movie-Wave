@@ -7,10 +7,6 @@ const ToggleNavigation = () => {
   const navbarStatus = useSelector((state) => state.navbarReducer);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(navbarStatus);
-  }, [dispatch, navbarStatus]);
-
   return (
     <div className="toggleButton">
       <input id="checkbox2" type="checkbox" />

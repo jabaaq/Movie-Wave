@@ -1,8 +1,12 @@
 import "./RadioButtons.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const RadioButtons = () => {
+  const { toggleNavigation } = useSelector((state) => state.navbarReducer);
+
   return (
-    <div className="mydict">
+    <div className={`mydict ${toggleNavigation ? "block" : null}`}>
       <div>
         <label>
           <input type="radio" name="radio" />

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
 
 
+
 :root {
   --black-12: rgba(31, 31, 31, 1);
   --grey-75: rgba(191, 191, 191, 1);
@@ -56,7 +57,14 @@ label span {
   padding: 1.5vw 1.5vw;
 }
 
+
+
 @media only screen and (max-width: 600px) {
+
+  .mydict {
+    display: none;
+  }
+
   .mydict div {
     flex-direction: column;
     justify-content: center;
@@ -64,7 +72,10 @@ label span {
     border: 0;
     width: 100%;
     background-color: black;
-    /* flex-wrap: nowrap; */
+  }
+
+  .block {
+    display: block;
   }
 
   label span {
