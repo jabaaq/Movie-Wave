@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const RadioButtons = () => {
-  const { toggleNavigation } = useSelector((state) => state.navbarReducer);
+  const { toggleNavigation } = useSelector((state) => state.HomePageReducer);
 
   return (
     <div className={`mydict ${toggleNavigation ? "block" : null}`}>

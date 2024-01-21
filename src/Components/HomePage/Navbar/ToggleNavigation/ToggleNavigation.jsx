@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./ToggleNavigation.css";
-import { navbarToggle } from "../navbarSlice";
-import { useEffect } from "react";
+import { navbarToggle } from "../../HomePageSlice";
 
 const ToggleNavigation = () => {
-  const navbarStatus = useSelector((state) => state.navbarReducer);
   const dispatch = useDispatch();
 
   return (
