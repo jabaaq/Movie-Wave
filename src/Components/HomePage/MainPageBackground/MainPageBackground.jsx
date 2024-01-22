@@ -1,19 +1,13 @@
 import { useEffect } from "react";
 import "./MainPageBackground.scss";
-import { GetUrl } from "../../../services/getUrl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBackgroundImages } from "../HomePageSlice";
-import { useHttp } from "../../../services/http.hook";
 import { CircularProgress } from "@mui/material";
-import genres from "../../../services/genres.json";
-import { movieDbService } from "../../../services/movieDbService";
+import { RiMovie2Fill } from "react-icons/ri";
 
 const MainPageBackground = () => {
-  const { topRatedMovies } = GetUrl();
-  const { request } = useHttp();
-
   const dispatch = useDispatch();
   const { fetchedBackgroundMovies } = useSelector(
     (state) => state.HomePageReducer
@@ -21,10 +15,6 @@ const MainPageBackground = () => {
   useEffect(() => {
     dispatch(fetchBackgroundImages());
   }, []);
-
-  useEffect(() => {
-    console.log(fetchedBackgroundMovies);
-  }, [fetchedBackgroundMovies]);
 
   const onMoviesLoaded = (movies) => {
     // eslint-disable-next-line no-console
@@ -65,10 +55,17 @@ const MainPageBackground = () => {
                 </div>
               </div>
               <div className="movie_description">{movie.description}</div>
+              <a href="#">
+                <button className="watch_movie_btn">
+                  <span className="text">WATCH NOW</span>
+                  <span className="icon">
+                    <RiMovie2Fill size={25} />
+                  </span>
+                </button>
+              </a>
             </div>
             <div className="left_shadows_box"></div>
             <div className="bottom_shadows_box"></div>
-
             <img
               src={`https://image.tmdb.org/t/p/original/${movie.background_image}`}
               className="slider_image"
