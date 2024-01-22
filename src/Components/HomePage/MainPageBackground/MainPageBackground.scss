@@ -1,19 +1,124 @@
 .background_container {
-  // margin-top: 80px;
+  font-family: "Poppins", sans-serif;
   width: 100%;
   height: 100vh;
-  // background-color: blue;
+  min-height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
 
   .mySwiper {
     width: 100%;
-    height: 100%;
+    // max-height: 1300px;
+    height: max-content;
   }
 
   .slider_image {
     width: 100%;
-    object-fit: contain;
+    min-height: 700px;
+    object-fit: cover;
     cursor: grab;
+  }
+
+  .slide_content {
+    position: absolute;
+    top: 18%;
+    left: 5%;
+    max-height: 90px;
+    color: white;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+
+    .movie_title {
+      align-self: flex-start;
+      font-size: 6.5vh;
+      height: 30px;
+    }
+
+    .movie_description {
+      width: 35vw;
+      display: flex;
+      text-align: left;
+    }
+
+    .genres_list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 20px;
+
+      .movie_genre {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid rgba(255, 0, 0, 0.603);
+        color: #fff;
+        background-color: rgb(255, 0, 0);
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .movie_genre::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.071);
+        transform: perspective(5px) rotateX(2deg) rotateY(2deg);
+        transition: transform 0.3s;
+        pointer-events: none;
+      }
+
+      .movie_genre:hover::before {
+        transform: perspective(5px) rotateX(0) rotateY(0);
+      }
+    }
+  }
+
+  .left_shadows_box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3vw;
+    background-color: black;
+    box-shadow: 79px 0px 140px 140px #000000;
+  }
+
+  .bottom_shadows_box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3vw;
+    width: 100%;
+    background-color: black;
+    box-shadow: 79px 0px 140px 140px #000000;
+  }
+
+  .movie_rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .circle_rate {
+      position: absolute;
+    }
+  }
+
+  .movie_combined_information {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    margin-left: 10px;
   }
 }

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from "../../services/http.hook";
 import { movieDbService } from "../../services/movieDbService";
 import { GetUrl } from "../../services/getUrl";
+
 const { request } = useHttp();
 const { _transferTopRatedMovies } = movieDbService();
 
