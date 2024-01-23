@@ -110,6 +110,10 @@
       width: 100%;
     }
 
+    .movie_title,
+    .movie_description {
+      text-shadow: 1px 1px 15px black;
+    }
     .genres_list {
       display: flex;
       justify-content: center;
@@ -128,7 +132,6 @@
         min-height: 25px;
         text-align: center;
         text-decoration: none;
-        cursor: pointer;
         border: 1px solid rgba(255, 0, 0, 0.603);
         color: #fff;
         background-color: rgb(255, 0, 0);

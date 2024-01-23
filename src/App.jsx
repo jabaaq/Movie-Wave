@@ -2,7 +2,8 @@ import { Navbar } from "./Components/HomePage/Navbar/Navbar";
 import { MainPageBackground } from "./Components/HomePage/MainPageBackground/MainPageBackground";
 import "./App.scss";
 import { useHttp } from "./services/http.hook";
-import { GenresCategories } from "./Components/HomePage/GenresCategories/GenresCategories";
+import Spinner from "./Components/Spinner/Spinner";
+import HomePage from "./Components/HomePage/HomePage";
 
 function App() {
   const { request } = useHttp();
@@ -10,8 +11,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <MainPageBackground />
-      <GenresCategories />
+      <HomePage />
+      {/* <MainPageBackground />
+      <Spinner />
+      <GenresCategories /> */}
     </div>
   );
 }

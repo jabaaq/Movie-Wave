@@ -34,16 +34,16 @@ export const navbarSlice = createSlice({
     builder
       .addCase(fetchBackgroundImages.pending, (state) => {
         state.imagesLoadingStatus = "loading";
-        console.log("loading");
+        console.log(state.imagesLoadingStatus);
       })
       .addCase(fetchBackgroundImages.fulfilled, (state, action) => {
         state.imagesLoadingStatus = "idle";
         state.fetchedBackgroundMovies = action.payload;
-        console.log("fulfilled");
+        console.log(state.imagesLoadingStatus);
       })
       .addCase(fetchBackgroundImages.rejected, (state) => {
         state.imagesLoadingStatus = "error";
-        console.log("error");
+        console.log(state.imagesLoadingStatus);
       })
       .addDefaultCase(() => {});
   },

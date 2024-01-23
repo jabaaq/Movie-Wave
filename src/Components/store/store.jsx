@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import HomePageReducer from "../HomePage/HomePageSlice";
-import { thunk } from "redux-thunk";
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === "string") {

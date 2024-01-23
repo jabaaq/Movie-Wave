@@ -1,4 +1,8 @@
-export const useHttp = () => {
+import { useState } from "react";
+
+const useHttp = () => {
+  // const [loading, setLoading] = useState(false);
+
   const request = async (
     url,
     method = "GET",
@@ -21,3 +25,5 @@ export const useHttp = () => {
   };
   return { request };
 };
+
+export { useHttp };
