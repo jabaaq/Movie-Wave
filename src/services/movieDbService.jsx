@@ -13,7 +13,10 @@ const movieDbService = () => {
 
     return {
       id: movie.id,
-      title: movie.title,
+      title:
+        movie.title.length > 18
+          ? movie.title.slice(0, 18) + "..."
+          : movie.title,
       release_date: movie.release_date,
       background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
       poster: movie.poster_path,

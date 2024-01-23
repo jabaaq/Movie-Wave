@@ -31,7 +31,7 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 30px;
-    max-width: 800px;
+    max-width: 550px;
 
     .watch_movie_btn {
       width: 150px;
@@ -97,17 +97,17 @@
 
     .movie_title {
       align-self: flex-start;
-      font-size: 6.5vh;
+      font-size: max(4vw, min(28px));
+      text-wrap: nowrap;
       height: 30px;
     }
 
     .movie_description {
-      width: 35vw;
       display: flex;
       text-align: left;
       word-wrap: break-word;
-      font-size: 20px;
-      width: 70%;
+      font-size: (max(1.5vw, min(15px)));
+      width: 100%;
     }
 
     .genres_list {
@@ -115,12 +115,17 @@
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      gap: 20px;
+      gap: 2vw;
 
       .movie_genre {
         display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 0 1vw;
+        object-fit: contain;
+        width: 7vw;
+        font-size: max(1vw, min(12px));
+        min-width: 50px;
+        height: 40px;
+        min-height: 25px;
         text-align: center;
         text-decoration: none;
         cursor: pointer;
@@ -158,7 +163,7 @@
     height: 100%;
     width: 3vw;
     background-color: black;
-    box-shadow: 79px 0px 140px 140px #000000;
+    box-shadow: 15px 0px 110px 140px #000000;
   }
 
   .bottom_shadows_box {

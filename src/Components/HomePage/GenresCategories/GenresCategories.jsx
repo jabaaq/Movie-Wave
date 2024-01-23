@@ -1,7 +1,17 @@
 const GenresCategories = () => {
   return (
     <>
-      <h1>Hello world!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
+      <h1>Some text!</h1>
     </>
   );
 };

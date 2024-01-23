@@ -16,6 +16,10 @@ const MainPageBackground = () => {
     dispatch(fetchBackgroundImages());
   }, []);
 
+  useEffect(() => {
+    console.log(fetchedBackgroundMovies);
+  }, [fetchedBackgroundMovies]);
+
   const onMoviesLoaded = (movies) => {
     // eslint-disable-next-line no-console
   };
