@@ -7,7 +7,7 @@ const RadioButtons = () => {
 
   return (
     <div className={`mydict ${toggleNavigation ? "block" : null}`}>
-      <div className="section_buttons">
+      <div className={`section_buttons`}>
         <EachPageButton name={"HOME"} />
         <EachPageButton name={"MOVIES"} />
         <EachPageButton name={"TV󠀮󠀮SERIES"} />

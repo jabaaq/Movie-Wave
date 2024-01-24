@@ -1,7 +1,6 @@
 import "./HomePage.scss";
 import { MainPageBackground } from "./MainPageBackground/MainPageBackground";
 import { GenresCategories } from "./GenresCategories/GenresCategories";
-import Spinner from "../Spinner/Spinner";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
@@ -9,7 +8,6 @@ const HomePage = () => {
   return (
     <>
       <MainPageBackground />
-      {/* <Spinner /> */}
       <GenresCategories />
     </>
   );

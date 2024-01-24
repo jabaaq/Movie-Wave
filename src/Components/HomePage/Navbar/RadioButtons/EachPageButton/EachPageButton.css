@@ -13,17 +13,16 @@
 
 .button {
     --border-right: 6px;
-    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --text-stroke-color: rgb(255, 255, 255);
     --animation-color: var(--main-red);
-    --fs-size: 2vw;
     letter-spacing: 3px;
     text-decoration: none;
-    font-size: var(--fs-size);
-    font-family: "Arial";
+    font-size: max(1.5vw, min(15px));
     position: relative;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 1px var(--text-stroke-color);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.284);
 }
 
 .hover-text {
@@ -42,4 +41,12 @@
 .button:hover .hover-text {
     width: 100%;
     filter: drop-shadow(0 0 23px var(--animation-color))
+}
+
+@media only screen and (max-width: 600px) {
+    .button {
+        --border-right: none;
+        --text-stroke-color: rgb(255, 255, 255);
+        --animation-color: rgb(255, 255, 255);
+    }
 }

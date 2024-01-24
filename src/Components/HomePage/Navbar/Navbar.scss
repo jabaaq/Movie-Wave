@@ -1,23 +1,29 @@
+:root {
+  --main-red: rgb(230, 34, 34);
+}
+
 .navbar_container {
   background-color: rgba(0, 0, 0, 0);
   width: 100%;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   position: fixed;
   z-index: 10;
   transition: background-color 0.4s ease-in-out;
 
-  &.scrolled {
+  &.black {
     background-color: black;
-    // color: red;
   }
 
   .wave_logo,
-  .buttons_container,
   .search_favorites_container {
-    margin: 5px 10px;
+    margin: 5px 15px;
+  }
+
+  .wave_logo h2 span {
+    color: var(--main-red);
   }
 
   .navbar_tools {
