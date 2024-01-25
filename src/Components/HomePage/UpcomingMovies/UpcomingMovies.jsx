@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUpcomingMovies } from "../HomePageSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
+import MovieCard from "./MoiveCard/MovieCard";
 
 import "./UpcomingMovies.scss";
 
@@ -22,11 +23,10 @@ const UpcomingMovies = () => {
 
   return (
     <>
-      <h2>Latest Released / Upcoming Movies </h2>
+      <h2 className="upcoming_page_title">Latest Released / Upcoming Movies</h2>
       <div className="upcoming_slider">
         <Swiper
           slidesPerView={6}
-          spaceBetween={30}
           freeMode={true}
           pagination={{
             clickable: true,
@@ -36,26 +36,16 @@ const UpcomingMovies = () => {
         >
           {fetchedUpcomingMovies.map((item, i) => (
             <SwiperSlide key={i}>
-              <div className="upcoming_slider_content">
-                <img
-                  src={item.poster_img}
-                  alt={item.title}
-                  className="upcoming_img"
-                />
-              </div>
+              <MovieCard title={item.title} poster={item.poster_img} />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
-      <h2>Latest Released / Upcoming Movies </h2>
+      <h1>Some Text</h1>
+      <h1>Some Text</h1>
+      <h1>Some Text</h1>
+      <h1>Some Text</h1>
+      <h1>Some Text</h1>
     </>
   );
 };
