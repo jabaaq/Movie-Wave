@@ -1,6 +1,3 @@
-import { useHttp } from "./http.hook";
-import { APIKEY } from "./apiKey";
-import { GetUrl } from "./getUrl";
 import genres from "../services/genres.json";
 
 const movieDbService = () => {
@@ -27,6 +24,18 @@ const movieDbService = () => {
     };
   };
 
-  return { _transferTopRatedMovies };
+  const _transferUpcomingMovies = (movie) => {
+    return {
+      id: movie.id,
+      background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+      genre_ids: movie.genre_ids,
+      title: movie.title,
+      original_title: movie.original_title,
+      poster_img: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+      vote_average: movie.vote_average,
+    };
+  };
+
+  return { _transferTopRatedMovies, _transferUpcomingMovies };
 };
 export { movieDbService };

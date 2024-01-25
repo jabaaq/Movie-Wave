@@ -1,6 +1,6 @@
 import "./HomePage.scss";
 import { MainPageBackground } from "./MainPageBackground/MainPageBackground";
-import { GenresCategories } from "./GenresCategories/GenresCategories";
+import { UpcomingMovies } from "./UpcomingMovies/UpcomingMovies";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <>
       <MainPageBackground />
-      <GenresCategories />
+      <UpcomingMovies />
     </>
   );
 };

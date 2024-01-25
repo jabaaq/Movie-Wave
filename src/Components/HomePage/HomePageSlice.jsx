@@ -4,12 +4,14 @@ import { movieDbService } from "../../services/movieDbService";
 import { GetUrl } from "../../services/getUrl";
 
 const { request } = useHttp();
-const { _transferTopRatedMovies } = movieDbService();
+const { _transferTopRatedMovies, _transferUpcomingMovies } = movieDbService();
 
 const initialState = {
   toggleNavigation: false,
   fetchedBackgroundMovies: [],
   imagesLoadingStatus: "idle",
+  upcomingMoviesStatus: "idle",
+  fetchedUpcomingMovies: [],
 };
 
 export const fetchBackgroundImages = createAsyncThunk(
@@ -18,6 +20,16 @@ export const fetchBackgroundImages = createAsyncThunk(
     const { topRatedMovies } = GetUrl();
     const res = await request(topRatedMovies);
     return res.results.map(_transferTopRatedMovies);
+  }
+);
+
+export const fetchUpcomingMovies = createAsyncThunk(
+  "fetch/fetchUpcomingMovies",
+  async () => {
+    const { upcomingMovies } = GetUrl();
+    const res = await request(upcomingMovies);
+    console.log(res);
+    return res.results.map(_transferUpcomingMovies);
   }
 );
 
@@ -34,16 +46,23 @@ export const navbarSlice = createSlice({
     builder
       .addCase(fetchBackgroundImages.pending, (state) => {
         state.imagesLoadingStatus = "loading";
-        console.log(state.imagesLoadingStatus);
       })
       .addCase(fetchBackgroundImages.fulfilled, (state, action) => {
         state.imagesLoadingStatus = "idle";
         state.fetchedBackgroundMovies = action.payload;
-        console.log(state.imagesLoadingStatus);
       })
       .addCase(fetchBackgroundImages.rejected, (state) => {
         state.imagesLoadingStatus = "error";
-        console.log(state.imagesLoadingStatus);
+      })
+      .addCase(fetchUpcomingMovies.pending, (state) => {
+        state.upcomingMoviesStatus = "loading";
+      })
+      .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
+        (state.upcomingMoviesStatus = "idle"),
+          (state.fetchedUpcomingMovies = action.payload);
+      })
+      .addCase(fetchUpcomingMovies.rejected, (state) => {
+        state.upcomingMoviesStatus = "error";
       })
       .addDefaultCase(() => {});
   },
@@ -52,4 +71,4 @@ export const navbarSlice = createSlice({
 const { actions, reducer } = navbarSlice;
 
 export default reducer;
-export const { navbarToggle, fetchedBackgroundMovies } = actions;
+export const { navbarToggle } = actions;

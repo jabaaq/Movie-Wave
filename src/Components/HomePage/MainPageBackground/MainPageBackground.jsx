@@ -4,9 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBackgroundImages } from "../HomePageSlice";
-import { CircularProgress, Switch } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { RiMovie2Fill } from "react-icons/ri";
 import Spinner from "../../Spinner/Spinner";
+import { fetchUpcomingMovies } from "../HomePageSlice";
 
 const MainPageBackground = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ const MainPageBackground = () => {
     dispatch(fetchBackgroundImages());
   }, []);
 
-  useEffect(() => {
-    console.log(fetchedBackgroundMovies);
-  }, [fetchedBackgroundMovies]);
+  // useEffect(() => {
+  //   console.log(fetchedBackgroundMovies);
+  // }, [fetchedBackgroundMovies]);
 
   const onMoviesLoaded = (movies) => {
     // eslint-disable-next-line no-console
