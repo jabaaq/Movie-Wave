@@ -4,6 +4,7 @@ import { fetchUpcomingMovies } from "../HomePageSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import MovieCard from "./MoiveCard/MovieCard";
+import EachPageButton from "../Navbar/RadioButtons/EachPageButton/EachPageButton";
 
 import "./UpcomingMovies.scss";
 
@@ -23,10 +24,11 @@ const UpcomingMovies = () => {
 
   return (
     <>
-      <h2 className="upcoming_page_title">Latest Released / Upcoming Movies</h2>
+      <h2 className="upcoming_page_title">
+        <EachPageButton name={"Latest Released / Upcoming Movies"} />
+      </h2>
       <div className="upcoming_slider">
         <Swiper
-          // slidesPerView={6}
           breakpoints={{
             400: {
               slidesPerView: 2,
