@@ -66,7 +66,7 @@ const MainPageBackground = () => {
                 <div className="movie_description">{movie.description}</div>
                 <a href="#">
                   <button className="watch_movie_btn">
-                    <span className="text">WATCH NOW</span>
+                    <span className="watch_movie_btn_text">WATCH NOW</span>
                     <span className="icon">
                       <RiMovie2Fill size={25} />
                     </span>

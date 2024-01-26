@@ -48,13 +48,14 @@ const UpcomingMovies = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          spaceBetween={20}
+          spaceBetween={10}
           className="mySwiper"
           grabCursor={true}
         >
           {fetchedUpcomingMovies.map((item, i) => (
             <SwiperSlide key={i}>
               <MovieCard
+                id={item.id}
                 title={item.title}
                 poster={item.poster_img}
                 rating={item.vote_average}

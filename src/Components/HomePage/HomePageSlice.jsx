@@ -12,6 +12,7 @@ const initialState = {
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
   fetchedUpcomingMovies: [],
+  selectedMovie: null,
 };
 
 export const fetchBackgroundImages = createAsyncThunk(
@@ -40,6 +41,9 @@ export const navbarSlice = createSlice({
     //Actions
     navbarToggle: (state) => {
       state.toggleNavigation = !state.toggleNavigation;
+    },
+    selectMovie: (state, action) => {
+      state.selectedMovie = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -71,4 +75,4 @@ export const navbarSlice = createSlice({
 const { actions, reducer } = navbarSlice;
 
 export default reducer;
-export const { navbarToggle } = actions;
+export const { navbarToggle, selectMovie } = actions;
