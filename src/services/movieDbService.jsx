@@ -32,7 +32,8 @@ const movieDbService = () => {
       title: movie.title,
       original_title: movie.original_title,
       poster_img: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-      vote_average: movie.vote_average,
+      vote_average: (movie.vote_average / 2).toFixed(1),
+      release_date: movie.release_date,
     };
   };
 
