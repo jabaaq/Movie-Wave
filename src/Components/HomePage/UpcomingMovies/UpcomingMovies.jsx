@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUpcomingMovies } from "../HomePageSlice";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
-import MovieCard from "./MoiveCard/MovieCard";
+import MovieCard from "./MovieCard/MovieCard";
 import EachPageButton from "../Navbar/RadioButtons/EachPageButton/EachPageButton";
 
 import "./UpcomingMovies.scss";
@@ -12,11 +11,6 @@ const UpcomingMovies = () => {
   const { fetchedUpcomingMovies } = useSelector(
     (state) => state.HomePageReducer
   );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchUpcomingMovies());
-  }, []);
 
   useEffect(() => {
     console.log(fetchedUpcomingMovies);

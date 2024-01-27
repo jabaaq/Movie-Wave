@@ -1,20 +1,25 @@
 import { Navbar } from "./Components/HomePage/Navbar/Navbar";
-import { MainPageBackground } from "./Components/HomePage/MainPageBackground/MainPageBackground";
 import "./App.scss";
-import { useHttp } from "./services/http.hook";
-import Spinner from "./Components/Spinner/Spinner";
 import HomePage from "./Components/HomePage/HomePage";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchBackgroundImages,
+  fetchUpcomingMovies,
+} from "./Components/HomePage/HomePageSlice";
+import { useEffect } from "react";
 
 function App() {
-  const { request } = useHttp();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBackgroundImages());
+    dispatch(fetchUpcomingMovies());
+  }, []);
 
   return (
     <div className="App">
       <Navbar />
       <HomePage />
-      {/* <MainPageBackground />
-      <Spinner />
-      <GenresCategories /> */}
     </div>
   );
 }

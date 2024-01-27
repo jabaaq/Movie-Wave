@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, isAnyOf } from "@reduxjs/toolkit";
 import { useHttp } from "../../services/http.hook";
 import { movieDbService } from "../../services/movieDbService";
 import { GetUrl } from "../../services/getUrl";
@@ -13,6 +13,7 @@ const initialState = {
   upcomingMoviesStatus: "idle",
   fetchedUpcomingMovies: [],
   selectedMovie: null,
+  loadWebsite: false,
 };
 
 export const fetchBackgroundImages = createAsyncThunk(
@@ -34,8 +35,8 @@ export const fetchUpcomingMovies = createAsyncThunk(
   }
 );
 
-export const navbarSlice = createSlice({
-  name: "navbar",
+export const homePageSlice = createSlice({
+  name: "home",
   initialState,
   reducers: {
     //Actions
@@ -62,17 +63,23 @@ export const navbarSlice = createSlice({
         state.upcomingMoviesStatus = "loading";
       })
       .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
-        (state.upcomingMoviesStatus = "idle"),
-          (state.fetchedUpcomingMovies = action.payload);
+        state.upcomingMoviesStatus = "idle";
+        state.fetchedUpcomingMovies = action.payload;
       })
       .addCase(fetchUpcomingMovies.rejected, (state) => {
         state.upcomingMoviesStatus = "error";
       })
+      .addMatcher(
+        isAnyOf(fetchBackgroundImages.fulfilled, fetchUpcomingMovies.fulfilled),
+        (state) => {
+          state.loadWebsite = true;
+        }
+      )
       .addDefaultCase(() => {});
   },
 });
 
-const { actions, reducer } = navbarSlice;
+const { actions, reducer } = homePageSlice;
 
 export default reducer;
 export const { navbarToggle, selectMovie } = actions;
