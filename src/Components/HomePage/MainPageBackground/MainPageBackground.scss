@@ -31,68 +31,6 @@
     gap: 30px;
     max-width: 550px;
 
-    .watch_movie_btn {
-      width: 150px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      background: red;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-      background: #e62222;
-    }
-
-    button,
-    button span {
-      transition: 200ms;
-    }
-
-    button .watch_movie_btn_text {
-      transform: translateX(10px);
-      color: white;
-      font-weight: bold;
-    }
-
-    button .icon {
-      position: absolute;
-      border-left: 1px solid #c41b1b;
-      transform: translateX(105px);
-      height: 50px;
-      width: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    button svg {
-      fill: #eee;
-    }
-
-    button:hover {
-      background: #ff3636;
-    }
-
-    button:hover .watch_movie_btn_text {
-      color: transparent;
-    }
-
-    button:hover .icon {
-      width: 140px;
-      border-left: none;
-      transform: translateX(0);
-    }
-
-    button:focus {
-      outline: none;
-    }
-
-    button:active .icon svg {
-      transform: scale(0.8);
-    }
-
     .movie_title {
       align-self: flex-start;
       font-size: max(4vw, min(28px));

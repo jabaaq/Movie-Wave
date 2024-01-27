@@ -104,7 +104,8 @@ export const homePageSlice = createSlice({
           return (
             action.type === fetchBackgroundImages.fulfilled.type,
             action.type === fetchUpcomingMovies.fulfilled.type,
-            action.type === fetchTvSeries.fulfilled.type
+            action.type === fetchTvSeries.fulfilled.type,
+            action.type === fetchActorsList.fulfilled.type
           );
         },
         (state) => {

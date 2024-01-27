@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import "./ActorsList.scss";
 import { useSelector } from "react-redux";
 import SectionBuilder from "../SectionBuilder/SectionBuilder";
+import WaveButton from "../WaveButton/WaveButton";
+import { FaEye } from "react-icons/fa";
+
+import "./ActorsList.scss";
 
 const ActorsList = () => {
   const { fetchedActorsList } = useSelector((state) => state.HomePageReducer);
@@ -10,7 +13,16 @@ const ActorsList = () => {
     console.log(fetchedActorsList);
   }, [fetchedActorsList]);
 
-  return <SectionBuilder name={"Actors"} moviesArr={fetchedActorsList} />;
+  return (
+    <>
+      <SectionBuilder name={"Actors"} moviesArr={fetchedActorsList} />
+      <div className="load_more_button">
+        <a href="#">
+          <WaveButton text={"LOAD MORE"} />
+        </a>
+      </div>
+    </>
+  );
 };
 
 export default ActorsList;

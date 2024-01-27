@@ -4,6 +4,7 @@ import "swiper/css";
 import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import { RiMovie2Fill } from "react-icons/ri";
+import WaveButton from "../WaveButton/WaveButton";
 
 const MainPageBackground = () => {
   const { fetchedBackgroundMovies } = useSelector(
@@ -46,12 +47,7 @@ const MainPageBackground = () => {
               </div>
               <div className="movie_description">{movie.description}</div>
               <a href="#">
-                <button className="watch_movie_btn">
-                  <span className="watch_movie_btn_text">WATCH NOW</span>
-                  <span className="icon">
-                    <RiMovie2Fill size={25} />
-                  </span>
-                </button>
+                <WaveButton text={"WATCH NOW"} />
               </a>
             </div>
             <div className="left_shadows_box"></div>
