@@ -3,7 +3,7 @@ import "./MovieCard.scss";
 import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
 
-const MovieCard = ({ title, poster, rating, date, id }) => {
+const MovieCard = ({ title, poster, rating, date, id, type }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
 
   const handleShowDetails = () => {
@@ -22,7 +22,7 @@ const MovieCard = ({ title, poster, rating, date, id }) => {
             showCardDetails ? "show" : "hide"
           }`}
         >
-          <WatchButton id={id} />
+          {type !== "person" ? <WatchButton id={id} /> : null}
           {/* This ID will be used to navigate to the Movie Page in the future */}
           <div className="card_movie_title">{title}</div>
           <div className="card_bottom_details">

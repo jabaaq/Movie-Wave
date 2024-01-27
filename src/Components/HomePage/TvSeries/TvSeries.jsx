@@ -6,12 +6,8 @@ import SectionBuilder from "../SectionBuilder/SectionBuilder";
 const TvSeries = () => {
   const { fetchedTvSeries } = useSelector((state) => state.HomePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedTvSeries);
-  }, [fetchedTvSeries]);
-
   return (
-    <SectionBuilder name={"Top Rate Series"} moviesArr={fetchedTvSeries} />
+    <SectionBuilder name={"Top Rated Series"} moviesArr={fetchedTvSeries} />
   );
 };
 

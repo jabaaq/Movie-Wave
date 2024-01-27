@@ -1,15 +1,12 @@
-import { useEffect } from "react";
 import "./MainPageBackground.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBackgroundImages } from "../HomePageSlice";
+import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import { RiMovie2Fill } from "react-icons/ri";
 
 const MainPageBackground = () => {
-  const dispatch = useDispatch();
-  const { fetchedBackgroundMovies, imagesLoadingStatus } = useSelector(
+  const { fetchedBackgroundMovies } = useSelector(
     (state) => state.HomePageReducer
   );
 

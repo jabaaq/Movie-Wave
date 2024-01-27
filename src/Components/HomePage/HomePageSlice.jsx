@@ -4,14 +4,19 @@ import { movieDbService } from "../../services/movieDbService";
 import { GetUrl } from "../../services/getUrl";
 
 const { request } = useHttp();
-const { _transferTopRatedMovies, _transferUpcomingMovies, _transferTvSeries } =
-  movieDbService();
+const {
+  _transferTopRatedMovies,
+  _transferUpcomingMovies,
+  _transferTvSeries,
+  _transferActorsList,
+} = movieDbService();
 
 const initialState = {
   toggleNavigation: false,
   fetchedBackgroundMovies: [],
   fetchedUpcomingMovies: [],
   fetchedTvSeries: [],
+  fetchedActorsList: [],
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
   selectedMovie: null,
@@ -41,8 +46,17 @@ export const fetchTvSeries = createAsyncThunk(
   async () => {
     const { popularTvSeries } = GetUrl();
     const res = await request(popularTvSeries);
-    console.log(res.results);
     return res.results.map(_transferTvSeries);
+  }
+);
+
+export const fetchActorsList = createAsyncThunk(
+  "fetch/fetchActorsList",
+  async () => {
+    const { actorsList } = GetUrl();
+    const res = await request(actorsList);
+    console.log(res.results);
+    return res.results.map(_transferActorsList);
   }
 );
 
@@ -70,6 +84,9 @@ export const homePageSlice = createSlice({
       })
       .addCase(fetchTvSeries.fulfilled, (state, action) => {
         state.fetchedTvSeries = action.payload;
+      })
+      .addCase(fetchActorsList.fulfilled, (state, action) => {
+        state.fetchedActorsList = action.payload;
       })
       .addMatcher(
         isAnyOf(

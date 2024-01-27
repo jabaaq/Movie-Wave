@@ -39,10 +39,11 @@ const SectionBuilder = ({ moviesArr, name }) => {
             <SwiperSlide key={i}>
               <MovieCard
                 id={item.id}
-                title={item.title}
-                poster={item.poster_img}
-                rating={item.vote_average}
-                date={item.release_date}
+                title={item.title ? item.title : item.name}
+                poster={item.poster_img ? item.poster_img : item.profile_image}
+                rating={item.fixedVote ? item.fixedVote : null}
+                date={item.release_date ? item.release_date : null}
+                type={item.media_type}
               />
             </SwiperSlide>
           ))}

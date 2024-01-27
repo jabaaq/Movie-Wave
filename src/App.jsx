@@ -1,11 +1,12 @@
 import { Navbar } from "./Components/HomePage/Navbar/Navbar";
 import "./App.scss";
 import HomePage from "./Components/HomePage/HomePage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   fetchBackgroundImages,
   fetchUpcomingMovies,
   fetchTvSeries,
+  fetchActorsList,
 } from "./Components/HomePage/HomePageSlice";
 import { useEffect } from "react";
 
@@ -16,6 +17,7 @@ function App() {
     dispatch(fetchBackgroundImages());
     dispatch(fetchUpcomingMovies());
     dispatch(fetchTvSeries());
+    dispatch(fetchActorsList());
   }, []);
 
   return (
