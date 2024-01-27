@@ -1,7 +1,7 @@
 import "./SectionBuilder.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
-import MovieCard from "../UpcomingMovies/MovieCard/MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 import EachPageButton from "../Navbar/RadioButtons/EachPageButton/EachPageButton";
 
 const SectionBuilder = ({ moviesArr, name }) => {

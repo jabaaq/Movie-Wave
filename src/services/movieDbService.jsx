@@ -37,6 +37,23 @@ const movieDbService = () => {
     };
   };
 
-  return { _transferTopRatedMovies, _transferUpcomingMovies };
+  const _transferTvSeries = (series) => {
+    return {
+      id: series.id,
+      background_image: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`,
+      genre_ids: series.genre_ids,
+      name: series.name,
+      original_name: series.original_name,
+      poster_img: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
+      vote_average: (series.vote_average / 2).toFixed(1),
+      release_date: series.first_air_date,
+    };
+  };
+
+  return {
+    _transferTopRatedMovies,
+    _transferUpcomingMovies,
+    _transferTvSeries,
+  };
 };
 export { movieDbService };

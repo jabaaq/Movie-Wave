@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchBackgroundImages,
   fetchUpcomingMovies,
+  fetchTvSeries,
 } from "./Components/HomePage/HomePageSlice";
 import { useEffect } from "react";
 
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchBackgroundImages());
     dispatch(fetchUpcomingMovies());
+    dispatch(fetchTvSeries());
   }, []);
 
   return (

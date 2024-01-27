@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./WatchButton.css";
 import { FaPlay } from "react-icons/fa6";
-import { selectMovie } from "../../../HomePageSlice";
+import { selectMovie } from "../../HomePageSlice";
 import { useEffect } from "react";
 
 const WatchButton = ({ id }) => {

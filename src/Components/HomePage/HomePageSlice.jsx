@@ -4,14 +4,16 @@ import { movieDbService } from "../../services/movieDbService";
 import { GetUrl } from "../../services/getUrl";
 
 const { request } = useHttp();
-const { _transferTopRatedMovies, _transferUpcomingMovies } = movieDbService();
+const { _transferTopRatedMovies, _transferUpcomingMovies, _transferTvSeries } =
+  movieDbService();
 
 const initialState = {
   toggleNavigation: false,
   fetchedBackgroundMovies: [],
+  fetchedUpcomingMovies: [],
+  fetchedTvSeries: [],
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
-  fetchedUpcomingMovies: [],
   selectedMovie: null,
   loadWebsite: false,
 };
@@ -30,8 +32,17 @@ export const fetchUpcomingMovies = createAsyncThunk(
   async () => {
     const { upcomingMovies } = GetUrl();
     const res = await request(upcomingMovies);
-    console.log(res);
     return res.results.map(_transferUpcomingMovies);
+  }
+);
+
+export const fetchTvSeries = createAsyncThunk(
+  "fetch/fetchTvSeries",
+  async () => {
+    const { popularTvSeries } = GetUrl();
+    const res = await request(popularTvSeries);
+    console.log(res.results);
+    return res.results.map(_transferTvSeries);
   }
 );
 
@@ -49,30 +60,42 @@ export const homePageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBackgroundImages.pending, (state) => {
-        state.imagesLoadingStatus = "loading";
-      })
       .addCase(fetchBackgroundImages.fulfilled, (state, action) => {
         state.imagesLoadingStatus = "idle";
         state.fetchedBackgroundMovies = action.payload;
-      })
-      .addCase(fetchBackgroundImages.rejected, (state) => {
-        state.imagesLoadingStatus = "error";
-      })
-      .addCase(fetchUpcomingMovies.pending, (state) => {
-        state.upcomingMoviesStatus = "loading";
       })
       .addCase(fetchUpcomingMovies.fulfilled, (state, action) => {
         state.upcomingMoviesStatus = "idle";
         state.fetchedUpcomingMovies = action.payload;
       })
-      .addCase(fetchUpcomingMovies.rejected, (state) => {
-        state.upcomingMoviesStatus = "error";
+      .addCase(fetchTvSeries.fulfilled, (state, action) => {
+        state.fetchedTvSeries = action.payload;
       })
+      .addMatcher(
+        isAnyOf(
+          fetchBackgroundImages.pending,
+          fetchUpcomingMovies.pending,
+          fetchTvSeries.pending
+        ),
+        (state) => {
+          state.imagesLoadingStatus = "loading";
+          state.upcomingMoviesStatus = "loading";
+        }
+      )
       .addMatcher(
         isAnyOf(fetchBackgroundImages.fulfilled, fetchUpcomingMovies.fulfilled),
         (state) => {
           state.loadWebsite = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchBackgroundImages.rejected,
+          fetchUpcomingMovies.rejected,
+          fetchTvSeries.rejected
+        ),
+        (state) => {
+          state.loadWebsite = false;
         }
       )
       .addDefaultCase(() => {});
