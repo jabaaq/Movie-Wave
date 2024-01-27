@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./WatchButton.css";
 import { FaPlay } from "react-icons/fa6";
-import { selectMovie } from "../../HomePageSlice";
+import { selectMedia } from "../../HomePageSlice";
 import { useEffect } from "react";
 
 const WatchButton = ({ id }) => {
   const dispatch = useDispatch();
-  const { selectedMovie } = useSelector((state) => state.HomePageReducer);
+  const { selectedMedia } = useSelector((state) => state.HomePageReducer);
 
-  // useEffect(() => {
-  //   console.log(selectedMovie);
-  // }, [selectedMovie, dispatch]);
+  useEffect(() => {
+    console.log(selectedMedia ? selectedMedia : "nope");
+  }, [selectedMedia]);
 
   return (
-    <button className="watch_button" onClick={() => dispatch(selectMovie(id))}>
+    <button className="watch_button" onClick={() => dispatch(selectMedia(id))}>
       <div className="sign">
         <FaPlay />
       </div>

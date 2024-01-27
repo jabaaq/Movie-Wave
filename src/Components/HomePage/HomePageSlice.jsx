@@ -19,7 +19,7 @@ const initialState = {
   fetchedActorsList: [],
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
-  selectedMovie: null,
+  selectedMedia: null,
   loadWebsite: false,
 };
 
@@ -68,8 +68,8 @@ export const homePageSlice = createSlice({
     navbarToggle: (state) => {
       state.toggleNavigation = !state.toggleNavigation;
     },
-    selectMovie: (state, action) => {
-      state.selectedMovie = action.payload;
+    selectMedia: (state, action) => {
+      state.selectedMedia = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -128,4 +128,4 @@ export const homePageSlice = createSlice({
 const { actions, reducer } = homePageSlice;
 
 export default reducer;
-export const { navbarToggle, selectMovie } = actions;
+export const { navbarToggle, selectMedia } = actions;
