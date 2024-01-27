@@ -8,9 +8,9 @@ const WatchButton = ({ id }) => {
   const dispatch = useDispatch();
   const { selectedMovie } = useSelector((state) => state.HomePageReducer);
 
-  //   useEffect(() => {
-  //     console.log(selectedMovie);
-  //   }, [selectedMovie, dispatch]);
+  // useEffect(() => {
+  //   console.log(selectedMovie);
+  // }, [selectedMovie, dispatch]);
 
   return (
     <button className="watch_button" onClick={() => dispatch(selectMovie(id))}>
