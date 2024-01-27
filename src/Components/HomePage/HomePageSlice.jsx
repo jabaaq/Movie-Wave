@@ -83,7 +83,13 @@ export const homePageSlice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(fetchBackgroundImages.fulfilled, fetchUpcomingMovies.fulfilled),
+        (action) => {
+          return (
+            action.type === fetchBackgroundImages.fulfilled.type,
+            action.type === fetchUpcomingMovies.fulfilled.type,
+            action.type === fetchTvSeries.fulfilled.type
+          );
+        },
         (state) => {
           state.loadWebsite = true;
         }
