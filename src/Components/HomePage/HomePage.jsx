@@ -19,10 +19,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("hi");
-  }, []);
-
-  useEffect(() => {
     dispatch(fetchBackgroundImages());
     dispatch(fetchUpcomingMovies());
     dispatch(fetchTvSeries());

@@ -7,6 +7,7 @@ const GetUrl = () => {
   const actorsList = `https://api.themoviedb.org/3/trending/person/week?api_key=${APIKEY}`;
   const movieDetailsById = (movieId) =>
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}`;
+
   return {
     topRatedMovies,
     upcomingMovies,

@@ -1,15 +1,22 @@
 import "./MainPageBackground.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
-import { RiMovie2Fill } from "react-icons/ri";
 import WaveButton from "../WaveButton/WaveButton";
+import { selectMediaId } from "../HomePageSlice";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const MainPageBackground = () => {
-  const { fetchedBackgroundMovies } = useSelector(
+  const { fetchedBackgroundMovies, selectedMediaId } = useSelector(
     (state) => state.HomePageReducer
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(selectedMediaId);
+  }, [selectedMediaId]);
 
   return (
     <div className="background_container">
@@ -46,9 +53,12 @@ const MainPageBackground = () => {
                 </div>
               </div>
               <div className="movie_description">{movie.description}</div>
-              <a href="#">
+              <Link
+                to={`/:${movie.id}`}
+                onClick={() => dispatch(selectMediaId(movie.id))}
+              >
                 <WaveButton text={"WATCH NOW"} />
-              </a>
+              </Link>
             </div>
             <div className="left_shadows_box"></div>
             <div className="bottom_shadows_box"></div>

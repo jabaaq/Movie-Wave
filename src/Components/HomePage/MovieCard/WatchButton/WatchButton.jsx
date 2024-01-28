@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa6";
 import { selectMediaId } from "../../HomePageSlice";
+import { useEffect } from "react";
 
 import "./WatchButton.css";
 import { Link } from "react-router-dom";

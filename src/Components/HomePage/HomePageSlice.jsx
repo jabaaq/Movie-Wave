@@ -96,6 +96,7 @@ export const homePageSlice = createSlice({
         (state) => {
           state.imagesLoadingStatus = "loading";
           state.upcomingMoviesStatus = "loading";
+          state.loadWebsite = false;
         }
       )
       .addMatcher(
