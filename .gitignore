@@ -14,6 +14,7 @@ dist-ssr
 
 # Ignore apikey file in the src folder
 src/services/apiKey.jsx
+src/services/getUrl.jsx
 
 # Editor directories and files
 .vscode/*

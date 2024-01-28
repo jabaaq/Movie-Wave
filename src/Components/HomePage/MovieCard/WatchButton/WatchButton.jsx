@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlay } from "react-icons/fa6";
-import { selectMedia } from "../../HomePageSlice";
+import { selectMediaId } from "../../HomePageSlice";
 
 import "./WatchButton.css";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ const WatchButton = ({ id }) => {
     <Link to={`/${id}`}>
       <button
         className="watch_button"
-        onClick={() => dispatch(selectMedia(id))}
+        onClick={() => dispatch(selectMediaId(id))}
       >
         <div className="sign">
           <FaPlay />

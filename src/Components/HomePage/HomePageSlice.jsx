@@ -19,7 +19,7 @@ const initialState = {
   fetchedActorsList: [],
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
-  selectedMedia: null,
+  selectedMediaId: null,
   loadWebsite: false,
 };
 
@@ -55,7 +55,6 @@ export const fetchActorsList = createAsyncThunk(
   async () => {
     const { actorsList } = GetUrl();
     const res = await request(actorsList);
-    console.log(res.results);
     return res.results.map(_transferActorsList);
   }
 );
@@ -68,8 +67,8 @@ export const homePageSlice = createSlice({
     navbarToggle: (state) => {
       state.toggleNavigation = !state.toggleNavigation;
     },
-    selectMedia: (state, action) => {
-      state.selectedMedia = action.payload;
+    selectMediaId: (state, action) => {
+      state.selectedMediaId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -129,4 +128,4 @@ export const homePageSlice = createSlice({
 const { actions, reducer } = homePageSlice;
 
 export default reducer;
-export const { navbarToggle, selectMedia } = actions;
+export const { navbarToggle, selectMediaId } = actions;

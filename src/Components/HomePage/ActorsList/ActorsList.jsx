@@ -9,9 +9,9 @@ import "./ActorsList.scss";
 const ActorsList = () => {
   const { fetchedActorsList } = useSelector((state) => state.HomePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedActorsList);
-  }, [fetchedActorsList]);
+  // useEffect(() => {
+  //   console.log(fetchedActorsList);
+  // }, [fetchedActorsList]);
 
   return (
     <>
