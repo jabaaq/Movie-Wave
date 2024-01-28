@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import HomePageReducer from "../HomePage/HomePageSlice";
+import MoviePageReducer from "../MoviesPage/MoviePageSlice";
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === "string") {
@@ -13,6 +14,7 @@ const stringMiddleware = () => (next) => (action) => {
 export const store = configureStore({
   reducer: {
     HomePageReducer,
+    MoviePageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

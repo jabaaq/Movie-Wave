@@ -1,7 +1,12 @@
 import "./MoviePage.scss";
+import MovieDetails from "../MovieDetails/MovieDetails";
 
 const MoviePage = () => {
-  return <h1>Hello! I'm MoviePage!</h1>;
+  return (
+    <div className="movie_page_container">
+      <MovieDetails />
+    </div>
+  );
 };
 
 export default MoviePage;

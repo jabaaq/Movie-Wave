@@ -1,14 +1,14 @@
-import { Navbar } from "./Components/HomePage/Navbar/Navbar";
+import { Navbar } from "../HomePage/Navbar/Navbar";
 import "./App.scss";
-import HomePage from "./Components/HomePage/HomePage";
-import MoviePage from "./Components/MoviesPage/MoviePage/MoviePage";
+import HomePage from "../HomePage/HomePage";
+import MoviePage from "../MoviesPage/MoviePage/MoviePage";
 import { useDispatch } from "react-redux";
 import {
   fetchBackgroundImages,
   fetchUpcomingMovies,
   fetchTvSeries,
   fetchActorsList,
-} from "./Components/HomePage/HomePageSlice";
+} from "../HomePage/HomePageSlice";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
