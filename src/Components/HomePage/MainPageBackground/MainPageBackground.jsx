@@ -9,14 +9,10 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const MainPageBackground = () => {
-  const { fetchedBackgroundMovies, selectedMediaId } = useSelector(
+  const { fetchedBackgroundMovies } = useSelector(
     (state) => state.HomePageReducer
   );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(selectedMediaId);
-  }, [selectedMediaId]);
 
   return (
     <div className="background_container">
