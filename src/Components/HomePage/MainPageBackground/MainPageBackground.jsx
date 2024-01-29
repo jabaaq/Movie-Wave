@@ -50,7 +50,7 @@ const MainPageBackground = () => {
               </div>
               <div className="movie_description">{movie.description}</div>
               <Link
-                to={`/:${movie.id}`}
+                to={`/${movie.id}`}
                 onClick={() => dispatch(selectMediaId(movie.id))}
               >
                 <WaveButton text={"WATCH NOW"} />

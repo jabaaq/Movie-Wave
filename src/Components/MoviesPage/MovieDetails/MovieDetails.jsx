@@ -11,7 +11,17 @@ const MovieDetails = () => {
     console.log(fetchedMovieById);
   }, [fetchedMovieById]);
 
-  return <h1>MOVIE ID: {selectedMediaId}</h1>;
+  return (
+    <div
+      className="movie_details_container"
+      style={{
+        backgroundImage: `url(${
+          fetchedMovieById && fetchedMovieById.background_image
+        })`,
+        backgroundSize: "cover",
+      }}
+    ></div>
+  );
 };
 
 export default MovieDetails;
