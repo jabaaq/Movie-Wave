@@ -3,15 +3,17 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import DetailsCard from "../DetailsCard/DetailsCard";
 import { CircularProgress } from "@mui/material";
+import AddToFavorites from "../AddToFavorites/AddToFavorites";
+import WaveButton from "../../HomePage/WaveButton/WaveButton";
 
 const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
 
-  // useEffect(() => {
-  //   console.log(selectedMediaId);
-  //   console.log(fetchedMovieById);
-  // }, [fetchedMovieById]);
+  useEffect(() => {
+    console.log(selectedMediaId);
+    console.log(fetchedMovieById);
+  }, [fetchedMovieById]);
 
   return (
     <div
@@ -24,10 +26,8 @@ const MovieDetails = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* {fetchedMovieById && <DetailsCard poster={fetchedMovieById.poster} />} */}
       {fetchedMovieById && (
         <div className="information_container">
-          {/* <img  className="poster_left_side"></img> */}
           <img
             src={fetchedMovieById.poster}
             alt={fetchedMovieById.title}
@@ -54,6 +54,13 @@ const MovieDetails = () => {
                     </button>
                   ))}
               </div>
+            </div>
+            <div className="movie_description_container">
+              {fetchedMovieById.description}
+            </div>
+            <div className="add_watch_container">
+              <AddToFavorites />
+              <WaveButton text={"WATCH NOW"} />
             </div>
           </div>
         </div>

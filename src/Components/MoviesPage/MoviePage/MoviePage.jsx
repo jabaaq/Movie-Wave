@@ -13,9 +13,9 @@ const MoviePage = () => {
   const dispatch = useDispatch();
   const savedMovieId = useParams();
 
-  useEffect(() => {
-    console.log(loadMoviePage);
-  }, [loadMoviePage]);
+  // useEffect(() => {
+  //   console.log(loadMoviePage);
+  // }, [loadMoviePage]);
 
   useEffect(() => {
     dispatch(
@@ -30,7 +30,7 @@ const MoviePage = () => {
       {loadMoviePage ? (
         <>
           <MovieDetails />
-          <Footer />
+          {/* <Footer /> */}
         </>
       ) : (
         <Spinner />
