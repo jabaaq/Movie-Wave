@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import ActorsList from "./ActorsList/ActorsList";
 import Footer from "../Footer/Footer";
+
 import {
   fetchBackgroundImages,
   fetchUpcomingMovies,

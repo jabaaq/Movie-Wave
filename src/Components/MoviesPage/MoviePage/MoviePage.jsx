@@ -4,6 +4,7 @@ import { fetchMovieDetails } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "../../Footer/Footer";
 
 const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -21,6 +22,7 @@ const MoviePage = () => {
   return (
     <div className="movie_page_container">
       <MovieDetails />
+      <Footer />
     </div>
   );
 };

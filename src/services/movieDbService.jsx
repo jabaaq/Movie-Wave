@@ -79,7 +79,7 @@ const movieDbService = () => {
       id: movie.id,
       background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
       budget: movie.budget,
-      genres: movie.genres.map((item) => item.name),
+      genres: movie.genres,
       homepage: movie.homepage,
       poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
       release_date: movie.release_date,
@@ -88,7 +88,7 @@ const movieDbService = () => {
       original_title: movie.original_title,
       title: movie.title,
       description: movie.overview,
-      vote_average: movie.vote_average,
+      vote_average: +movie.vote_average.toFixed(1),
     };
   };
 
