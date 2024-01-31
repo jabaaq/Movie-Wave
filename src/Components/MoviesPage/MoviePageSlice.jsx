@@ -24,6 +24,16 @@ export const fetchMovieDetails = createAsyncThunk(
   }
 );
 
+export const fetchSeriesDetails = createAsyncThunk(
+  "fetch/fetchMovieDetails",
+  async (id) => {
+    const { seriesDetailsById } = GetUrl();
+    const updatedUrl = seriesDetailsById(id);
+    const res = await request(updatedUrl);
+    return _transferSelectedMovieDetails(res);
+  }
+);
+
 export const fetchMovieCast = createAsyncThunk(
   "fetch/fetchMovieCast",
   async (id) => {
@@ -43,19 +53,12 @@ export const moviePageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
-      // .addCase(fetchMovieDetails.pending, (state) => {
-      //   state.loadMoviePage = false;
-      // })
-      // .addCase(fetchMovieDetails.fulfilled, (state, action) => {
-      //   state.fetchedMovieById = action.payload;
-      //   state.loadMoviePage = true;
-      // })
-      // .addCase(fetchMovieDetails.rejected, (state) => {
-      //   state.loadMoviePage = false;
-      // })
       .addMatcher(
-        isAnyOf(fetchMovieDetails.pending, fetchMovieCast.pending),
+        isAnyOf(
+          fetchMovieDetails.pending,
+          fetchMovieCast.pending,
+          fetchSeriesDetails.pending
+        ),
         (state) => {
           state.loadMoviePage = false;
         }
@@ -64,7 +67,8 @@ export const moviePageSlice = createSlice({
         (action) => {
           return (
             action.type === fetchMovieCast.fulfilled.type,
-            action.type === fetchMovieDetails.fulfilled.type
+            action.type === fetchMovieDetails.fulfilled.type,
+            action.type === fetchSeriesDetails.fulfilled.type
           );
         },
         (state, action) => {
@@ -74,7 +78,11 @@ export const moviePageSlice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(fetchMovieDetails.rejected, fetchMovieCast.rejected),
+        isAnyOf(
+          fetchMovieDetails.rejected,
+          fetchMovieCast.rejected,
+          fetchSeriesDetails.rejected
+        ),
         (state) => {
           state.loadMoviePage = false;
         }

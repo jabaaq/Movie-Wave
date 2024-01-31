@@ -27,6 +27,7 @@ const movieDbService = () => {
       vote: movie.vote_average,
       original_title: movie.original_title,
       genres: genresNames,
+      mediaType: "Movies",
     };
   };
 
@@ -43,6 +44,7 @@ const movieDbService = () => {
       fixedVote: (movie.vote_average / 2).toFixed(1),
       vote: movie.vote_average,
       release_date: movie.release_date,
+      mediaType: "Movies",
     };
   };
 
@@ -60,6 +62,7 @@ const movieDbService = () => {
       fixedVote: (series.vote_average / 2).toFixed(1),
       vote: series.vote_average,
       release_date: series.first_air_date,
+      mediaType: "Series",
     };
   };
 
@@ -71,6 +74,7 @@ const movieDbService = () => {
       popularity: actor.popularity,
       profile_image: `https://image.tmdb.org/t/p/w500/${actor.profile_path}`,
       media_type: actor.media_type,
+      mediaType: "Actors",
     };
   };
 

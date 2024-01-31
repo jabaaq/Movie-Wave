@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./MovieCard.scss";
 import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
 import { selectMediaId } from "../HomePageSlice";
 import { useDispatch } from "react-redux";
 
-const MovieCard = ({ title, poster, rating, date, id, type }) => {
+const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,7 +19,13 @@ const MovieCard = ({ title, poster, rating, date, id, type }) => {
         className="card_box"
         onMouseEnter={handleShowDetails}
         onMouseLeave={handleShowDetails}
-        onClick={type === "person" ? () => dispatch(selectMediaId(id)) : null}
+        // onClick={type === "person" ? () => dispatch(selectMediaId(id)) : null}
+        // onClick={
+        //   type === "person"
+        //     ? () => dispatch(selectMediaId(id, mediaType))
+        //     : null
+        // }
+        onClick={() => dispatch(selectMediaId({ id, mediaType }))}
       >
         <div
           className={`upcoming_movie_information ${

@@ -19,7 +19,7 @@ const initialState = {
   fetchedActorsList: [],
   imagesLoadingStatus: "idle",
   upcomingMoviesStatus: "idle",
-  selectedMediaId: null,
+  selectedMediaId: [],
   loadWebsite: false,
 };
 
@@ -46,6 +46,7 @@ export const fetchTvSeries = createAsyncThunk(
   async () => {
     const { popularTvSeries } = GetUrl();
     const res = await request(popularTvSeries);
+    console.log(res);
     return res.results.map(_transferTvSeries);
   }
 );

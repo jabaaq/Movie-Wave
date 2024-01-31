@@ -44,6 +44,7 @@ const SectionBuilder = ({ moviesArr, name }) => {
                 rating={item.fixedVote ? item.fixedVote : null}
                 date={item.release_date ? item.release_date : null}
                 type={item.media_type}
+                mediaType={item.mediaType}
               />
             </SwiperSlide>
           ))}

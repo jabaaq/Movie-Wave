@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import "./TvSeries.scss";
-import { useEffect } from "react";
 import SectionBuilder from "../SectionBuilder/SectionBuilder";
 
 const TvSeries = () => {

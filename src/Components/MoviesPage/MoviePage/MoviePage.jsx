@@ -1,6 +1,10 @@
 import "./MoviePage.scss";
 import MovieDetails from "../MovieDetails/MovieDetails";
-import { fetchMovieDetails, fetchMovieCast } from "../MoviePageSlice";
+import {
+  fetchMovieDetails,
+  fetchSeriesDetails,
+  fetchMovieCast,
+} from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -13,19 +17,15 @@ const MoviePage = () => {
   const dispatch = useDispatch();
   const savedMovieId = useParams();
 
-  // useEffect(() => {
-  //   console.log(loadMoviePage);
-  // }, [loadMoviePage]);
-
   useEffect(() => {
+    console.log(selectedMediaId.mediaType === "Movies");
     dispatch(
-      fetchMovieDetails(
-        selectedMediaId ? selectedMediaId : +savedMovieId.movieId
-      )
+      selectedMediaId.mediaType === "Movies"
+        ? fetchMovieDetails(selectedMediaId.id)
+        : fetchSeriesDetails(selectedMediaId.id)
     );
-    dispatch(
-      fetchMovieCast(selectedMediaId ? selectedMediaId : +savedMovieId.movieIds)
-    );
+    dispatch(fetchMovieDetails(selectedMediaId.id, selectedMediaId.mediaType));
+    dispatch(fetchMovieCast(+savedMovieId.movieId));
   }, []);
 
   return (
