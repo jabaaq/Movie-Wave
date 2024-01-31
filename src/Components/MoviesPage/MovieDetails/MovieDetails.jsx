@@ -1,7 +1,6 @@
 import "./MovieDetails.scss";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import DetailsCard from "../DetailsCard/DetailsCard";
 import { CircularProgress } from "@mui/material";
 import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
@@ -13,7 +12,7 @@ const MovieDetails = () => {
   useEffect(() => {
     console.log(selectedMediaId);
     console.log(fetchedMovieById);
-  }, [fetchedMovieById]);
+  }, []);
 
   return (
     <div
@@ -34,7 +33,7 @@ const MovieDetails = () => {
             className="poster_left_side"
           />
           <div className="details_right_side">
-            <h1>{fetchedMovieById.original_title}</h1>
+            <h1>{fetchedMovieById.title}</h1>
             <div className="rate_and_genres_container">
               <div className="movie_rate">
                 <CircularProgress
@@ -62,6 +61,7 @@ const MovieDetails = () => {
               <AddToFavorites />
               <WaveButton text={"WATCH NOW"} />
             </div>
+            <div className="cast_container"></div>
           </div>
         </div>
       )}

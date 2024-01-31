@@ -1,6 +1,6 @@
 import "./MoviePage.scss";
 import MovieDetails from "../MovieDetails/MovieDetails";
-import { fetchMovieDetails } from "../MoviePageSlice";
+import { fetchMovieDetails, fetchMovieCast } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -23,6 +23,9 @@ const MoviePage = () => {
         selectedMediaId ? selectedMediaId : +savedMovieId.movieId
       )
     );
+    dispatch(
+      fetchMovieCast(selectedMediaId ? selectedMediaId : +savedMovieId.movieIds)
+    );
   }, []);
 
   return (
@@ -30,7 +33,7 @@ const MoviePage = () => {
       {loadMoviePage ? (
         <>
           <MovieDetails />
-          {/* <Footer /> */}
+          <Footer />
         </>
       ) : (
         <Spinner />

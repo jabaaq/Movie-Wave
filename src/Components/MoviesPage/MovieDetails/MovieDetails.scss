@@ -1,10 +1,10 @@
 .movie_details_container {
-  // height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0px -53px 86px 147px rgba(0, 0, 0, 0.79);
+  box-shadow: inset 0px -153px 266px 347px rgba(0, 0, 0, 0.79);
 
   .movie_background_image {
     height: 100vh;
@@ -17,7 +17,8 @@
     width: 100%;
     align-items: flex-start;
     flex-direction: row;
-    margin-top: 15%;
+    margin-top: 10%;
+    padding: 35px;
 
     .add_watch_container {
       display: flex;
@@ -29,7 +30,6 @@
     .poster_left_side {
       width: 40%;
       min-width: 370px;
-      background-color: red;
       background-size: cover;
     }
 
@@ -65,6 +65,7 @@
         width: max(90%, min(200px));
         max-height: 200px;
         overflow: hidden;
+        font-size: max(0.8vw, min(10px));
       }
 
       .movie_genre {
