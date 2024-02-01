@@ -96,12 +96,31 @@ const movieDbService = () => {
     };
   };
 
+  const _transferSelectedSeriesDetails = (series) => {
+    return {
+      id: series.id,
+      background_image: `https://image.tmdb.org/t/p/original/${series.backdrop_path}`,
+      budget: series.budget,
+      genres: series.genres,
+      homepage: series.homepage,
+      poster: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
+      release_date: series.release_date,
+      runtime: series.runtime,
+      tagline: series.tagline,
+      original_title: series.original_title,
+      title: series.name,
+      description: series.overview,
+      vote_average: +series.vote_average.toFixed(1),
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
     _transferTvSeries,
     _transferActorsList,
     _transferSelectedMovieDetails,
+    _transferSelectedSeriesDetails,
   };
 };
 export { movieDbService };

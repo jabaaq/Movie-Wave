@@ -5,7 +5,8 @@ import { movieDbService } from "../../services/movieDbService";
 
 const { request } = useHttp();
 
-const { _transferSelectedMovieDetails } = movieDbService();
+const { _transferSelectedMovieDetails, _transferSelectedSeriesDetails } =
+  movieDbService();
 
 const initialState = {
   fetchedMovieById: [],
@@ -20,6 +21,7 @@ export const fetchMovieDetails = createAsyncThunk(
     const { movieDetailsById } = GetUrl();
     const updatedUrl = movieDetailsById(id);
     const res = await request(updatedUrl);
+    console.log(res);
     return _transferSelectedMovieDetails(res);
   }
 );
@@ -30,7 +32,8 @@ export const fetchSeriesDetails = createAsyncThunk(
     const { seriesDetailsById } = GetUrl();
     const updatedUrl = seriesDetailsById(id);
     const res = await request(updatedUrl);
-    return _transferSelectedMovieDetails(res);
+    console.log(res);
+    return _transferSelectedSeriesDetails(res);
   }
 );
 
