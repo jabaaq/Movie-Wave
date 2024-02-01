@@ -5,13 +5,16 @@ import { movieDbService } from "../../services/movieDbService";
 
 const { request } = useHttp();
 
-const { _transferSelectedMovieDetails, _transferSelectedSeriesDetails } =
-  movieDbService();
+const {
+  _transferSelectedMovieDetails,
+  _transferSelectedSeriesDetails,
+  _transferMovieCast,
+} = movieDbService();
 
 const initialState = {
   fetchedMovieById: [],
   loadMoviePage: false,
-  castByMovie: [],
+  fetchedCast: [],
   // movieDetailsById: [],
 };
 
@@ -21,7 +24,6 @@ export const fetchMovieDetails = createAsyncThunk(
     const { movieDetailsById } = GetUrl();
     const updatedUrl = movieDetailsById(id);
     const res = await request(updatedUrl);
-    console.log(res);
     return _transferSelectedMovieDetails(res);
   }
 );
@@ -32,19 +34,18 @@ export const fetchSeriesDetails = createAsyncThunk(
     const { seriesDetailsById } = GetUrl();
     const updatedUrl = seriesDetailsById(id);
     const res = await request(updatedUrl);
-    console.log(res);
     return _transferSelectedSeriesDetails(res);
   }
 );
 
-export const fetchMovieCast = createAsyncThunk(
-  "fetch/fetchMovieCast",
-  async (id) => {
-    const { castByMovie } = GetUrl();
-    const updatedUrl = castByMovie(id);
+export const fetchCast = createAsyncThunk(
+  "fetch/fetchCast",
+  async ({ mediaId, mediaType }) => {
+    const { castByMedia } = GetUrl();
+    const updatedUrl = castByMedia(mediaId, mediaType);
     const res = await request(updatedUrl);
     console.log(res);
-    return res;
+    return res.cast.map(_transferMovieCast);
   }
 );
 
@@ -56,10 +57,19 @@ export const moviePageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(
+        fetchMovieDetails.fulfilled || fetchSeriesDetails.fulfilled,
+        (state, action) => {
+          state.fetchedMovieById = action.payload;
+        }
+      )
+      .addCase(fetchCast.fulfilled, (state, action) => {
+        state.fetchedCast = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchMovieDetails.pending,
-          fetchMovieCast.pending,
+          fetchCast.pending,
           fetchSeriesDetails.pending
         ),
         (state) => {
@@ -67,23 +77,20 @@ export const moviePageSlice = createSlice({
         }
       )
       .addMatcher(
-        (action) => {
-          return (
-            action.type === fetchMovieCast.fulfilled.type,
-            action.type === fetchMovieDetails.fulfilled.type,
-            action.type === fetchSeriesDetails.fulfilled.type
-          );
-        },
-        (state, action) => {
-          state.fetchedMovieById = action.payload;
-          state.fetchMovieCast = action.payload;
+        isAnyOf(
+          (fetchCast.fulfilled,
+          fetchMovieDetails.fulfilled,
+          fetchSeriesDetails.fulfilled)
+        ),
+        (state) => {
           state.loadMoviePage = true;
         }
       )
+
       .addMatcher(
         isAnyOf(
           fetchMovieDetails.rejected,
-          fetchMovieCast.rejected,
+          fetchCast.rejected,
           fetchSeriesDetails.rejected
         ),
         (state) => {

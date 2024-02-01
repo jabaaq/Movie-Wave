@@ -9,17 +9,16 @@ const GetUrl = () => {
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}`;
   const seriesDetailsById = (serialId) =>
     `https://api.themoviedb.org/3/tv/${serialId}?api_key=${APIKEY}`;
-  const castByMovie = (movieId) =>
-    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKEY}`;
-
+  const castByMedia = (mediaId, mediaType) =>
+    `https://api.themoviedb.org/3/${mediaType}/${mediaId}/credits?api_key=${APIKEY}`;
   return {
     topRatedMovies,
     upcomingMovies,
     popularTvSeries,
     actorsList,
-    castByMovie,
     seriesDetailsById,
     movieDetailsById,
+    castByMedia,
   };
 };
 

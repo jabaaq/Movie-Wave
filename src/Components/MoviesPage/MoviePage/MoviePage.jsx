@@ -3,7 +3,7 @@ import MovieDetails from "../MovieDetails/MovieDetails";
 import {
   fetchMovieDetails,
   fetchSeriesDetails,
-  fetchMovieCast,
+  fetchCast,
 } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -16,8 +16,8 @@ const MoviePage = () => {
   const { loadMoviePage } = useSelector((state) => state.MoviePageReducer);
   const dispatch = useDispatch();
   const savedMovieDetails = useParams();
-  const isMovie = savedMovieDetails.mediaType === "movies";
-  const isSeries = savedMovieDetails.mediaType === "series";
+  const isMovie = savedMovieDetails.mediaType === "movie";
+  const isSeries = savedMovieDetails.mediaType === "tv";
 
   useEffect(() => {
     if (isMovie) {
@@ -29,6 +29,11 @@ const MoviePage = () => {
     } else {
       dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
     }
+
+    //To transfer each movie cast:
+    const mediaType = savedMovieDetails.mediaType;
+    const mediaId = +savedMovieDetails.mediaId;
+    dispatch(fetchCast({ mediaType, mediaId }));
   }, []);
 
   return (

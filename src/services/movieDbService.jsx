@@ -27,7 +27,7 @@ const movieDbService = () => {
       vote: movie.vote_average,
       original_title: movie.original_title,
       genres: genresNames,
-      mediaType: "movies",
+      mediaType: "movie",
     };
   };
 
@@ -44,7 +44,7 @@ const movieDbService = () => {
       fixedVote: (movie.vote_average / 2).toFixed(1),
       vote: movie.vote_average,
       release_date: movie.release_date,
-      mediaType: "movies",
+      mediaType: "movie",
     };
   };
 
@@ -62,7 +62,7 @@ const movieDbService = () => {
       fixedVote: (series.vote_average / 2).toFixed(1),
       vote: series.vote_average,
       release_date: series.first_air_date,
-      mediaType: "series",
+      mediaType: "tv",
     };
   };
 
@@ -114,6 +114,15 @@ const movieDbService = () => {
     };
   };
 
+  const _transferMovieCast = (cast) => {
+    return {
+      id: cast.id,
+      character: cast.character,
+      name: cast.name,
+      profile_image: `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -121,6 +130,7 @@ const movieDbService = () => {
     _transferActorsList,
     _transferSelectedMovieDetails,
     _transferSelectedSeriesDetails,
+    _transferMovieCast,
   };
 };
 export { movieDbService };

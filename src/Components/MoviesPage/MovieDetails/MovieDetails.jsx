@@ -7,12 +7,13 @@ import WaveButton from "../../HomePage/WaveButton/WaveButton";
 
 const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
-  const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
+  const { fetchedMovieById, fetchedCast } = useSelector(
+    (state) => state.MoviePageReducer
+  );
 
-  // useEffect(() => {
-  //   console.log(selectedMediaId);
-  //   console.log(fetchedMovieById);
-  // }, []);
+  useEffect(() => {
+    console.log(fetchedCast);
+  }, [fetchedCast]);
 
   return (
     <div
