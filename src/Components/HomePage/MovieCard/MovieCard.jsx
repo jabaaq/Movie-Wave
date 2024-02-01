@@ -19,12 +19,6 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
         className="card_box"
         onMouseEnter={handleShowDetails}
         onMouseLeave={handleShowDetails}
-        // onClick={type === "person" ? () => dispatch(selectMediaId(id)) : null}
-        // onClick={
-        //   type === "person"
-        //     ? () => dispatch(selectMediaId(id, mediaType))
-        //     : null
-        // }
         onClick={() => dispatch(selectMediaId({ id, mediaType }))}
       >
         <div
@@ -32,7 +26,9 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
             showCardDetails ? "show" : "hide"
           }`}
         >
-          {type !== "person" ? <WatchButton id={id} /> : null}
+          {type !== "person" ? (
+            <WatchButton id={id} mediaType={mediaType} />
+          ) : null}
           <div className="card_movie_title">{title}</div>
           <div className="card_bottom_details">
             <Rate

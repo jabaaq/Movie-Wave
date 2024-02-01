@@ -11,7 +11,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/:movieId" element={<MoviePage />} />
+          <Route
+            path="/movie-wave/:mediaType/:mediaId"
+            element={<MoviePage />}
+          />
         </Routes>
       </div>
     </Router>

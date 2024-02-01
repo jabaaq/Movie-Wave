@@ -15,17 +15,20 @@ const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { loadMoviePage } = useSelector((state) => state.MoviePageReducer);
   const dispatch = useDispatch();
-  const savedMovieId = useParams();
+  const savedMovieDetails = useParams();
+  const isMovie = savedMovieDetails.mediaType === "movies";
+  const isSeries = savedMovieDetails.mediaType === "series";
 
   useEffect(() => {
-    console.log(selectedMediaId.mediaType === "Movies");
-    dispatch(
-      selectedMediaId.mediaType === "Movies"
-        ? fetchMovieDetails(selectedMediaId.id)
-        : fetchSeriesDetails(selectedMediaId.id)
-    );
-    dispatch(fetchMovieDetails(selectedMediaId.id, selectedMediaId.mediaType));
-    dispatch(fetchMovieCast(+savedMovieId.movieId));
+    if (isMovie) {
+      dispatch(fetchMovieDetails(+savedMovieDetails.mediaId));
+    } else if (isSeries) {
+      dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
+    } else if (selectedMediaId.length === 0 && isMovie) {
+      dispatch(fetchMovieDetails(+savedMovieDetails.mediaId));
+    } else {
+      dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
+    }
   }, []);
 
   return (

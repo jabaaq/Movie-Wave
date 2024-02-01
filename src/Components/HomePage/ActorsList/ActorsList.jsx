@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SectionBuilder from "../SectionBuilder/SectionBuilder";
 import WaveButton from "../WaveButton/WaveButton";
-import { FaEye } from "react-icons/fa";
 
 import "./ActorsList.scss";
 

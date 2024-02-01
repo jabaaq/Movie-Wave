@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import "./WatchButton.css";
 import { Link } from "react-router-dom";
 
-const WatchButton = ({ id }) => {
+const WatchButton = ({ id, mediaType }) => {
   const dispatch = useDispatch();
   const { selectedMedia } = useSelector((state) => state.HomePageReducer);
 
@@ -15,7 +15,7 @@ const WatchButton = ({ id }) => {
   // }, [selectedMedia]);
 
   return (
-    <Link to={`/${id}`}>
+    <Link to={`/movie-wave/${mediaType}/${id}`}>
       <button
         className="watch_button"
         onClick={() => dispatch(selectMediaId(id))}

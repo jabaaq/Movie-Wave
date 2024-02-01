@@ -46,7 +46,6 @@ export const fetchTvSeries = createAsyncThunk(
   async () => {
     const { popularTvSeries } = GetUrl();
     const res = await request(popularTvSeries);
-    console.log(res);
     return res.results.map(_transferTvSeries);
   }
 );

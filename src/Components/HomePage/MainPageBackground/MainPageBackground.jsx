@@ -25,46 +25,49 @@ const MainPageBackground = () => {
         }}
         navigation={true}
       >
-        {fetchedBackgroundMovies.map((movie, i) => (
-          <SwiperSlide key={i}>
-            <div className="slide_content">
-              <h1 className="movie_title">{movie.title}</h1>
-              <div className="movie_combined_information">
-                <div className="movie_rate">
-                  <CircularProgress
-                    variant="determinate"
-                    value={movie.vote.toFixed(2) * 10}
-                    size={70}
-                    color="success"
-                    className="circle_rate"
-                  />
-                  <h3>{movie.vote.toFixed(1)}</h3>
+        {fetchedBackgroundMovies.map((movie, i) => {
+          const { id, mediaType } = movie;
+          return (
+            <SwiperSlide key={i}>
+              <div className="slide_content">
+                <h1 className="movie_title">{movie.title}</h1>
+                <div className="movie_combined_information">
+                  <div className="movie_rate">
+                    <CircularProgress
+                      variant="determinate"
+                      value={movie.vote.toFixed(2) * 10}
+                      size={70}
+                      color="success"
+                      className="circle_rate"
+                    />
+                    <h3>{movie.vote.toFixed(1)}</h3>
+                  </div>
+                  <div className="genres_list">
+                    {movie.genres.map((item, i) => (
+                      <button className="movie_genre" key={i}>
+                        {item}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="genres_list">
-                  {movie.genres.map((item, i) => (
-                    <button className="movie_genre" key={i}>
-                      {item}
-                    </button>
-                  ))}
-                </div>
+                <div className="movie_description">{movie.description}</div>
+                <Link
+                  to={`/movie-wave/${mediaType}/${id}`}
+                  onClick={() => dispatch(selectMediaId({ id, mediaType }))}
+                >
+                  <WaveButton text={"WATCH NOW"} />
+                </Link>
               </div>
-              <div className="movie_description">{movie.description}</div>
-              <Link
-                to={`/${movie.id}`}
-                onClick={() => dispatch(selectMediaId(movie.id))}
-              >
-                <WaveButton text={"WATCH NOW"} />
-              </Link>
-            </div>
-            <div className="left_shadows_box"></div>
-            <div className="bottom_shadows_box"></div>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${movie.background_image}`}
-              className="slider_image"
-              alt={`Movie background ${i}`}
-            />
-          </SwiperSlide>
-        ))}
+              <div className="left_shadows_box"></div>
+              <div className="bottom_shadows_box"></div>
+              <img
+                src={`https://image.tmdb.org/t/p/original/${movie.background_image}`}
+                className="slider_image"
+                alt={`Movie background ${i}`}
+              />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
