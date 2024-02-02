@@ -43,8 +43,9 @@ export const fetchCast = createAsyncThunk(
   async ({ mediaId, mediaType }) => {
     const { castByMedia } = GetUrl();
     const updatedUrl = castByMedia(mediaId, mediaType);
+    console.log(updatedUrl);
     const res = await request(updatedUrl);
-    console.log(res);
+    console.log(res.cast.map(_transferMovieCast));
     return res.cast.map(_transferMovieCast);
   }
 );

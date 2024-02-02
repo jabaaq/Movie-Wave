@@ -1,0 +1,31 @@
+.cast_list {
+  .cast_content {
+    .cast_name_container {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translate(-50%);
+      background-color: rgba(0, 0, 0, 0.274);
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        color: white;
+      }
+    }
+
+    .profile_image {
+      height: 250px;
+      overflow: hidden;
+
+      .cast_profile_img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

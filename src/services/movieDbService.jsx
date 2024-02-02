@@ -1,4 +1,6 @@
 import genres from "../services/genres.json";
+import blankMale from "../../src/image/blank-male.jpg";
+import blankFemale from "../../src/image/blank-female.jpg";
 
 const movieDbService = () => {
   const genresIds = genres.genres.map((item) => item.id);
@@ -114,12 +116,20 @@ const movieDbService = () => {
     };
   };
 
+  //  `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
+
   const _transferMovieCast = (cast) => {
     return {
       id: cast.id,
       character: cast.character,
       name: cast.name,
-      profile_image: `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
+      profile_image:
+        cast.profile_path === null
+          ? cast.gender === 2
+            ? blankMale
+            : blankFemale
+          : `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
+      gender: cast.gender,
     };
   };
 

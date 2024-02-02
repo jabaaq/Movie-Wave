@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
+import CastList from "../CastList/CastList";
 
 const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -11,9 +12,9 @@ const MovieDetails = () => {
     (state) => state.MoviePageReducer
   );
 
-  useEffect(() => {
-    console.log(fetchedCast);
-  }, [fetchedCast]);
+  // useEffect(() => {
+  //   console.log(fetchedCast);
+  // }, [fetchedCast]);
 
   return (
     <div
@@ -62,7 +63,9 @@ const MovieDetails = () => {
               <AddToFavorites />
               <WaveButton text={"WATCH NOW"} />
             </div>
-            <div className="cast_container"></div>
+            <div className="cast_container">
+              <CastList />
+            </div>
           </div>
         </div>
       )}

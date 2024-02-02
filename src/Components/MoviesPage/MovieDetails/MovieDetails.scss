@@ -13,7 +13,6 @@
 
   .information_container {
     display: flex;
-    // background-color: aqua;
     width: 100%;
     align-items: flex-start;
     flex-direction: row;
@@ -41,6 +40,13 @@
       gap: 20px;
       display: flex;
       text-shadow: 2px 2px 5px black;
+
+      .cast_container {
+        height: 180px;
+        width: 55vw;
+        min-width: 100%;
+        max-width: 1000px;
+      }
 
       h1 {
         color: white;
