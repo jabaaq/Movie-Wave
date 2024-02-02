@@ -21,7 +21,7 @@ const CastList = () => {
             slidesPerView: 4,
           },
           768: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
           1024: {
             slidesPerView: 5,

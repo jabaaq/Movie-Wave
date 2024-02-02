@@ -134,7 +134,7 @@ const movieDbService = () => {
   const _transferVideo = (video) => {
     return {
       id: video.id,
-      key: `https://www.youtube.com/watch?v=${video.key}`,
+      path: `https://www.youtube.com/embed/${video.key}`,
       name: video.name,
       published_at: video.published_at,
       type: video.type,

@@ -6,6 +6,11 @@
   display: flex;
   justify-content: center;
 
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+
   .mySwiper {
     width: 100%;
     height: max-content;
