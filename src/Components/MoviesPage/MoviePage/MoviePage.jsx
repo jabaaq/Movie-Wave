@@ -4,12 +4,14 @@ import {
   fetchMovieDetails,
   fetchSeriesDetails,
   fetchCast,
+  fetchMediaVideos,
 } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Footer from "../../Footer/Footer";
 import Spinner from "../../Spinner/Spinner";
+import VideoList from "../VideoList/VideoList";
 
 const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -18,6 +20,10 @@ const MoviePage = () => {
   const savedMovieDetails = useParams();
   const isMovie = savedMovieDetails.mediaType === "movie";
   const isSeries = savedMovieDetails.mediaType === "tv";
+
+  useEffect(() => {
+    console.log(selectedMediaId);
+  }, [selectedMediaId]);
 
   useEffect(() => {
     if (isMovie) {
@@ -30,10 +36,13 @@ const MoviePage = () => {
       dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
     }
 
-    //To transfer each movie cast:
     const mediaType = savedMovieDetails.mediaType;
     const mediaId = +savedMovieDetails.mediaId;
-    dispatch(fetchCast({ mediaType, mediaId }));
+    //Movie cast:
+    dispatch(fetchCast({ mediaId, mediaType }));
+
+    //To fetch videos
+    dispatch(fetchMediaVideos({ mediaId, mediaType }));
   }, []);
 
   return (
@@ -41,6 +50,7 @@ const MoviePage = () => {
       {loadMoviePage ? (
         <>
           <MovieDetails />
+          <VideoList />
           <Footer />
         </>
       ) : (

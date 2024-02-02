@@ -9,13 +9,14 @@ const {
   _transferSelectedMovieDetails,
   _transferSelectedSeriesDetails,
   _transferMovieCast,
+  _transferVideo,
 } = movieDbService();
 
 const initialState = {
   fetchedMovieById: [],
   loadMoviePage: false,
   fetchedCast: [],
-  // movieDetailsById: [],
+  fetchedVideos: [],
 };
 
 export const fetchMovieDetails = createAsyncThunk(
@@ -43,10 +44,18 @@ export const fetchCast = createAsyncThunk(
   async ({ mediaId, mediaType }) => {
     const { castByMedia } = GetUrl();
     const updatedUrl = castByMedia(mediaId, mediaType);
-    console.log(updatedUrl);
     const res = await request(updatedUrl);
-    console.log(res.cast.map(_transferMovieCast));
     return res.cast.map(_transferMovieCast);
+  }
+);
+
+export const fetchMediaVideos = createAsyncThunk(
+  "fetch/fetchMediaVideos",
+  async ({ mediaId, mediaType }) => {
+    const { mediaVideos } = GetUrl();
+    const updatedUrl = mediaVideos(mediaId, mediaType);
+    const res = await request(updatedUrl);
+    return res.results.map(_transferVideo);
   }
 );
 
@@ -67,11 +76,15 @@ export const moviePageSlice = createSlice({
       .addCase(fetchCast.fulfilled, (state, action) => {
         state.fetchedCast = action.payload;
       })
+      .addCase(fetchMediaVideos.fulfilled, (state, action) => {
+        state.fetchedVideos = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchMovieDetails.pending,
           fetchCast.pending,
-          fetchSeriesDetails.pending
+          fetchSeriesDetails.pending,
+          fetchMediaVideos.pending
         ),
         (state) => {
           state.loadMoviePage = false;
@@ -81,7 +94,8 @@ export const moviePageSlice = createSlice({
         isAnyOf(
           (fetchCast.fulfilled,
           fetchMovieDetails.fulfilled,
-          fetchSeriesDetails.fulfilled)
+          fetchSeriesDetails.fulfilled,
+          fetchMediaVideos.fulfilled)
         ),
         (state) => {
           state.loadMoviePage = true;
@@ -92,7 +106,8 @@ export const moviePageSlice = createSlice({
         isAnyOf(
           fetchMovieDetails.rejected,
           fetchCast.rejected,
-          fetchSeriesDetails.rejected
+          fetchSeriesDetails.rejected,
+          fetchMediaVideos.rejected
         ),
         (state) => {
           state.loadMoviePage = false;

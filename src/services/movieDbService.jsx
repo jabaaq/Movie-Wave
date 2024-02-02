@@ -116,8 +116,6 @@ const movieDbService = () => {
     };
   };
 
-  //  `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
-
   const _transferMovieCast = (cast) => {
     return {
       id: cast.id,
@@ -133,6 +131,16 @@ const movieDbService = () => {
     };
   };
 
+  const _transferVideo = (video) => {
+    return {
+      id: video.id,
+      key: `https://www.youtube.com/watch?v=${video.key}`,
+      name: video.name,
+      published_at: video.published_at,
+      type: video.type,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -141,6 +149,7 @@ const movieDbService = () => {
     _transferSelectedMovieDetails,
     _transferSelectedSeriesDetails,
     _transferMovieCast,
+    _transferVideo,
   };
 };
 export { movieDbService };

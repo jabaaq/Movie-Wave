@@ -7,10 +7,6 @@ import { FreeMode, Pagination } from "swiper/modules";
 const CastList = () => {
   const { fetchedCast } = useSelector((state) => state.MoviePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedCast);
-  }, [fetchedCast]);
-
   return (
     <div className="cast_list">
       <Swiper

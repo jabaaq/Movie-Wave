@@ -11,6 +11,8 @@ const GetUrl = () => {
     `https://api.themoviedb.org/3/tv/${serialId}?api_key=${APIKEY}`;
   const castByMedia = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/credits?api_key=${APIKEY}`;
+  const mediaVideos = (mediaId, mediaType) => `
+  https://api.themoviedb.org/3/${mediaType}/${mediaId}/videos?api_key=${APIKEY}`;
   return {
     topRatedMovies,
     upcomingMovies,
@@ -19,6 +21,7 @@ const GetUrl = () => {
     seriesDetailsById,
     movieDetailsById,
     castByMedia,
+    mediaVideos,
   };
 };
 
