@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import Footer from "../../Footer/Footer";
 import Spinner from "../../Spinner/Spinner";
 import VideoList from "../VideoList/VideoList";
+import Reviews from "../Reviews/ReviewCard/Reviews";
 
 const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -51,6 +52,7 @@ const MoviePage = () => {
         <>
           <MovieDetails />
           <VideoList />
+          <Reviews />
           <Footer />
         </>
       ) : (
