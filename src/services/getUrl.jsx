@@ -7,12 +7,19 @@ const GetUrl = () => {
   const actorsList = `https://api.themoviedb.org/3/trending/person/week?api_key=${APIKEY}`;
   const movieDetailsById = (movieId) =>
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}`;
+
   const seriesDetailsById = (serialId) =>
     `https://api.themoviedb.org/3/tv/${serialId}?api_key=${APIKEY}`;
+
   const castByMedia = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/credits?api_key=${APIKEY}`;
+
   const mediaVideos = (mediaId, mediaType) => `
   https://api.themoviedb.org/3/${mediaType}/${mediaId}/videos?api_key=${APIKEY}`;
+
+  const reviews = (mediaId, mediaType) => `
+  https://api.themoviedb.org/3/${mediaType}/${mediaId}/reviews?api_key=${APIKEY}`;
+
   return {
     topRatedMovies,
     upcomingMovies,
@@ -22,6 +29,7 @@ const GetUrl = () => {
     movieDetailsById,
     castByMedia,
     mediaVideos,
+    reviews,
   };
 };
 

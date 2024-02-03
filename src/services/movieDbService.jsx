@@ -141,6 +141,19 @@ const movieDbService = () => {
     };
   };
 
+  const _transferReviews = (id) => {
+    return {
+      author: id.author,
+      content: id.content,
+      created_at: id.created_at,
+      avatar: id.author_details.avatar_path
+        ? id.author_details.avatar_path
+        : blankMale,
+      rating: id.author_details.rating,
+      username: `@${id.author_details.username}`,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -150,6 +163,7 @@ const movieDbService = () => {
     _transferSelectedSeriesDetails,
     _transferMovieCast,
     _transferVideo,
+    _transferReviews,
   };
 };
 export { movieDbService };

@@ -1,5 +1,6 @@
 import "./ReviewCard.css";
 import { Rate } from "antd";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ReviewCard = () => {
   return (

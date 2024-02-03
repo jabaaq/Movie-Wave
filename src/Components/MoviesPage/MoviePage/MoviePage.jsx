@@ -5,6 +5,7 @@ import {
   fetchSeriesDetails,
   fetchCast,
   fetchMediaVideos,
+  fetchReviews,
 } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -44,6 +45,9 @@ const MoviePage = () => {
 
     //To fetch videos
     dispatch(fetchMediaVideos({ mediaId, mediaType }));
+
+    //To fetch reviews
+    dispatch(fetchReviews({ mediaId, mediaType }));
   }, []);
 
   return (

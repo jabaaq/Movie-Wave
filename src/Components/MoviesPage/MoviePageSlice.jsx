@@ -10,6 +10,7 @@ const {
   _transferSelectedSeriesDetails,
   _transferMovieCast,
   _transferVideo,
+  _transferReviews,
 } = movieDbService();
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   loadMoviePage: false,
   fetchedCast: [],
   fetchedVideos: [],
+  fetchedReviews: [],
 };
 
 export const fetchMovieDetails = createAsyncThunk(
@@ -59,6 +61,17 @@ export const fetchMediaVideos = createAsyncThunk(
   }
 );
 
+export const fetchReviews = createAsyncThunk(
+  "fetch/fetchReviews",
+  async ({ mediaId, mediaType }) => {
+    const { reviews } = GetUrl();
+    const updatedUrl = reviews(mediaId, mediaType);
+    const res = await request(updatedUrl);
+    console.log(res);
+    return res.results.map(_transferReviews);
+  }
+);
+
 export const moviePageSlice = createSlice({
   name: "moviePage",
   initialState,
@@ -79,12 +92,16 @@ export const moviePageSlice = createSlice({
       .addCase(fetchMediaVideos.fulfilled, (state, action) => {
         state.fetchedVideos = action.payload;
       })
+      .addCase(fetchReviews.fulfilled, (state, action) => {
+        state.fetchedReviews = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchMovieDetails.pending,
           fetchCast.pending,
           fetchSeriesDetails.pending,
-          fetchMediaVideos.pending
+          fetchMediaVideos.pending,
+          fetchReviews.pending
         ),
         (state) => {
           state.loadMoviePage = false;
@@ -95,7 +112,8 @@ export const moviePageSlice = createSlice({
           (fetchCast.fulfilled,
           fetchMovieDetails.fulfilled,
           fetchSeriesDetails.fulfilled,
-          fetchMediaVideos.fulfilled)
+          fetchMediaVideos.fulfilled,
+          fetchReviews.fulfilled)
         ),
         (state) => {
           state.loadMoviePage = true;
@@ -107,7 +125,8 @@ export const moviePageSlice = createSlice({
           fetchMovieDetails.rejected,
           fetchCast.rejected,
           fetchSeriesDetails.rejected,
-          fetchMediaVideos.rejected
+          fetchMediaVideos.rejected,
+          fetchReviews.rejected
         ),
         (state) => {
           state.loadMoviePage = false;
