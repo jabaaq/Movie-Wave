@@ -2,3 +2,10 @@
   display: flex;
   flex-direction: column;
 }
+
+#section_header {
+  width: 100%;
+  // background-color: aqua;
+  display: flex;
+  justify-content: flex-start;
+}

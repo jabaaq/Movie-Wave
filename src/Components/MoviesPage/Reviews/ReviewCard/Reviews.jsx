@@ -7,16 +7,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import EachPageButton from "../../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
 
 const Reviews = () => {
   const { fetchedReviews } = useSelector((state) => state.MoviePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedReviews);
-  }, [fetchedReviews]);
-
   return (
     <div className="reviews_container">
+      <div id="section_header">
+        <EachPageButton name={"REVIEWS"} />
+      </div>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -31,12 +31,22 @@ const Reviews = () => {
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
-        initialSlide={2}
+        initialSlide={1}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <ReviewCard />
-        </SwiperSlide>
+        {fetchedReviews.map((item, i) => (
+          <SwiperSlide key={i}>
+            <ReviewCard
+              author={item.author}
+              avatar={item.avatar}
+              content={item.content}
+              data={item.created_at}
+              rating={(item.rating / 2).toFixed(1)}
+              username={item.username}
+              url={item.url}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

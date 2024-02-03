@@ -1,24 +1,49 @@
 import "./ReviewCard.css";
 import { Rate } from "antd";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect } from "react";
 
-const ReviewCard = () => {
+const OpenUrl = ({ url }) => {
+  return (
+    <a className="content_url" href={url} target="_blank">
+      ...See more
+    </a>
+  );
+};
+
+const ReviewCard = ({
+  author,
+  avatar,
+  content,
+  data,
+  rating,
+  username,
+  url,
+}) => {
   return (
     <div className="review_card">
       <div className="review_header">
-        <div className="image"></div>
+        <div className="image">
+          <img src={avatar} alt={`${username} avatar`} />
+        </div>
         <div>
           <div className="stars">
-            <Rate allowHalf disabled defaultValue={2.5} />
+            <Rate allowHalf disabled defaultValue={rating} />
           </div>
-          <p className="review_author_name">John Doe</p>
+          <p className="review_author_name">{author}</p>
+          <p className="author_username">{username}</p>
         </div>
       </div>
 
       <p className="review_message">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-        voluptatem alias ut provident sapiente repellendus.
+        {content.length > 250 ? (
+          <>
+            {content} <OpenUrl url={url} />{" "}
+          </>
+        ) : (
+          content
+        )}
       </p>
+      <span className="comment_data">{data}</span>
     </div>
   );
 };

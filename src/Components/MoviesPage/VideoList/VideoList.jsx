@@ -9,13 +9,12 @@ import EachPageButton from "../../HomePage/Navbar/RadioButtons/EachPageButton/Ea
 const VideoList = () => {
   const { fetchedVideos } = useSelector((state) => state.MoviePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedVideos);
-  }, [fetchedVideos]);
-
   return (
     <div className="videos_container">
-      <EachPageButton name={"VIDEOS"} />
+      <div id="section_header">
+        <EachPageButton name={"VIDEOS"} />
+      </div>
+
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

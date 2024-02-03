@@ -144,13 +144,14 @@ const movieDbService = () => {
   const _transferReviews = (id) => {
     return {
       author: id.author,
-      content: id.content,
-      created_at: id.created_at,
+      content: id.content.length > 250 ? id.content.slice(0, 255) : id.content,
+      created_at: id.created_at.slice(0, 10),
       avatar: id.author_details.avatar_path
-        ? id.author_details.avatar_path
+        ? `https://image.tmdb.org/t/p/w500/${id.author_details.avatar_path}`
         : blankMale,
       rating: id.author_details.rating,
       username: `@${id.author_details.username}`,
+      url: id.url,
     };
   };
 

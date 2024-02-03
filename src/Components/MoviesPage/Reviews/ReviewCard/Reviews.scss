@@ -1,9 +1,13 @@
 .reviews_container {
-  background-color: brown;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-direction: column;
+
+  .swiper-pagination-bullet {
+    background: white !important;
+  }
 
   .swiper {
     width: 100%;
