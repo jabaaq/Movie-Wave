@@ -1,8 +1,12 @@
+import { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import { Navbar } from "../HomePage/Navbar/Navbar";
 import "./App.scss";
-import HomePage from "../HomePage/HomePage";
-import MoviePage from "../MoviesPage/MoviePage/MoviePage";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
+
+const HomePage = lazy(() => import("../HomePage/HomePage"));
+const MoviePage = lazy(() => import("../MoviesPage/MoviePage/MoviePage"));
 
 function App() {
   return (
@@ -10,10 +14,21 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <HomePage />
+              </Suspense>
+            }
+          />
           <Route
             path="/movie-wave/:mediaType/:mediaId"
-            element={<MoviePage />}
+            element={
+              <Suspense fallback={<Spinner />}>
+                <MoviePage />
+              </Suspense>
+            }
           />
         </Routes>
       </div>

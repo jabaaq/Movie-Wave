@@ -1,6 +1,6 @@
 import "./VideoList.scss";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
@@ -18,7 +18,7 @@ const VideoList = () => {
       setIsMounted(false);
     };
   }, []);
-  //??????????????
+
   return (
     <div className="videos_container">
       <div id="section_header">
@@ -38,6 +38,7 @@ const VideoList = () => {
         {fetchedVideos.map((movie, i) => (
           <SwiperSlide key={i}>
             <iframe
+              loading="lazy"
               src={movie.path}
               frameBorder="0"
               height={"100%"}

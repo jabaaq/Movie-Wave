@@ -64,6 +64,7 @@ const MainPageBackground = () => {
                 src={`https://image.tmdb.org/t/p/original/${movie.background_image}`}
                 className="slider_image"
                 alt={`Movie background ${i}`}
+                loading="lazy"
               />
             </SwiperSlide>
           );

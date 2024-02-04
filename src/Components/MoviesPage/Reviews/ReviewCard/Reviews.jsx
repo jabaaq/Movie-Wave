@@ -15,7 +15,7 @@ const Reviews = () => {
   return (
     <div className="reviews_container">
       <div id="section_header">
-        <EachPageButton name={"REVIEWS"} />
+        <EachPageButton name={`REVIEWS(${fetchedReviews.length})`} />
       </div>
       <Swiper
         effect={"coverflow"}

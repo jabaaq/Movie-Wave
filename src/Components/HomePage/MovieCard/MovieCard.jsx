@@ -41,7 +41,7 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
           </div>
         </div>
       </div>
-      <img src={poster} alt={title} className="upcoming_img" />
+      <img src={poster} alt={title} loading="lazy" className="upcoming_img" />
     </div>
   );
 };
