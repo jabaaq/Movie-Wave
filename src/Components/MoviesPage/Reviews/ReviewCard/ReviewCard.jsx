@@ -23,7 +23,7 @@ const ReviewCard = ({
     <div className="review_card">
       <div className="review_header">
         <div className="image">
-          <img src={avatar} alt={`${username} avatar`} />
+          <img className="user_image" src={avatar} alt={`${username} avatar`} />
         </div>
         <div>
           <div className="stars">

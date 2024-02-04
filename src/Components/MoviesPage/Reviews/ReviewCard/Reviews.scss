@@ -1,9 +1,10 @@
 .reviews_container {
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  padding: 30px;
 
   .swiper-pagination-bullet {
     background: white !important;
