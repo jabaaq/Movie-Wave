@@ -5,11 +5,9 @@ const GetUrl = () => {
   const upcomingMovies = `https://api.themoviedb.org/3/movie/upcoming?api_key=${APIKEY}`;
   const popularTvSeries = `https://api.themoviedb.org/3/tv/top_rated?api_key=${APIKEY}`;
   const actorsList = `https://api.themoviedb.org/3/trending/person/week?api_key=${APIKEY}`;
-  const movieDetailsById = (movieId) =>
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKEY}`;
 
-  const seriesDetailsById = (serialId) =>
-    `https://api.themoviedb.org/3/tv/${serialId}?api_key=${APIKEY}`;
+  const detailsById = (mediaId, mediaType) =>
+    `https://api.themoviedb.org/3/${mediaType}/${mediaId}?api_key=${APIKEY}`;
 
   const castByMedia = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/credits?api_key=${APIKEY}`;
@@ -25,8 +23,7 @@ const GetUrl = () => {
     upcomingMovies,
     popularTvSeries,
     actorsList,
-    seriesDetailsById,
-    movieDetailsById,
+    detailsById,
     castByMedia,
     mediaVideos,
     reviews,

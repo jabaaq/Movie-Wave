@@ -1,8 +1,7 @@
 import "./MoviePage.scss";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import {
-  fetchMovieDetails,
-  fetchSeriesDetails,
+  fetchMediaDetails,
   fetchCast,
   fetchMediaVideos,
   fetchReviews,
@@ -14,32 +13,23 @@ import Footer from "../../Footer/Footer";
 import Spinner from "../../Spinner/Spinner";
 import VideoList from "../VideoList/VideoList";
 import Reviews from "../Reviews/ReviewCard/Reviews";
+import MoreInformation from "../MoreInformation/MoreInformation";
 
 const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { loadMoviePage } = useSelector((state) => state.MoviePageReducer);
   const dispatch = useDispatch();
   const savedMovieDetails = useParams();
-  const isMovie = savedMovieDetails.mediaType === "movie";
-  const isSeries = savedMovieDetails.mediaType === "tv";
+  const mediaType = savedMovieDetails.mediaType;
+  const mediaId = +savedMovieDetails.mediaId;
 
   useEffect(() => {
     console.log(selectedMediaId);
   }, [selectedMediaId]);
 
   useEffect(() => {
-    if (isMovie) {
-      dispatch(fetchMovieDetails(+savedMovieDetails.mediaId));
-    } else if (isSeries) {
-      dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
-    } else if (selectedMediaId.length === 0 && isMovie) {
-      dispatch(fetchMovieDetails(+savedMovieDetails.mediaId));
-    } else {
-      dispatch(fetchSeriesDetails(+savedMovieDetails.mediaId));
-    }
-
-    const mediaType = savedMovieDetails.mediaType;
-    const mediaId = +savedMovieDetails.mediaId;
+    //To fetch media details
+    dispatch(fetchMediaDetails({ mediaId, mediaType }));
     //Movie cast:
     dispatch(fetchCast({ mediaId, mediaType }));
 
@@ -55,6 +45,7 @@ const MoviePage = () => {
       {loadMoviePage ? (
         <>
           <MovieDetails />
+          <MoreInformation />
           <VideoList />
           <Reviews />
           <Footer />

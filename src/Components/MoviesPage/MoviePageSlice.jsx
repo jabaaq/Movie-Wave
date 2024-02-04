@@ -7,7 +7,6 @@ const { request } = useHttp();
 
 const {
   _transferSelectedMovieDetails,
-  _transferSelectedSeriesDetails,
   _transferMovieCast,
   _transferVideo,
   _transferReviews,
@@ -21,23 +20,13 @@ const initialState = {
   fetchedReviews: [],
 };
 
-export const fetchMovieDetails = createAsyncThunk(
-  "fetch/fetchMovieDetails",
-  async (id) => {
-    const { movieDetailsById } = GetUrl();
-    const updatedUrl = movieDetailsById(id);
+export const fetchMediaDetails = createAsyncThunk(
+  "fetch/fetchMediaDetails",
+  async ({ mediaId, mediaType }) => {
+    const { detailsById } = GetUrl();
+    const updatedUrl = detailsById(mediaId, mediaType);
     const res = await request(updatedUrl);
     return _transferSelectedMovieDetails(res);
-  }
-);
-
-export const fetchSeriesDetails = createAsyncThunk(
-  "fetch/fetchMovieDetails",
-  async (id) => {
-    const { seriesDetailsById } = GetUrl();
-    const updatedUrl = seriesDetailsById(id);
-    const res = await request(updatedUrl);
-    return _transferSelectedSeriesDetails(res);
   }
 );
 
@@ -80,12 +69,9 @@ export const moviePageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        fetchMovieDetails.fulfilled || fetchSeriesDetails.fulfilled,
-        (state, action) => {
-          state.fetchedMovieById = action.payload;
-        }
-      )
+      .addCase(fetchMediaDetails.fulfilled, (state, action) => {
+        state.fetchedMovieById = action.payload;
+      })
       .addCase(fetchCast.fulfilled, (state, action) => {
         state.fetchedCast = action.payload;
       })
@@ -97,10 +83,8 @@ export const moviePageSlice = createSlice({
       })
       .addMatcher(
         isAnyOf(
-          fetchMovieDetails.pending,
           fetchCast.pending,
-          fetchSeriesDetails.pending,
-          fetchMediaVideos.pending,
+          fetchMediaDetails.pending,
           fetchReviews.pending
         ),
         (state) => {
@@ -110,8 +94,7 @@ export const moviePageSlice = createSlice({
       .addMatcher(
         isAnyOf(
           (fetchCast.fulfilled,
-          fetchMovieDetails.fulfilled,
-          fetchSeriesDetails.fulfilled,
+          fetchMediaDetails.fulfilled,
           fetchMediaVideos.fulfilled,
           fetchReviews.fulfilled)
         ),
@@ -122,9 +105,8 @@ export const moviePageSlice = createSlice({
 
       .addMatcher(
         isAnyOf(
-          fetchMovieDetails.rejected,
+          fetchMediaDetails.rejected,
           fetchCast.rejected,
-          fetchSeriesDetails.rejected,
           fetchMediaVideos.rejected,
           fetchReviews.rejected
         ),
