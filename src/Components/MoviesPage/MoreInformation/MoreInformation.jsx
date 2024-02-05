@@ -1,6 +1,7 @@
 import "./MoreInformation.scss";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Accordion from "./Accordion/Accordion";
 
 const MoreInformation = () => {
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
@@ -9,7 +10,7 @@ const MoreInformation = () => {
     console.log(fetchedMovieById);
   }, [fetchedMovieById]);
 
-  return <h1>Hello world!</h1>;
+  return <Accordion />;
 };
 
 export default MoreInformation;

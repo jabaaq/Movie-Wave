@@ -1,0 +1,25 @@
+.ant-collapse {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+
+  .ant-collapse-header-text {
+    font-size: 20px;
+  }
+
+  .ant-collapse-header {
+    display: flex;
+    align-items: center !important  ;
+  }
+
+  .ant-collapse-content,
+  .ant-collapse-header-text,
+  .ant-collapse-expand-icon {
+    //   color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+  }
+}
+
+.dark_color {
+  color: rgba(45, 0, 0, 0);
+}

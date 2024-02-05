@@ -84,17 +84,21 @@ const movieDbService = () => {
     return {
       id: movie.id,
       background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
-      budget: movie.budget,
       genres: movie.genres,
-      homepage: movie.homepage,
       poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
       release_date: movie.release_date,
-      runtime: movie.runtime,
       tagline: movie.tagline,
       original_title: movie.original_title,
       title: movie.title,
       description: movie.overview,
       vote_average: +movie.vote_average.toFixed(1),
+      budget: "$" + movie.budget,
+      homepage: movie.homepage,
+      runtime: movie.runtime + " min",
+      revenue: "$" + movie.revenue,
+      studios: movie.production_companies.map((item) => item.name),
+      status: movie.status,
+      country: movie.production_countries.map((item) => item.name),
     };
   };
 
