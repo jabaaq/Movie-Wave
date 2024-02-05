@@ -86,19 +86,23 @@ const movieDbService = () => {
       background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
       genres: movie.genres,
       poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-      release_date: movie.release_date,
+      release_date: movie.release_date
+        ? movie.release_date
+        : movie.first_air_date,
       tagline: movie.tagline,
       original_title: movie.original_title,
       title: movie.title,
       description: movie.overview,
       vote_average: +movie.vote_average.toFixed(1),
-      budget: "$" + movie.budget,
+      budget: movie.budget ? "$" + movie.budget : null,
       homepage: movie.homepage,
-      runtime: movie.runtime + " min",
-      revenue: "$" + movie.revenue,
-      studios: movie.production_companies.map((item) => item.name),
+      runtime: movie.runtime ? movie.runtime + " min" : null,
+      revenue: movie.revenue ? "$" + movie.revenue : null,
+      studios: movie.production_companies.map((item) => item.name).join(", "),
       status: movie.status,
       country: movie.production_countries.map((item) => item.name),
+      number_of_seasons: movie.number_of_seasons,
+      number_of_episodes: movie.number_of_episodes,
     };
   };
 

@@ -10,15 +10,15 @@ const VideoList = () => {
   const { fetchedVideos } = useSelector((state) => state.MoviePageReducer);
   const [isMounted, setIsMounted] = useState(true);
 
-  // useEffect(() => {
-  //   setIsMounted(true);
-  //   setInterval(() => {
-  //     console.clear();
-  //   }, 10000);
-  //   return () => {
-  //     setIsMounted(false);
-  //   };
-  // }, []);
+  useEffect(() => {
+    setIsMounted(true);
+    setInterval(() => {
+      console.clear();
+    }, 10000);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
 
   return (
     <div className="videos_container">

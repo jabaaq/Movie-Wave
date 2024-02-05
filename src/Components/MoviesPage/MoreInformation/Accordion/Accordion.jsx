@@ -9,14 +9,45 @@ const getItems = (panelStyle, movieInfo) => [
     label: "About",
     children: (
       <ul>
-        <li>Status: {movieInfo.status}</li>
-        <li>Studio: {movieInfo.studios.join(", ")}</li>
-        <li>Country: {movieInfo.country}</li>
-        <li>Released: {movieInfo.release_date}</li>
-        <li>Runtime: {movieInfo.runtime}</li>
-        <li>Tagline: {movieInfo.tagline}</li>
-        <li>Budget: {movieInfo.budget}</li>
-        <li>Revenue: {movieInfo.revenue}</li>
+        <li>
+          <b>Status:</b> {movieInfo.status}
+        </li>
+        <li>
+          <b>Studio:</b> {movieInfo.studios}
+        </li>
+        <li>
+          <b>Country:</b> {movieInfo.country}
+        </li>
+        <li>
+          <b>Released:</b> {movieInfo.release_date}
+        </li>
+        {movieInfo.runtime ? (
+          <li>
+            <b>Runtime:</b> {movieInfo.runtime}
+          </li>
+        ) : (
+          <>
+            <li>
+              <b>Seasons:</b> {movieInfo.number_of_seasons}
+            </li>
+            <li>
+              <b>Episodes</b> {movieInfo.number_of_episodes}
+            </li>
+          </>
+        )}
+        <li>
+          <b>Tagline:</b> {movieInfo.tagline}
+        </li>
+        {movieInfo.budget ? (
+          <li>
+            <b>Budget:</b> {movieInfo.budget}
+          </li>
+        ) : null}
+        {movieInfo.revenue ? (
+          <li>
+            <b>Revenue:</b> {movieInfo.revenue}
+          </li>
+        ) : null}
       </ul>
     ),
     style: panelStyle,
@@ -40,10 +71,9 @@ const Accordion = () => {
         <CaretRightOutlined rotate={isActive ? 90 : 0} />
       )}
       style={{
-        // background: "rgba(45, 0, 0, 0)",
-        background: "white",
+        background: "rgba(45, 0, 0, 0)",
       }}
-      className="dark_color"
+      className="accordion"
       items={getItems(panelStyle, fetchedMovieById)}
     />
   );

@@ -26,7 +26,6 @@ export const fetchMediaDetails = createAsyncThunk(
     const { detailsById } = GetUrl();
     const updatedUrl = detailsById(mediaId, mediaType);
     const res = await request(updatedUrl);
-    console.log(res);
     return _transferSelectedMovieDetails(res);
   }
 );
@@ -57,7 +56,6 @@ export const fetchReviews = createAsyncThunk(
     const { reviews } = GetUrl();
     const updatedUrl = reviews(mediaId, mediaType);
     const res = await request(updatedUrl);
-    console.log(res);
     return res.results.map(_transferReviews);
   }
 );
