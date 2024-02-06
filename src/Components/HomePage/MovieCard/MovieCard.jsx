@@ -4,6 +4,7 @@ import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
 import { selectMediaId } from "../HomePageSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
@@ -15,33 +16,35 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
 
   return (
     <div className="upcoming_slider_content">
-      <div
-        className="card_box"
-        onMouseEnter={handleShowDetails}
-        onMouseLeave={handleShowDetails}
-        onClick={() => dispatch(selectMediaId({ id, mediaType }))}
-      >
+      <Link to={`/movie-wave/${mediaType}/${id}`}>
         <div
-          className={`upcoming_movie_information ${
-            showCardDetails ? "show" : "hide"
-          }`}
+          className="card_box"
+          onMouseEnter={handleShowDetails}
+          onMouseLeave={handleShowDetails}
+          onClick={() => dispatch(selectMediaId({ id, mediaType }))}
         >
-          {type !== "person" ? (
-            <WatchButton id={id} mediaType={mediaType} />
-          ) : null}
-          <div className="card_movie_title">{title}</div>
-          <div className="card_bottom_details">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={rating}
-              className="rating_stars"
-            />
-            <p className="release_date">{date}</p>
+          <div
+            className={`upcoming_movie_information ${
+              showCardDetails ? "show" : "hide"
+            }`}
+          >
+            {type !== "person" ? (
+              <WatchButton id={id} mediaType={mediaType} />
+            ) : null}
+            <div className="card_movie_title">{title}</div>
+            <div className="card_bottom_details">
+              <Rate
+                disabled
+                allowHalf
+                defaultValue={rating}
+                className="rating_stars"
+              />
+              <p className="release_date">{date}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <img src={poster} alt={title} loading="lazy" className="upcoming_img" />
+        <img src={poster} alt={title} loading="lazy" className="upcoming_img" />
+      </Link>
     </div>
   );
 };

@@ -10,6 +10,10 @@ const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
 
+  useEffect(() => {
+    console.log(fetchedMovieById);
+  }, [fetchedMovieById]);
+
   return (
     <div
       className="movie_details_container"
@@ -29,7 +33,11 @@ const MovieDetails = () => {
             className="poster_left_side"
           />
           <div className="details_right_side">
-            <h1>{fetchedMovieById.title}</h1>
+            <h1>
+              {fetchedMovieById.title
+                ? fetchedMovieById.title
+                : fetchedMovieById.name}
+            </h1>
             <div className="rate_and_genres_container">
               <div className="movie_rate">
                 <CircularProgress

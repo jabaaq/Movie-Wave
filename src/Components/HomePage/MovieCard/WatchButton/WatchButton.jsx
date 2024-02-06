@@ -15,18 +15,13 @@ const WatchButton = ({ id, mediaType }) => {
   // }, [selectedMedia]);
 
   return (
-    <Link to={`/movie-wave/${mediaType}/${id}`}>
-      <button
-        className="watch_button"
-        onClick={() => dispatch(selectMediaId(id))}
-      >
-        <div className="sign">
-          <FaPlay />
-        </div>
+    <button className="watch_button">
+      <div className="sign">
+        <FaPlay />
+      </div>
 
-        <div className="text">Watch</div>
-      </button>
-    </Link>
+      <div className="text">Watch</div>
+    </button>
   );
 };
 

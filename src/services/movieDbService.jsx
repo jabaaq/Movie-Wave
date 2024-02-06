@@ -92,6 +92,7 @@ const movieDbService = () => {
       tagline: movie.tagline,
       original_title: movie.original_title,
       title: movie.title,
+      name: movie.name,
       description: movie.overview,
       vote_average: +movie.vote_average.toFixed(1),
       budget: movie.budget ? "$" + movie.budget : null,

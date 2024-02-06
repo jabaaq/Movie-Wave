@@ -21,9 +21,12 @@ const VideoList = () => {
   // }, []);
 
   return (
-    <div className="videos_container">
+    <div
+      className="videos_container"
+      style={{ height: fetchedVideos.length === 0 ? "40vh" : "100vh" }}
+    >
       <div id="section_header">
-        <EachPageButton name={"VIDEOS"} />
+        <EachPageButton name={`VIDEOS(${fetchedVideos.length})`} />
       </div>
 
       <Swiper
