@@ -10,6 +10,7 @@ const {
   _transferMovieCast,
   _transferVideo,
   _transferReviews,
+  _transferUpcomingMovies,
 } = movieDbService();
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   fetchedCast: [],
   fetchedVideos: [],
   fetchedReviews: [],
+  fetchedRecommendations: [],
 };
 
 export const fetchMediaDetails = createAsyncThunk(
@@ -60,6 +62,17 @@ export const fetchReviews = createAsyncThunk(
   }
 );
 
+export const fetchRecommendations = createAsyncThunk(
+  "fetch/fetchRecommendations",
+  async ({ mediaId, mediaType }) => {
+    const { recommendations } = GetUrl();
+    const updatedUrl = recommendations(mediaId, mediaType);
+    const res = await request(updatedUrl);
+    console.log(res);
+    return res.results.map(_transferUpcomingMovies);
+  }
+);
+
 export const moviePageSlice = createSlice({
   name: "moviePage",
   initialState,
@@ -79,6 +92,9 @@ export const moviePageSlice = createSlice({
       })
       .addCase(fetchReviews.fulfilled, (state, action) => {
         state.fetchedReviews = action.payload;
+      })
+      .addCase(fetchRecommendations.fulfilled, (state, action) => {
+        state.fetchedRecommendations = action.payload;
       })
       .addMatcher(
         isAnyOf(

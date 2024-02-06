@@ -18,6 +18,9 @@ const GetUrl = () => {
   const reviews = (mediaId, mediaType) => `
   https://api.themoviedb.org/3/${mediaType}/${mediaId}/reviews?api_key=${APIKEY}`;
 
+  const recommendations = (meidaId, mediaType) => `
+  https://api.themoviedb.org/3/${mediaType}/${meidaId}/recommendations?api_key=${APIKEY}`;
+
   return {
     topRatedMovies,
     upcomingMovies,
@@ -27,6 +30,7 @@ const GetUrl = () => {
     castByMedia,
     mediaVideos,
     reviews,
+    recommendations,
   };
 };
 
