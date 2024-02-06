@@ -16,7 +16,7 @@ const Reviews = () => {
   return (
     <div
       className="reviews_container"
-      style={{ height: fetchedReviews.length === 0 ? "30vh" : "100vh" }}
+      style={{ height: fetchedReviews.length === 0 ? "50vh" : null }}
     >
       <div id="section_header">
         <EachPageButton name={`REVIEWS(${fetchedReviews.length})`} />

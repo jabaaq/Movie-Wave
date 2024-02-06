@@ -9,12 +9,8 @@
     position: absolute;
   }
 
-  .swiper-pagination-bullet {
-    background: white !important;
-  }
-
   .swiper {
-    width: 90%;
+    width: 100%;
     height: 100%;
   }
 
@@ -25,5 +21,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .videos_container {
+    height: 70vh;
   }
 }
