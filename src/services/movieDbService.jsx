@@ -173,6 +173,12 @@ const movieDbService = () => {
     };
   };
 
+  const _transferImages = (image) => {
+    return {
+      image: `https://image.tmdb.org/t/p/original/${image.file_path}`,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -183,6 +189,7 @@ const movieDbService = () => {
     _transferMovieCast,
     _transferVideo,
     _transferReviews,
+    _transferImages,
   };
 };
 export { movieDbService };

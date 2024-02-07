@@ -6,6 +6,7 @@ import {
   fetchMediaVideos,
   fetchReviews,
   fetchRecommendations,
+  fetchMovieImages,
 } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -16,6 +17,7 @@ import VideoList from "../VideoList/VideoList";
 import Reviews from "../Reviews/ReviewCard/Reviews";
 import MoreInformation from "../MoreInformation/MoreInformation";
 import Recommendations from "../Recommendations/Recommendations";
+import MovieImages from "../MovieImages/MovieImages";
 
 const MoviePage = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -43,6 +45,9 @@ const MoviePage = () => {
 
     //To fetch movie recommendations
     dispatch(fetchRecommendations({ mediaId, mediaType }));
+
+    //To fetch movie images
+    dispatch(fetchMovieImages({ mediaId, mediaType }));
   }, [mediaId, mediaType]);
 
   return (
@@ -53,6 +58,7 @@ const MoviePage = () => {
           <MoreInformation />
           <VideoList />
           <Reviews />
+          <MovieImages />
           <Recommendations />
           <Footer />
         </>
