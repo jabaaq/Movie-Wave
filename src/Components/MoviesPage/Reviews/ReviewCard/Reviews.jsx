@@ -16,7 +16,7 @@ const Reviews = () => {
   return (
     <div
       className="reviews_container"
-      style={{ height: fetchedReviews.length === 0 ? "50vh" : null }}
+      style={{ height: fetchedReviews.length === 0 ? "50vh" : "80vh" }}
     >
       <div id="section_header">
         <EachPageButton name={`REVIEWS (${fetchedReviews.length})`} />
@@ -28,7 +28,7 @@ const Reviews = () => {
         slidesPerView={"auto"}
         coverflowEffect={{
           rotate: 0,
-          stretch: 10,
+          stretch: 5,
           depth: 200,
           modifier: 1,
           slideShadows: true,

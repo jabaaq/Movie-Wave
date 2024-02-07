@@ -1,7 +1,4 @@
 .videos_container {
-  // height: 100vh;
-  padding: 30px;
-
   .swiper-button-prev,
   .swiper-button-next {
     color: white;
@@ -9,9 +6,14 @@
     position: absolute;
   }
 
+  .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    display: none;
+  }
+
   .swiper {
     width: 100%;
-    height: 100%;
+    height: 80%;
   }
 
   .swiper-slide {

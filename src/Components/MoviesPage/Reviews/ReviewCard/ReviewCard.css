@@ -6,8 +6,7 @@
 
 .review_card {
     background-color: rgba(243, 244, 246, 1);
-    padding: 2rem;
-    /* max-width: 320px; */
+    padding: 1rem;
     min-height: 350px;
     border-radius: 10px;
     box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);

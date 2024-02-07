@@ -8,8 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleShowDetails = () => {
     setShowCardDetails(!showCardDetails);
@@ -46,7 +44,14 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
             </div>
           </div>
         </div>
-        <img src={poster} alt={title} loading="lazy" className="upcoming_img" />
+        <div className="movie_poster_container">
+          <img
+            src={poster}
+            alt={title}
+            loading="lazy"
+            className="movie_poster"
+          />
+        </div>
       </Link>
     </div>
   );

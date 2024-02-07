@@ -68,7 +68,6 @@ export const fetchRecommendations = createAsyncThunk(
     const { recommendations } = GetUrl();
     const updatedUrl = recommendations(mediaId, mediaType);
     const res = await request(updatedUrl);
-    console.log(res);
     return res.results.map(_transferUpcomingMovies);
   }
 );

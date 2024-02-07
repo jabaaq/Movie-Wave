@@ -5,6 +5,8 @@ import { CircularProgress } from "@mui/material";
 import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
 import CastList from "../CastList/CastList";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);

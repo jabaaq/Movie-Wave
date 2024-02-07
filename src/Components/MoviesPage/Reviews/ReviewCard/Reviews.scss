@@ -3,14 +3,10 @@
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  padding: 30px;
-
-  .swiper {
-    padding: 30px 0 !important;
-  }
 
   .swiper-pagination-bullet {
     background: rgb(255, 255, 255) !important;
+    display: none;
   }
 
   .swiper {
@@ -30,5 +26,21 @@
   .swiper-slide img {
     display: block;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .reviews_container {
+    .swiper-slide {
+      width: 70% !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .reviews_container {
+    .swiper-slide {
+      width: 90% !important;
+    }
   }
 }

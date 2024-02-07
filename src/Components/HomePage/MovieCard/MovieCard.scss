@@ -41,16 +41,16 @@
       .release_date {
         font-size: 1vw;
       }
-
-      // .release_date {
-      //   font-size: 10px;
-      // }
     }
   }
 
-  .upcoming_img {
+  .movie_poster_container {
+    height: 380px;
+  }
+
+  .movie_poster {
     width: 100%;
-    // height: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }

@@ -1,6 +1,7 @@
 import genres from "../services/genres.json";
 import blankMale from "../../src/image/blank-male.jpg";
 import blankFemale from "../../src/image/blank-female.jpg";
+import noImage from "../../src/image/no-image.jpg";
 
 const movieDbService = () => {
   const genresIds = genres.genres.map((item) => item.id);
@@ -42,7 +43,9 @@ const movieDbService = () => {
       genres: genresNames,
       title: movie.title,
       original_title: movie.original_title,
-      poster_img: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+      poster_img: movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+        : noImage,
       fixedVote: (movie.vote_average / 2).toFixed(1),
       vote: movie.vote_average,
       release_date: movie.release_date,
@@ -60,7 +63,9 @@ const movieDbService = () => {
       genres: genresNames,
       title: series.name,
       original_name: series.original_name,
-      poster_img: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
+      poster_img: series.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${series.poster_path}`
+        : noImage,
       fixedVote: (series.vote_average / 2).toFixed(1),
       vote: series.vote_average,
       release_date: series.first_air_date,
@@ -85,7 +90,9 @@ const movieDbService = () => {
       id: movie.id,
       background_image: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
       genres: movie.genres,
-      poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+      poster: movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+        : noImage,
       release_date: movie.release_date
         ? movie.release_date
         : movie.first_air_date,
@@ -114,7 +121,9 @@ const movieDbService = () => {
       budget: series.budget,
       genres: series.genres,
       homepage: series.homepage,
-      poster: `https://image.tmdb.org/t/p/w500/${series.poster_path}`,
+      poster: series.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${series.poster_path}`
+        : noImage,
       release_date: series.release_date,
       runtime: series.runtime,
       tagline: series.tagline,
