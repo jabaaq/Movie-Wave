@@ -19,7 +19,7 @@ const Reviews = () => {
       style={{ height: fetchedReviews.length === 0 ? "50vh" : null }}
     >
       <div id="section_header">
-        <EachPageButton name={`REVIEWS(${fetchedReviews.length})`} />
+        <EachPageButton name={`REVIEWS (${fetchedReviews.length})`} />
       </div>
       <Swiper
         effect={"coverflow"}

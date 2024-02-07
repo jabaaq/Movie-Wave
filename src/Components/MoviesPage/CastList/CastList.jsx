@@ -43,6 +43,7 @@ const CastList = () => {
               </div>
               <div className="profile_image">
                 <img
+                  loading="lazy"
                   src={cast.profile_image}
                   alt={cast.name}
                   className="cast_profile_img"

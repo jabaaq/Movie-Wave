@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./MovieCard.scss";
 import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
 import { selectMediaId } from "../HomePageSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleShowDetails = () => {
     setShowCardDetails(!showCardDetails);
@@ -16,12 +17,14 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
 
   return (
     <div className="upcoming_slider_content">
-      <Link to={`/movie-wave/${mediaType}/${id}`}>
+      <Link
+        to={`/movie-wave/${mediaType}/${id}`}
+        onClick={() => selectMediaId(id, mediaType)}
+      >
         <div
           className="card_box"
           onMouseEnter={handleShowDetails}
           onMouseLeave={handleShowDetails}
-          onClick={() => dispatch(selectMediaId({ id, mediaType }))}
         >
           <div
             className={`upcoming_movie_information ${

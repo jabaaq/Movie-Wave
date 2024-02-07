@@ -1,6 +1,6 @@
 import "./VideoList.scss";
 import "swiper/css/navigation";
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
@@ -26,7 +26,7 @@ const VideoList = () => {
       style={{ height: fetchedVideos.length === 0 ? "40vh" : "100vh" }}
     >
       <div id="section_header">
-        <EachPageButton name={`VIDEOS(${fetchedVideos.length})`} />
+        <EachPageButton name={`VIDEOS (${fetchedVideos.length})`} />
       </div>
 
       <Swiper

@@ -43,7 +43,7 @@ const MoviePage = () => {
 
     //To fetch movie recommendations
     dispatch(fetchRecommendations({ mediaId, mediaType }));
-  }, []);
+  }, [mediaId, mediaType]);
 
   return (
     <div className="movie_page_container">

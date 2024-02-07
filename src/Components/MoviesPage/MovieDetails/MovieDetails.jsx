@@ -28,6 +28,7 @@ const MovieDetails = () => {
       {fetchedMovieById && (
         <div className="information_container">
           <img
+            loading="lazy"
             src={fetchedMovieById.poster}
             alt={fetchedMovieById.title}
             className="poster_left_side"
