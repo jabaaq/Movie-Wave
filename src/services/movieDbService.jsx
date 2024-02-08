@@ -201,6 +201,20 @@ const movieDbService = () => {
     };
   };
 
+  const _transferActorDetails = (actor) => {
+    return {
+      name: actor.name,
+      id: actor.id,
+      birthday: actor.birthday,
+      deathday: actor.deathday ? ` - ${actor.deathday}` : "",
+      biography: actor.biography,
+      known_for_department: actor.known_for_department,
+      birth_place: actor.place_of_birth,
+      known_as: actor.also_known_as,
+      profile_image: `https://image.tmdb.org/t/p/w500/${actor.profile_path}`,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -213,6 +227,7 @@ const movieDbService = () => {
     _transferReviews,
     _transferImages,
     _transferRecommendations,
+    _transferActorDetails,
   };
 };
 export { movieDbService };

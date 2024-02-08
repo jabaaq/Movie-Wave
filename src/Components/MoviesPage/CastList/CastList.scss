@@ -3,6 +3,9 @@
     display: none;
   }
   .cast_content {
+    &:hover {
+      cursor: pointer;
+    }
     .cast_name_container {
       position: absolute;
       bottom: 0px;

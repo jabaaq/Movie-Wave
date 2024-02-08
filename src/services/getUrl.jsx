@@ -24,6 +24,9 @@ const GetUrl = () => {
   const movieImages = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/images?api_key=${APIKEY}`;
 
+  const actorInformation = (actorId) =>
+    `https://api.themoviedb.org/3/person/${actorId}?api_key=${APIKEY}`;
+
   return {
     topRatedMovies,
     upcomingMovies,
@@ -35,6 +38,7 @@ const GetUrl = () => {
     reviews,
     recommendations,
     movieImages,
+    actorInformation,
   };
 };
 

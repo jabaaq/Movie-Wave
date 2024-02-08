@@ -52,7 +52,7 @@ const MainPageBackground = () => {
                 </div>
                 <div className="movie_description">{movie.description}</div>
                 <Link
-                  to={`/movie-wave/${mediaType}/${id}`}
+                  to={`/movie-wave/more/${mediaType}/${id}`}
                   onClick={() => dispatch(selectMediaId({ id, mediaType }))}
                 >
                   <WaveButton text={"WATCH NOW"} />
