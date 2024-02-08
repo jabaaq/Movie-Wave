@@ -7,6 +7,7 @@ import Spinner from "../Spinner/Spinner";
 
 const HomePage = lazy(() => import("../HomePage/HomePage"));
 const MoviePage = lazy(() => import("../MoviesPage/MoviePage/MoviePage"));
+const ActorsPage = lazy(() => import("../ActorsPage/ActorsPage"));
 
 function App() {
   return (
@@ -23,10 +24,18 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/:mediaType/:mediaId"
+            path="/movie-wave/more/:mediaType/:mediaId"
             element={
               <Suspense fallback={<Spinner />}>
                 <MoviePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/movie-wave/actor/:actor/:actorId"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <ActorsPage />
               </Suspense>
             }
           />

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import MovieCard from "../MovieCard/MovieCard";
 import EachPageButton from "../Navbar/RadioButtons/EachPageButton/EachPageButton";
+import { useEffect } from "react";
 
 const SectionBuilder = ({ moviesArr, name }) => {
   return (

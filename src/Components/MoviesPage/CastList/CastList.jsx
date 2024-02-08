@@ -3,10 +3,10 @@ import "./CastList.scss";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const CastList = () => {
   const { fetchedCast } = useSelector((state) => state.MoviePageReducer);
-
   return (
     <div className="cast_list">
       <Swiper
@@ -37,7 +37,7 @@ const CastList = () => {
       >
         {fetchedCast.map((cast, i) => (
           <SwiperSlide key={i}>
-            <div className="cast_content">
+            <Link to={`/movie-wave/actor/${cast.id}`} className="cast_content">
               <div className="cast_name_container">
                 <p>{cast.name}</p>
               </div>
@@ -49,7 +49,7 @@ const CastList = () => {
                   className="cast_profile_img"
                 />
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

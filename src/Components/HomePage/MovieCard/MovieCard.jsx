@@ -16,12 +16,18 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
 
   return (
     <div className="upcoming_slider_content">
-      <Link to={`/movie-wave/${mediaType}/${id}`}>
+      <Link
+        to={
+          mediaType === "actor"
+            ? `/movie-wave/actor/${mediaType}/${id}`
+            : `/movie-wave/more/${mediaType}/${id}`
+        }
+      >
         <div
           className="card_box"
           onMouseEnter={handleShowDetails}
           onMouseLeave={handleShowDetails}
-          onClick={() => dispatch(selectMediaId({ id, mediaType }))}
+          // onClick={() => dispatch(selectMediaId({ id, mediaType }))}
         >
           <div
             className={`upcoming_movie_information ${
