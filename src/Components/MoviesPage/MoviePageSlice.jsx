@@ -12,6 +12,7 @@ const {
   _transferReviews,
   _transferUpcomingMovies,
   _transferImages,
+  _transferRecommendations,
 } = movieDbService();
 
 const initialState = {
@@ -70,7 +71,9 @@ export const fetchRecommendations = createAsyncThunk(
     const { recommendations } = GetUrl();
     const updatedUrl = recommendations(mediaId, mediaType);
     const res = await request(updatedUrl);
-    return res.results.map(_transferUpcomingMovies);
+    return res.results.map((movie) =>
+      _transferRecommendations(movie, mediaType)
+    );
   }
 );
 
@@ -80,8 +83,7 @@ export const fetchMovieImages = createAsyncThunk(
     const { movieImages } = GetUrl();
     const updatedUrl = movieImages(mediaId, mediaType);
     const res = await request(updatedUrl);
-    console.log(res);
-    return res.backdrops.map(_transferImages);
+    return res.backdrops.map(_transferImages).slice(0, 15);
   }
 );
 
@@ -126,7 +128,9 @@ export const moviePageSlice = createSlice({
           (fetchCast.fulfilled,
           fetchMediaDetails.fulfilled,
           fetchMediaVideos.fulfilled,
-          fetchReviews.fulfilled)
+          fetchReviews.fulfilled,
+          fetchRecommendations.fulfilled,
+          fetchMovieImages.fulfilled)
         ),
         (state) => {
           state.loadMoviePage = true;

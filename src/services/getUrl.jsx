@@ -18,8 +18,8 @@ const GetUrl = () => {
   const reviews = (mediaId, mediaType) => `
   https://api.themoviedb.org/3/${mediaType}/${mediaId}/reviews?api_key=${APIKEY}`;
 
-  const recommendations = (meidaId, mediaType) => `
-  https://api.themoviedb.org/3/${mediaType}/${meidaId}/recommendations?api_key=${APIKEY}`;
+  const recommendations = (mediaId, mediaType) => `
+  https://api.themoviedb.org/3/${mediaType}/${mediaId}/recommendations?api_key=${APIKEY}`;
 
   const movieImages = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/images?api_key=${APIKEY}`;

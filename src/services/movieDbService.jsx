@@ -34,7 +34,7 @@ const movieDbService = () => {
     };
   };
 
-  const _transferUpcomingMovies = (movie) => {
+  const _transferUpcomingMovies = (movie, mediaType) => {
     const genresNames = getGenresData(movie);
     return {
       id: movie.id,
@@ -49,7 +49,28 @@ const movieDbService = () => {
       fixedVote: (movie.vote_average / 2).toFixed(1),
       vote: movie.vote_average,
       release_date: movie.release_date,
-      mediaType: "movie",
+      mediaType: mediaType,
+    };
+  };
+
+  const _transferRecommendations = (media, mediaType) => {
+    const genresNames = getGenresData(media);
+    return {
+      id: media.id,
+      background_image: `https://image.tmdb.org/t/p/original/${media.backdrop_path}`,
+      genre_ids: media.genre_ids,
+      genres: genresNames,
+      title: media.title ? media.title : media.name,
+      original_title: media.original_title,
+      poster_img: media.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${media.poster_path}`
+        : noImage,
+      fixedVote: (media.vote_average / 2).toFixed(1),
+      vote: media.vote_average,
+      release_date: media.release_date
+        ? media.release_date
+        : media.first_air_date,
+      mediaType: mediaType,
     };
   };
 
@@ -190,6 +211,7 @@ const movieDbService = () => {
     _transferVideo,
     _transferReviews,
     _transferImages,
+    _transferRecommendations,
   };
 };
 export { movieDbService };

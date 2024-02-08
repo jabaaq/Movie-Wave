@@ -1,15 +1,45 @@
-import { useEffect } from "react";
 import "./MovieImages.scss";
+import "swiper/css/navigation";
+
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import EachPageButton from "../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
 
 const MovieImages = () => {
   const { fetchedImages } = useSelector((state) => state.MoviePageReducer);
 
-  useEffect(() => {
-    console.log(fetchedImages);
-  }, [fetchedImages]);
-
-  return <h1>Movie Images!</h1>;
+  return (
+    <div className="movie_images_container">
+      <div id="section_header">
+        <EachPageButton name={`IMAGES (${fetchedImages.length})`} />
+      </div>
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 5,
+          depth: 200,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        initialSlide={1}
+        className="mySwiper"
+      >
+        {fetchedImages.map((item, i) => (
+          <SwiperSlide key={i}>
+            <img src={item.image} alt="Movie image" loading="lazy" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 export default MovieImages;

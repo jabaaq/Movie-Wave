@@ -10,6 +10,10 @@ const Recommendations = () => {
   );
   const params = useParams();
 
+  // useEffect(() => {
+  //   console.log(fetchedRecommendations);
+  // }, [fetchedRecommendations]);
+
   return (
     <div className="recommendations_container">
       <SectionBuilder

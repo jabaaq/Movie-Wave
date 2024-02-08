@@ -8,7 +8,6 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import EachPageButton from "../../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
-import { height } from "@mui/system";
 
 const Reviews = () => {
   const { fetchedReviews } = useSelector((state) => state.MoviePageReducer);
@@ -16,7 +15,7 @@ const Reviews = () => {
   return (
     <div
       className="reviews_container"
-      style={{ height: fetchedReviews.length === 0 ? "50vh" : "80vh" }}
+      style={{ height: fetchedReviews.length === 0 ? "50vh" : "100vh" }}
     >
       <div id="section_header">
         <EachPageButton name={`REVIEWS (${fetchedReviews.length})`} />
