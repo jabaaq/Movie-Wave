@@ -9,6 +9,7 @@ const { _transferActorDetails } = movieDbService();
 
 const initialState = {
   fetchedActorInformation: [],
+  loadActorPage: false,
 };
 
 export const fetchActorInformation = createAsyncThunk(
@@ -27,9 +28,19 @@ export const ActorPageSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchActorInformation.fulfilled, (state, action) => {
-      state.fetchedActorInformation = action.payload;
-    });
+    builder
+      .addCase(fetchActorInformation.fulfilled, (state, action) => {
+        state.fetchedActorInformation = action.payload;
+      })
+      .addMatcher(isAnyOf(fetchActorInformation.pending), (state) => {
+        state.loadActorPage = false;
+      })
+      .addMatcher(isAnyOf(fetchActorInformation.fulfilled), (state) => {
+        state.loadActorPage = true;
+      })
+      .addMatcher(isAnyOf(fetchActorInformation.rejected), (state) => {
+        state.loadActorPage = false;
+      });
   },
 });
 
