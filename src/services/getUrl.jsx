@@ -27,6 +27,9 @@ const GetUrl = () => {
   const actorInformation = (actorId) =>
     `https://api.themoviedb.org/3/person/${actorId}?api_key=${APIKEY}`;
 
+  const actorCredits = (actorId) =>
+    `https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${APIKEY}`;
+
   return {
     topRatedMovies,
     upcomingMovies,
@@ -39,6 +42,7 @@ const GetUrl = () => {
     recommendations,
     movieImages,
     actorInformation,
+    actorCredits,
   };
 };
 

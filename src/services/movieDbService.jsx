@@ -216,6 +216,20 @@ const movieDbService = () => {
     };
   };
 
+  const _transformActorCredits = (actor) => {
+    const genresNames = getGenresData(actor);
+    return {
+      character_name: actor.character,
+      genres: genresNames,
+      id: actor.id,
+      title: actor.title,
+      poster: actor.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${actor.poster_path}`
+        : noImage,
+      vote: actor.vote_average,
+    };
+  };
+
   return {
     _transferTopRatedMovies,
     _transferUpcomingMovies,
@@ -229,6 +243,7 @@ const movieDbService = () => {
     _transferImages,
     _transferRecommendations,
     _transferActorDetails,
+    _transformActorCredits,
   };
 };
 export { movieDbService };

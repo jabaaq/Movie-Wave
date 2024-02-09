@@ -3,15 +3,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  // background-color: aqua;
 
   .actor_details_container {
     height: 80%;
     margin-top: 60px;
     width: 100%;
-    background-color: burlywood;
+    // background-color: burlywood;
     display: flex;
     flex-direction: row;
+    color: white;
 
     .biography_container {
       width: 100%;
@@ -39,16 +40,23 @@
 
         p {
           margin: 0;
+          font-size: 13px;
         }
 
         b {
           margin-top: 10px;
+          font-size: 17px;
         }
       }
 
       img {
         width: 20vw;
         min-width: 200px;
+        border-radius: 10px;
+        &:hover {
+          transition: all 2s ease-in-out;
+          border-radius: 20px;
+        }
       }
     }
   }

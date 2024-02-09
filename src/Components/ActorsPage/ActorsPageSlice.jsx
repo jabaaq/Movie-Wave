@@ -5,10 +5,11 @@ import { movieDbService } from "../../services/movieDbService";
 
 const { request } = useHttp();
 
-const { _transferActorDetails } = movieDbService();
+const { _transferActorDetails, _transformActorCredits } = movieDbService();
 
 const initialState = {
   fetchedActorInformation: [],
+  fetchedActorCredits: [],
   loadActorPage: false,
 };
 
@@ -18,8 +19,17 @@ export const fetchActorInformation = createAsyncThunk(
     const { actorInformation } = GetUrl();
     const updatedUrl = actorInformation(actorId);
     const res = await request(updatedUrl);
-    console.log(res);
     return _transferActorDetails(res);
+  }
+);
+
+export const fetchActorCredits = createAsyncThunk(
+  "fetch/fetchActorCredits",
+  async ({ actorId }) => {
+    const { actorCredits } = GetUrl();
+    const updatedUrl = actorCredits(actorId);
+    const res = await request(updatedUrl);
+    return res.cast.map(_transformActorCredits);
   }
 );
 
@@ -31,6 +41,9 @@ export const ActorPageSlice = createSlice({
     builder
       .addCase(fetchActorInformation.fulfilled, (state, action) => {
         state.fetchedActorInformation = action.payload;
+      })
+      .addCase(fetchActorCredits.fulfilled, (state, action) => {
+        state.fetchedActorCredits = action.payload;
       })
       .addMatcher(isAnyOf(fetchActorInformation.pending), (state) => {
         state.loadActorPage = false;

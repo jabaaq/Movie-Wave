@@ -3,13 +3,13 @@ import "./ActorInformation.scss";
 import { useSelector } from "react-redux";
 
 const ActorInformation = () => {
-  const { fetchedActorInformation } = useSelector(
+  const { fetchedActorInformation, fetchedActorCredits } = useSelector(
     (state) => state.ActorPageReducer
   );
 
   useEffect(() => {
-    console.log(known_as);
-  }, [fetchedActorInformation]);
+    console.log(fetchedActorCredits);
+  }, [fetchedActorCredits]);
 
   const {
     name,
