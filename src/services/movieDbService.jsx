@@ -212,6 +212,7 @@ const movieDbService = () => {
       birth_place: actor.place_of_birth,
       known_as: actor.also_known_as,
       profile_image: `https://image.tmdb.org/t/p/w500/${actor.profile_path}`,
+      gender: actor.gender === 2 ? "male" : "female",
     };
   };
 

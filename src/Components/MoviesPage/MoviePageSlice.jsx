@@ -10,7 +10,6 @@ const {
   _transferMovieCast,
   _transferVideo,
   _transferReviews,
-  _transferUpcomingMovies,
   _transferImages,
   _transferRecommendations,
 } = movieDbService();

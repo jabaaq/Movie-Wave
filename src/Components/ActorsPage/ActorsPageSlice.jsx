@@ -17,6 +17,7 @@ export const fetchActorInformation = createAsyncThunk(
     const { actorInformation } = GetUrl();
     const updatedUrl = actorInformation(actorId);
     const res = await request(updatedUrl);
+    console.log(res);
     return _transferActorDetails(res);
   }
 );

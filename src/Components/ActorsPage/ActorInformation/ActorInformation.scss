@@ -1,4 +1,62 @@
-.actor_details_container {
-  height: 100vh;
+.actor_page {
+  // height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: aqua;
+
+  .actor_details_container {
+    height: 80%;
+    margin-top: 60px;
+    width: 100%;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: row;
+
+    .biography_container {
+      width: 100%;
+      padding: 25px;
+    }
+
+    .actor_profile_image {
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 25px;
+
+      .actor_personal_info {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        ul {
+          padding: 0;
+          margin: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+
+        b {
+          margin-top: 10px;
+        }
+      }
+
+      img {
+        width: 20vw;
+        min-width: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .actor_page .actor_details_container {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
