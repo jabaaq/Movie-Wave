@@ -226,7 +226,8 @@ const movieDbService = () => {
       poster: actor.poster_path
         ? `https://image.tmdb.org/t/p/w500/${actor.poster_path}`
         : noImage,
-      vote: actor.vote_average,
+      rating: (actor.vote_average / 2).toFixed(1),
+      type: actor.media_type,
     };
   };
 

@@ -3,12 +3,10 @@ import "./MovieCard.scss";
 import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
 import { selectMediaId } from "../HomePageSlice";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
-  const dispatch = useDispatch();
 
   const handleShowDetails = () => {
     setShowCardDetails(!showCardDetails);

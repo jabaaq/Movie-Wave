@@ -29,6 +29,7 @@ export const fetchActorCredits = createAsyncThunk(
     const { actorCredits } = GetUrl();
     const updatedUrl = actorCredits(actorId);
     const res = await request(updatedUrl);
+    // console.log(res);
     return res.cast.map(_transformActorCredits);
   }
 );
