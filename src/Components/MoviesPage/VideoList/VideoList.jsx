@@ -24,7 +24,7 @@ const VideoList = () => {
   return (
     <div
       className="videos_container"
-      style={{ height: fetchedVideos.length === 0 ? "40vh" : "100vh" }}
+      style={{ height: fetchedVideos.length === 0 ? "0vh" : "100vh" }}
     >
       <SectionName name={`VIDEOS (${fetchedVideos.length})`} />
 
