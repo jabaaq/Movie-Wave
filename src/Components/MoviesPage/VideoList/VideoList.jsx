@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import EachPageButton from "../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
+import SectionName from "../../HomePage/SectionBuilder/SectionName/SectionName";
 
 const VideoList = () => {
   const { fetchedVideos } = useSelector((state) => state.MoviePageReducer);
@@ -25,9 +26,7 @@ const VideoList = () => {
       className="videos_container"
       style={{ height: fetchedVideos.length === 0 ? "40vh" : "100vh" }}
     >
-      <div id="section_header">
-        <EachPageButton name={`VIDEOS (${fetchedVideos.length})`} />
-      </div>
+      <SectionName name={`VIDEOS (${fetchedVideos.length})`} />
 
       <Swiper
         slidesPerView={1}

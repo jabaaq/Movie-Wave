@@ -8,9 +8,11 @@ import { useEffect } from "react";
 const SectionBuilder = ({ moviesArr, name }) => {
   return (
     <>
-      <h2 className="upcoming_page_title">
-        <EachPageButton name={name} />
-      </h2>
+      {name ? (
+        <h2 className="upcoming_page_title">
+          <EachPageButton name={name} />
+        </h2>
+      ) : null}
       <div className="upcoming_slider">
         <Swiper
           breakpoints={{

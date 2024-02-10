@@ -8,6 +8,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import EachPageButton from "../../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
+import SectionName from "../../../HomePage/SectionBuilder/SectionName/SectionName";
 
 const Reviews = () => {
   const { fetchedReviews } = useSelector((state) => state.MoviePageReducer);
@@ -17,9 +18,7 @@ const Reviews = () => {
       className="reviews_container"
       style={{ height: fetchedReviews.length === 0 ? "50vh" : "100vh" }}
     >
-      <div id="section_header">
-        <EachPageButton name={`REVIEWS (${fetchedReviews.length})`} />
-      </div>
+      <SectionName name={`REVIEWS (${fetchedReviews.length})`} />
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

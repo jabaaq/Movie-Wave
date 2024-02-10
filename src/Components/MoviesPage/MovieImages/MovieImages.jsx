@@ -5,16 +5,14 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import EachPageButton from "../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
+import SectionName from "../../HomePage/SectionBuilder/SectionName/SectionName";
 
 const MovieImages = () => {
   const { fetchedImages } = useSelector((state) => state.MoviePageReducer);
 
   return (
     <div className="movie_images_container">
-      <div id="section_header">
-        <EachPageButton name={`IMAGES (${fetchedImages.length})`} />
-      </div>
+      <SectionName name={`IMAGES (${fetchedImages.length})`} />
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
