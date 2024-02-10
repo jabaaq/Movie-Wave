@@ -9,19 +9,28 @@ const ActorCredits = () => {
   const { fetchedActorCredits } = useSelector(
     (state) => state.ActorPageReducer
   );
-  const [movieCount, setMovieCount] = useState(22);
+
+  // const initialMovies = fetchedActorCredits
+  //   ? Math.floor(fetchedActorCredits.length / 2)
+  //   : 0;
+
+  let initialMovies = 0;
+
+  useEffect(() => {
+    if (fetchedActorCredits.length !== 0 && fetchedActorCredits.length <= 32) {
+      initialMovies = Math.floor(fetchedActorCredits.length);
+      setMovieCount(initialMovies);
+    } else {
+      initialMovies = Math.floor(fetchedActorCredits.length / 2);
+      setMovieCount(initialMovies);
+    }
+  }, [fetchedActorCredits]);
+
+  const [movieCount, setMovieCount] = useState(initialMovies);
 
   const handleIncreaseMovieCount = () => {
     setMovieCount(movieCount + 8);
   };
-
-  useEffect(() => {
-    console.log(movieCount);
-  }, [movieCount]);
-
-  useEffect(() => {
-    console.log(fetchedActorCredits);
-  }, [fetchedActorCredits]);
 
   return (
     <div className="actor_credits_container">
@@ -38,7 +47,12 @@ const ActorCredits = () => {
           />
         ))}
       </div>
-      <span className="load_more_button" onClick={handleIncreaseMovieCount}>
+      <span
+        className={`load_more_button ${
+          movieCount >= fetchedActorCredits.length ? "hide" : ""
+        }`}
+        onClick={handleIncreaseMovieCount}
+      >
         <WaveButton text={"LOAD MORE"} />
       </span>
     </div>
