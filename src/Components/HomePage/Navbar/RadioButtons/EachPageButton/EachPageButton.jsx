@@ -1,13 +1,12 @@
+import { Link } from "react-router-dom";
 import "./EachPageButton.css";
 
 const EachPageButton = ({ name }) => {
   return (
     <button className="button" data-text="Awesome">
-      <span className="actual-text">
-        &nbsp;<a href="#">{name}</a>&nbsp;
-      </span>
+      <span className="actual-text">&nbsp;{name}&nbsp;</span>
       <span aria-hidden="true" className="hover-text">
-        &nbsp;<a href="#">{name}</a>&nbsp;
+        &nbsp;{name}&nbsp;
       </span>
     </button>
   );

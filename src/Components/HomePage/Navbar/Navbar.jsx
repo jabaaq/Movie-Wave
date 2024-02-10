@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { toggleNavigation } = useSelector((state) => state.HomePageReducer);
@@ -24,11 +25,11 @@ const Navbar = () => {
         scrollY > 0 || toggleNavigation ? "black" : ""
       }`}
     >
-      <div className="wave_logo">
+      <Link to={`/`} className="wave_logo">
         <h2>
           Movie<span>Wave</span>
         </h2>
-      </div>
+      </Link>
       <div className={`buttons_container`}>
         <RadioButtons />
       </div>

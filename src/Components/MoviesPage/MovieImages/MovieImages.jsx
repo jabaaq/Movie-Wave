@@ -1,7 +1,6 @@
 import "./MovieImages.scss";
 import "swiper/css/navigation";
 
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";

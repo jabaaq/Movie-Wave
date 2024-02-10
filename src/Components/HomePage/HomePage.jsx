@@ -9,15 +9,21 @@ import Footer from "../Footer/Footer";
 
 import {
   fetchBackgroundImages,
-  fetchUpcomingMovies,
   fetchTvSeries,
+  fetchUpcomingMovies,
   fetchActorsList,
 } from "../HomePage/HomePageSlice";
 import { useEffect } from "react";
 
 const HomePage = () => {
-  const { loadWebsite } = useSelector((state) => state.HomePageReducer);
+  const { loadWebsite, fetchedBackgroundMovies } = useSelector(
+    (state) => state.HomePageReducer
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(fetchedBackgroundMovies);
+  }, [fetchedBackgroundMovies]);
 
   useEffect(() => {
     dispatch(fetchBackgroundImages());
@@ -30,7 +36,7 @@ const HomePage = () => {
     <>
       {loadWebsite ? (
         <>
-          <MainPageBackground />
+          <MainPageBackground mediaArr={fetchedBackgroundMovies} />
           <UpcomingMovies />
           <TvSeries />
           <ActorsList />

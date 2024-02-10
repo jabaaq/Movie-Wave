@@ -17,7 +17,7 @@ const ActorsList = () => {
       <SectionBuilder name={"Actors"} moviesArr={fetchedActorsList} />
       <div className="load_more_button">
         <a href="#">
-          <WaveButton text={"LOAD MORE"} />
+          <WaveButton text={"FIND"} />
         </a>
       </div>
     </>

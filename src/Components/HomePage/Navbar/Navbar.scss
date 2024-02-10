@@ -22,8 +22,11 @@
     margin: 5px 15px;
   }
 
-  .wave_logo h2 span {
-    color: var(--main-red);
+  .wave_logo {
+    cursor: pointer;
+    h2 span {
+      color: var(--main-red);
+    }
   }
 
   .navbar_tools {

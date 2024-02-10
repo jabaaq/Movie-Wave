@@ -10,10 +10,6 @@ const ActorCredits = () => {
     (state) => state.ActorPageReducer
   );
 
-  // const initialMovies = fetchedActorCredits
-  //   ? Math.floor(fetchedActorCredits.length / 2)
-  //   : 0;
-
   let initialMovies = 0;
 
   useEffect(() => {

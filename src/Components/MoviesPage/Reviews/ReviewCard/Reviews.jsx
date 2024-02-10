@@ -5,9 +5,7 @@ import "swiper/css/pagination";
 import ReviewCard from "./ReviewCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import EachPageButton from "../../../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
 import SectionName from "../../../HomePage/SectionBuilder/SectionName/SectionName";
 
 const Reviews = () => {

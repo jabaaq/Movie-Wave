@@ -27,7 +27,7 @@ const MediaCard = ({ poster, id, rating, title, type }) => {
           className="rating_stars"
         />
       </div>
-      <img src={poster} alt={title} />
+      <img src={poster} alt={title} loading="lazy" />
     </Link>
   );
 };

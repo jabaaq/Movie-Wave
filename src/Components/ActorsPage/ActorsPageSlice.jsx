@@ -46,15 +46,24 @@ export const ActorPageSlice = createSlice({
       .addCase(fetchActorCredits.fulfilled, (state, action) => {
         state.fetchedActorCredits = action.payload;
       })
-      .addMatcher(isAnyOf(fetchActorInformation.pending), (state) => {
-        state.loadActorPage = false;
-      })
-      .addMatcher(isAnyOf(fetchActorInformation.fulfilled), (state) => {
-        state.loadActorPage = true;
-      })
-      .addMatcher(isAnyOf(fetchActorInformation.rejected), (state) => {
-        state.loadActorPage = false;
-      });
+      .addMatcher(
+        isAnyOf(fetchActorInformation.pending, fetchActorCredits.pending),
+        (state) => {
+          state.loadActorPage = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(fetchActorInformation.fulfilled, fetchActorCredits.fulfilled),
+        (state) => {
+          state.loadActorPage = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(fetchActorInformation.rejected, fetchActorCredits.rejected),
+        (state) => {
+          state.loadActorPage = false;
+        }
+      );
   },
 });
 
