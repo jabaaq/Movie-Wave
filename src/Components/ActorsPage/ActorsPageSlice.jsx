@@ -5,7 +5,7 @@ import { movieDbService } from "../../services/movieDbService";
 
 const { request } = useHttp();
 
-const { _transferActorDetails, _transformActorCredits } = movieDbService();
+const { _transferActorDetails, _transformMediaCards } = movieDbService();
 
 const initialState = {
   fetchedActorInformation: [],
@@ -29,8 +29,7 @@ export const fetchActorCredits = createAsyncThunk(
     const { actorCredits } = GetUrl();
     const updatedUrl = actorCredits(actorId);
     const res = await request(updatedUrl);
-    // console.log(res);
-    return res.cast.map(_transformActorCredits);
+    return res.cast.map(_transformMediaCards);
   }
 );
 

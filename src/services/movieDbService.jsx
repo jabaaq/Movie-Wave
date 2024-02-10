@@ -216,18 +216,18 @@ const movieDbService = () => {
     };
   };
 
-  const _transformActorCredits = (actor) => {
-    const genresNames = getGenresData(actor);
+  const _transformMediaCards = (media) => {
+    const genresNames = getGenresData(media);
     return {
-      character_name: actor.character,
+      character_name: media.character,
       genres: genresNames,
-      id: actor.id,
-      title: actor.title,
-      poster: actor.poster_path
-        ? `https://image.tmdb.org/t/p/w500/${actor.poster_path}`
+      id: media.id,
+      title: media.title,
+      poster: media.poster_path
+        ? `https://image.tmdb.org/t/p/w500/${media.poster_path}`
         : noImage,
-      rating: (actor.vote_average / 2).toFixed(1),
-      type: actor.media_type,
+      rating: (media.vote_average / 2).toFixed(1),
+      type: media.media_type,
     };
   };
 
@@ -244,7 +244,7 @@ const movieDbService = () => {
     _transferImages,
     _transferRecommendations,
     _transferActorDetails,
-    _transformActorCredits,
+    _transformMediaCards,
   };
 };
 export { movieDbService };

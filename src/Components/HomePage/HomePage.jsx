@@ -21,9 +21,9 @@ const HomePage = () => {
   );
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(fetchedBackgroundMovies);
-  }, [fetchedBackgroundMovies]);
+  // useEffect(() => {
+  //   console.log(fetchedBackgroundMovies);
+  // }, [fetchedBackgroundMovies]);
 
   useEffect(() => {
     dispatch(fetchBackgroundImages());
