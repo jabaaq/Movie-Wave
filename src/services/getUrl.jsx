@@ -30,8 +30,8 @@ const GetUrl = () => {
   const actorCredits = (actorId) =>
     `https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${APIKEY}`;
 
-  const mediaList = (mediaType) =>
-    `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${APIKEY}&page=1`;
+  const mediaList = (mediaType, pageNum) =>
+    `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${APIKEY}&page=${pageNum}`;
 
   return {
     topRatedMovies,

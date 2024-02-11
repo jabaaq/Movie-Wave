@@ -2,7 +2,7 @@ import "./WaveButton.scss";
 import { RiMovie2Fill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 
-const WaveButton = ({ text, icon }) => {
+const WaveButton = ({ text }) => {
   return (
     <button className="watch_movie_btn">
       <span className="watch_movie_btn_text">{text}</span>

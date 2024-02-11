@@ -1,8 +1,59 @@
-.movie_list_container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
+.movies_home_page {
+  .section_name {
+    margin: 30px;
+  }
+  .movie_list_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .pagination_container {
+    margin: 30px;
+  }
+
+  .load_more_button {
+    width: fit-content;
+    padding: 0;
+    margin: 30px;
+    color: rgb(255, 255, 255);
+  }
+
+  .ant-pagination .ant-pagination-item a,
+  .ant-pagination
+    .ant-pagination-jump-next
+    .ant-pagination-item-container
+    .ant-pagination-item-ellipsis,
+  .ant-pagination .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination .ant-pagination-next .ant-pagination-item-link {
+    color: white;
+  }
+
+  .ant-pagination .ant-pagination-item-active {
+    color: red;
+  }
+
+  .ant-pagination .ant-pagination-item-active {
+    font-weight: 600;
+    background-color: #870000;
+    color: black;
+    border-color: #ff1616;
+  }
+
+  .ant-pagination
+    .ant-pagination-jump-next
+    .ant-pagination-item-container
+    .ant-pagination-item-ellipsis,
+  .ant-pagination
+    .ant-pagination-jump-prev
+    .ant-pagination-item-container
+    .ant-pagination-item-ellipsis {
+    color: rgba(255, 255, 255, 0.628);
+  }
+
+  .ant-pagination-options {
+    display: none;
+  }
 }

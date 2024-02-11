@@ -41,7 +41,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/movie"
+            path="/movie-wave/movie/pages/"
             element={
               <Suspense fallback={<Spinner />}>
                 <MoviesHomePage />

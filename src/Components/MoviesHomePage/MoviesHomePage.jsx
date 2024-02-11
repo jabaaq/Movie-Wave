@@ -7,9 +7,14 @@ import { fetchBackgroundImages } from "../HomePage/HomePageSlice";
 import { useEffect } from "react";
 import { fetchMediaList } from "./MoviesHomePageSlice";
 import Spinner from "../Spinner/Spinner";
+import Footer from "../Footer/Footer";
+import React from "react";
+import { Pagination } from "antd";
+import { handleChangePageNum } from "./MoviesHomePageSlice";
+import { useParams } from "react-router-dom";
 
 const MoviesHomePage = () => {
-  const { loadMoviesHomePage, fetchedMediaList } = useSelector(
+  const { loadMoviesHomePage, fetchedMediaList, pageNum } = useSelector(
     (state) => state.MediaHomePageReducer
   );
   const { fetchedBackgroundMovies } = useSelector(
@@ -19,8 +24,8 @@ const MoviesHomePage = () => {
 
   useEffect(() => {
     dispatch(fetchBackgroundImages());
-    dispatch(fetchMediaList({ mediaType: "movie" }));
-  }, []);
+    dispatch(fetchMediaList({ mediaType: "movie", pageNum: pageNum }));
+  }, [pageNum]);
 
   useEffect(() => {
     console.log(fetchedMediaList);
@@ -31,10 +36,12 @@ const MoviesHomePage = () => {
       {loadMoviesHomePage ? (
         <>
           <MainPageBackground mediaArr={fetchedBackgroundMovies} />
-          <EachPageButton name={"MOVIES"} />
+          <div className="section_name">
+            <EachPageButton name={"MOVIES"} />
+          </div>
           <div className="movie_list_container">
             {fetchedMediaList &&
-              fetchedMediaList.map((media, i) => (
+              fetchedMediaList[0].map((media, i) => (
                 <MediaCard
                   key={i}
                   poster={media.poster}
@@ -45,7 +52,16 @@ const MoviesHomePage = () => {
                   release_date={media.release_date}
                 />
               ))}
+            <div className="pagination_container">
+              <Pagination
+                showSizeChanger
+                defaultCurrent={pageNum}
+                total={5000}
+                onChange={(page) => dispatch(handleChangePageNum(page))}
+              />
+            </div>
           </div>
+          <Footer />
         </>
       ) : (
         <Spinner />

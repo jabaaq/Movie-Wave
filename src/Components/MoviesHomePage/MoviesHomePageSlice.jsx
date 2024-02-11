@@ -10,22 +10,29 @@ const { _transformMediaCards } = movieDbService();
 const initialState = {
   loadMoviesHomePage: false,
   fetchedMediaList: [],
+  pageNum: 1,
 };
 
 export const fetchMediaList = createAsyncThunk(
   "fetch/fetchMediaList",
-  async ({ mediaType }) => {
+  async ({ mediaType, pageNum }) => {
     const { mediaList } = GetUrl();
-    const updatedUrl = mediaList(mediaType);
+    const updatedUrl = mediaList(mediaType, pageNum);
     const res = await request(updatedUrl);
-    return res.results.map(_transformMediaCards);
+    const transformedList = res.results.map(_transformMediaCards);
+    const totalPages = res.total_pages;
+    return [transformedList, totalPages];
   }
 );
 
 export const MovieHomePageSlice = createSlice({
   name: "MovieHomePageSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    handleChangePageNum: (state, action) => {
+      state.pageNum = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMediaList.pending, (state) => {
@@ -42,5 +49,6 @@ export const MovieHomePageSlice = createSlice({
   },
 });
 
-const { reducer, action } = MovieHomePageSlice;
+const { reducer, actions } = MovieHomePageSlice;
+export const { handleChangePageNum } = actions;
 export default reducer;
