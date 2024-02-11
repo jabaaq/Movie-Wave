@@ -40,6 +40,7 @@ const ActorCredits = () => {
             rating={media.rating}
             title={media.title}
             type={media.type}
+            release_date={media.release_date}
           />
         ))}
       </div>

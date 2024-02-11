@@ -217,10 +217,7 @@ const movieDbService = () => {
   };
 
   const _transformMediaCards = (media) => {
-    const genresNames = getGenresData(media);
     return {
-      character_name: media.character,
-      genres: genresNames,
       id: media.id,
       title: media.title,
       poster: media.poster_path
@@ -228,6 +225,7 @@ const movieDbService = () => {
         : noImage,
       rating: (media.vote_average / 2).toFixed(1),
       type: media.media_type,
+      release_date: media.release_date,
     };
   };
 

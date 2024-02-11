@@ -14,11 +14,11 @@ const initialState = {
 
 export const fetchMediaList = createAsyncThunk(
   "fetch/fetchMediaList",
-  async () => {
-    const { mediaIdList, detailsById } = GetUrl();
-    const res = await request(mediaIdList);
-    console.log(res);
-    return res;
+  async ({ mediaType }) => {
+    const { mediaList } = GetUrl();
+    const updatedUrl = mediaList(mediaType);
+    const res = await request(updatedUrl);
+    return res.results.map(_transformMediaCards);
   }
 );
 

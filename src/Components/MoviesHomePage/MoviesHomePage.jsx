@@ -19,12 +19,12 @@ const MoviesHomePage = () => {
 
   useEffect(() => {
     dispatch(fetchBackgroundImages());
-    dispatch(fetchMediaList());
+    dispatch(fetchMediaList({ mediaType: "movie" }));
   }, []);
 
   useEffect(() => {
-    console.log(loadMoviesHomePage);
-  }, [loadMoviesHomePage]);
+    console.log(fetchedMediaList);
+  }, [fetchedMediaList]);
 
   return (
     <div className="movies_home_page">
@@ -33,18 +33,18 @@ const MoviesHomePage = () => {
           <MainPageBackground mediaArr={fetchedBackgroundMovies} />
           <EachPageButton name={"MOVIES"} />
           <div className="movie_list_container">
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
-            <MediaCard />
+            {fetchedMediaList &&
+              fetchedMediaList.map((media, i) => (
+                <MediaCard
+                  key={i}
+                  poster={media.poster}
+                  id={media.id}
+                  rating={media.rating}
+                  title={media.title}
+                  type={"movie"}
+                  release_date={media.release_date}
+                />
+              ))}
           </div>
         </>
       ) : (

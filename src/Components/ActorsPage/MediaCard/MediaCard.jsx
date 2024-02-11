@@ -4,7 +4,7 @@ import WatchButton from "../../HomePage/MovieCard/WatchButton/WatchButton";
 import { Rate } from "antd";
 import { Link } from "react-router-dom";
 
-const MediaCard = ({ poster, id, rating, title, type }) => {
+const MediaCard = ({ poster, id, rating, title, type, release_date }) => {
   const [showCardDetails, setShowCardDetails] = useState(false);
 
   const handleShowDetails = () => {
@@ -19,13 +19,19 @@ const MediaCard = ({ poster, id, rating, title, type }) => {
         onMouseLeave={handleShowDetails}
       >
         <WatchButton />
-        <h3>{title}</h3>
-        <Rate
-          disabled
-          allowHalf
-          defaultValue={rating}
-          className="rating_stars"
-        />
+        <h4>{title}</h4>
+        {rating === 0 ? (
+          <Rate
+            disabled
+            allowHalf
+            defaultValue={rating}
+            className="rating_stars"
+          />
+        ) : (
+          <>
+            <p>{release_date}</p>
+          </>
+        )}
       </div>
       <img src={poster} alt={title} loading="lazy" />
     </Link>
