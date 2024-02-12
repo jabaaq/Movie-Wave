@@ -3,6 +3,7 @@ import HomePageReducer from "../HomePage/HomePageSlice";
 import MoviePageReducer from "../MoviesPage/MoviePageSlice";
 import ActorPageReducer from "../ActorsPage/ActorsPageSlice";
 import MediaHomePageReducer from "../MediaListPages/MediaListPageSlice";
+import SearchPageReducer from "../SearchPages/SearchPagesSlice";
 
 const stringMiddleware = () => (next) => (action) => {
   if (typeof action === "string") {
@@ -19,6 +20,7 @@ export const store = configureStore({
     MoviePageReducer,
     ActorPageReducer,
     MediaHomePageReducer,
+    SearchPageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(stringMiddleware),

@@ -35,6 +35,10 @@ const GetUrl = () => {
   const mediaList = (mediaType, pageNum) =>
     `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${APIKEY}&page=${pageNum}`;
 
+  const searchPerson = (personName) => {
+    `https://api.themoviedb.org/3/search/person?query=${personName}&api_key=${APIKEY}`;
+  };
+
   return {
     trendingMedias,
     upcomingMovies,
@@ -49,6 +53,7 @@ const GetUrl = () => {
     actorInformation,
     actorCredits,
     mediaList,
+    searchPerson,
   };
 };
 

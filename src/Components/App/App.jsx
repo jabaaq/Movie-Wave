@@ -11,8 +11,9 @@ const ActorsPage = lazy(() => import("../ActorsPage/ActorsPage"));
 const MoviesListPage = lazy(() =>
   import("../MediaListPages/MoviesListPage/MoviesListPage")
 );
-// const TvListPage = lazy(() => "../MediaListPages/TvListPage/TvListPage");
-import TvListPage from "../MediaListPages/TvListPage/TvListPage";
+const TvListPage = lazy(() =>
+  import("../MediaListPages/TvListPage/TvListPage")
+);
 
 function App() {
   return (

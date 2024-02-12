@@ -8,7 +8,9 @@ const RadioButtons = () => {
 
   return (
     <div className={`mydict ${toggleNavigation ? "block" : null}`}>
-      <EachPageButton name={"HOME"} />
+      <Link to={"/"}>
+        <EachPageButton name={"HOME"} />
+      </Link>
       <Link to={`/movie-wave/movie/pages`}>
         <EachPageButton name={"MOVIES"} type={"movie"} />
       </Link>
