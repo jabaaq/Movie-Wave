@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navbar } from "../HomePage/Navbar/Navbar";
 import "./App.scss";
 import Spinner from "../Spinner/Spinner";
-import MoviesHomePage from "../MoviesHomePage/MoviesHomePage";
 
 const HomePage = lazy(() => import("../HomePage/HomePage"));
 const MoviePage = lazy(() => import("../MoviesPage/MoviePage/MoviePage"));
 const ActorsPage = lazy(() => import("../ActorsPage/ActorsPage"));
+const MoviesListPage = lazy(() =>
+  import("../MediaListPages/MoviesListPage/MoviesListPage")
+);
 
 function App() {
   return (
@@ -44,7 +46,7 @@ function App() {
             path="/movie-wave/movie/pages/"
             element={
               <Suspense fallback={<Spinner />}>
-                <MoviesHomePage />
+                <MoviesListPage />
               </Suspense>
             }
           />

@@ -13,11 +13,11 @@ const ActorCredits = () => {
   let initialMovies = 0;
 
   useEffect(() => {
-    if (fetchedActorCredits.length !== 0 && fetchedActorCredits.length <= 32) {
+    if (fetchedActorCredits.length <= 32) {
       initialMovies = Math.floor(fetchedActorCredits.length);
       setMovieCount(initialMovies);
     } else {
-      initialMovies = Math.floor(fetchedActorCredits.length / 2);
+      initialMovies = Math.floor(fetchedActorCredits.length / 4);
       setMovieCount(initialMovies);
     }
   }, [fetchedActorCredits]);

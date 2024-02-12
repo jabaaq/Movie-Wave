@@ -1,47 +1,29 @@
 import MediaCard from "../ActorsPage/MediaCard/MediaCard";
 import { MainPageBackground } from "../HomePage/MainPageBackground/MainPageBackground";
 import EachPageButton from "../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
-import "./MoviesHomePage.scss";
+import "./MediaListPage.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBackgroundImages } from "../HomePage/HomePageSlice";
-import { useEffect } from "react";
-import { fetchMediaList } from "./MoviesHomePageSlice";
 import Spinner from "../Spinner/Spinner";
-import Footer from "../Footer/Footer";
-import React from "react";
 import { Pagination } from "antd";
-import { handleChangePageNum } from "./MoviesHomePageSlice";
-import { useParams } from "react-router-dom";
+import { handleChangePageNum } from "./MediaListPageSlice";
 
-const MoviesHomePage = () => {
-  const { loadMoviesHomePage, fetchedMediaList, pageNum } = useSelector(
+const MediaListPage = ({ mediaList, backgroundImages, pageNum, mediaType }) => {
+  const { loadMoviesHomePage } = useSelector(
     (state) => state.MediaHomePageReducer
   );
-  const { fetchedBackgroundMovies } = useSelector(
-    (state) => state.HomePageReducer
-  );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchBackgroundImages());
-    dispatch(fetchMediaList({ mediaType: "movie", pageNum: pageNum }));
-  }, [pageNum]);
-
-  useEffect(() => {
-    console.log(fetchedMediaList);
-  }, [fetchedMediaList]);
 
   return (
     <div className="movies_home_page">
       {loadMoviesHomePage ? (
         <>
-          <MainPageBackground mediaArr={fetchedBackgroundMovies} />
+          <MainPageBackground mediaArr={backgroundImages} />
           <div className="section_name">
-            <EachPageButton name={"MOVIES"} />
+            <EachPageButton name={mediaType} />
           </div>
           <div className="movie_list_container">
-            {fetchedMediaList &&
-              fetchedMediaList[0].map((media, i) => (
+            {mediaList &&
+              mediaList[0].map((media, i) => (
                 <MediaCard
                   key={i}
                   poster={media.poster}
@@ -61,7 +43,6 @@ const MoviesHomePage = () => {
               />
             </div>
           </div>
-          <Footer />
         </>
       ) : (
         <Spinner />
@@ -70,4 +51,4 @@ const MoviesHomePage = () => {
   );
 };
 
-export default MoviesHomePage;
+export default MediaListPage;
