@@ -8,15 +8,17 @@ const RadioButtons = () => {
 
   return (
     <div className={`mydict ${toggleNavigation ? "block" : null}`}>
-      <Link to={"/"}>
-        <EachPageButton name={"HOME"} />
-      </Link>
-      <Link to={`/movie-wave/movie/pages`}>
-        <EachPageButton name={"MOVIES"} type={"movie"} />
-      </Link>
-      <Link to={`/movie-wave/tv/pages`}>
-        <EachPageButton name={"TV󠀮󠀮SERIES"} type={"tv"} />
-      </Link>
+      <div className="link_buttons_container">
+        <Link to={"/"}>
+          <EachPageButton name={"HOME"} />
+        </Link>
+        <Link to={`/movie-wave/movie/pages`}>
+          <EachPageButton name={"MOVIES"} type={"movie"} />
+        </Link>
+        <Link to={`/movie-wave/tv/pages`}>
+          <EachPageButton name={"TV󠀮󠀮SERIES"} type={"tv"} />
+        </Link>
+      </div>
     </div>
   );
 };

@@ -14,6 +14,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  gap: 20px;
 }
 
 .section_buttons {
@@ -29,6 +30,7 @@
   }
 
   .mydict div {
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -46,8 +48,8 @@
   }
 
 
-  label span {
+  /* label span {
     padding: 2.5vw 30vw;
     background-color: black;
-  }
+  } */
 }

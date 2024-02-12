@@ -50,4 +50,8 @@
         --text-stroke-color: rgb(255, 255, 255);
         --animation-color: rgb(255, 255, 255);
     }
+
+    .actual-text {
+        font-size: 30px;
+    }
 }
