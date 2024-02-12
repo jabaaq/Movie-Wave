@@ -5,7 +5,7 @@ import { GetUrl } from "../../services/getUrl";
 
 const { request } = useHttp();
 const {
-  _transferTopRatedMovies,
+  _transferTrendingMedias,
   _transferUpcomingMovies,
   _transferTvSeries,
   _transferActorsList,
@@ -25,10 +25,14 @@ const initialState = {
 
 export const fetchBackgroundImages = createAsyncThunk(
   "fetch/fetchBackgroundImages",
-  async () => {
-    const { topRatedMovies } = GetUrl();
-    const res = await request(topRatedMovies);
-    return res.results.map(_transferTopRatedMovies);
+  async ({ mediaType }) => {
+    console.log(mediaType);
+    const { trendingMedias } = GetUrl();
+    const updatedUrl = trendingMedias(mediaType);
+    const res = await request(updatedUrl);
+    return mediaType === "movie"
+      ? res.results.map(_transferTrendingMedias)
+      : res.results.map(_transferTvSeries);
   }
 );
 

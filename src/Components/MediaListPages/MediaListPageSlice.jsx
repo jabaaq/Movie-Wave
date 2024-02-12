@@ -25,8 +25,8 @@ export const fetchMediaList = createAsyncThunk(
   }
 );
 
-export const MovieHomePageSlice = createSlice({
-  name: "MovieHomePageSlice",
+export const MediaListSlice = createSlice({
+  name: "MediaListSlice",
   initialState,
   reducers: {
     handleChangePageNum: (state, action) => {
@@ -49,6 +49,6 @@ export const MovieHomePageSlice = createSlice({
   },
 });
 
-const { reducer, actions } = MovieHomePageSlice;
+const { reducer, actions } = MediaListSlice;
 export const { handleChangePageNum } = actions;
 export default reducer;

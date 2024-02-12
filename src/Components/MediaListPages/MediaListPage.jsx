@@ -1,23 +1,31 @@
 import MediaCard from "../ActorsPage/MediaCard/MediaCard";
-import { MainPageBackground } from "../HomePage/MainPageBackground/MainPageBackground";
 import EachPageButton from "../HomePage/Navbar/RadioButtons/EachPageButton/EachPageButton";
 import "./MediaListPage.scss";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import { Pagination } from "antd";
 import { handleChangePageNum } from "./MediaListPageSlice";
+import { useEffect } from "react";
 
-const MediaListPage = ({ mediaList, backgroundImages, pageNum, mediaType }) => {
+const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
   const { loadMoviesHomePage } = useSelector(
     (state) => state.MediaHomePageReducer
   );
+
+  const { fetchedBackgroundMovies } = useSelector(
+    (state) => state.HomePageReducer
+  );
+
+  // useEffect(() => {
+  //   console.log(type, fetchedBackgroundMovies);
+  // }, [fetchedBackgroundMovies]);
+
   const dispatch = useDispatch();
 
   return (
     <div className="movies_home_page">
       {loadMoviesHomePage ? (
         <>
-          <MainPageBackground mediaArr={backgroundImages} />
           <div className="section_name">
             <EachPageButton name={mediaType} />
           </div>
@@ -30,7 +38,7 @@ const MediaListPage = ({ mediaList, backgroundImages, pageNum, mediaType }) => {
                   id={media.id}
                   rating={media.rating}
                   title={media.title}
-                  type={"movie"}
+                  type={type}
                   release_date={media.release_date}
                 />
               ))}

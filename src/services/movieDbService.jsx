@@ -14,7 +14,7 @@ const movieDbService = () => {
     return genresNames;
   };
 
-  const _transferTopRatedMovies = (movie) => {
+  const _transferTrendingMedias = (movie) => {
     const genresNames = getGenresData(movie);
 
     return {
@@ -31,6 +31,23 @@ const movieDbService = () => {
       original_title: movie.original_title,
       genres: genresNames,
       mediaType: "movie",
+    };
+  };
+
+  const _transferTrendingTv = (tv) => {
+    return {
+      id: tv.id,
+      title:
+        tv.name && tv.name.length > 18
+          ? tv.title.slice(0, 18) + "..."
+          : tv.title,
+      release_date: tv.first_air_date,
+      background_image: `https://image.tmdb.org/t/p/original/${tv.backdrop_path}`,
+      poster: tv.poster_path,
+      description: tv.overview.slice(0, 150) + "...",
+      vote: tv.vote_average,
+      original_title: tv.original_name,
+      mediaType: "tv",
     };
   };
 
@@ -83,6 +100,7 @@ const movieDbService = () => {
       genre_ids: series.genre_ids,
       genres: genresNames,
       title: series.name,
+      description: series.overview ? series.overview.slice(0, 200) + "..." : "",
       original_name: series.original_name,
       poster_img: series.poster_path
         ? `https://image.tmdb.org/t/p/w500/${series.poster_path}`
@@ -230,7 +248,8 @@ const movieDbService = () => {
   };
 
   return {
-    _transferTopRatedMovies,
+    _transferTrendingMedias,
+    _transferTrendingTv,
     _transferUpcomingMovies,
     _transferTvSeries,
     _transferActorsList,

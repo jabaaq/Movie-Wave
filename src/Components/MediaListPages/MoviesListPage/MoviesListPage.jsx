@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { fetchBackgroundImages } from "../../HomePage/HomePageSlice";
 import { fetchMediaList } from "../MediaListPageSlice";
 import MediaListPage from "../MediaListPage";
-import { Footer } from "antd/es/layout/layout";
+import Footer from "../../Footer/Footer";
+import { MainPageBackground } from "../../HomePage/MainPageBackground/MainPageBackground";
 
 const MoviesListPage = () => {
   const { fetchedMediaList, pageNum } = useSelector(
@@ -16,17 +17,18 @@ const MoviesListPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBackgroundImages());
+    dispatch(fetchBackgroundImages({ mediaType: "movie" }));
     dispatch(fetchMediaList({ mediaType: "movie", pageNum: pageNum }));
   }, [pageNum]);
 
   return (
     <div className="movies_list_page">
+      <MainPageBackground mediaArr={fetchedBackgroundMovies} />
       <MediaListPage
         mediaList={fetchedMediaList}
         pageNum={pageNum}
-        backgroundImages={fetchedBackgroundMovies}
         mediaType={"MOVIES"}
+        type={"movie"}
       />
       <Footer />
     </div>

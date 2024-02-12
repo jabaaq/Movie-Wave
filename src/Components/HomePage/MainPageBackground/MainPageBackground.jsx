@@ -1,11 +1,10 @@
 import "./MainPageBackground.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import WaveButton from "../WaveButton/WaveButton";
 import { selectMediaId } from "../HomePageSlice";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const MainPageBackground = ({ mediaArr }) => {

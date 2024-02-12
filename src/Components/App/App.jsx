@@ -11,6 +11,8 @@ const ActorsPage = lazy(() => import("../ActorsPage/ActorsPage"));
 const MoviesListPage = lazy(() =>
   import("../MediaListPages/MoviesListPage/MoviesListPage")
 );
+// const TvListPage = lazy(() => "../MediaListPages/TvListPage/TvListPage");
+import TvListPage from "../MediaListPages/TvListPage/TvListPage";
 
 function App() {
   return (
@@ -43,10 +45,18 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/movie/pages/"
+            path="/movie-wave/movie/pages"
             element={
               <Suspense fallback={<Spinner />}>
                 <MoviesListPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/movie-wave/tv/pages"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <TvListPage />
               </Suspense>
             }
           />

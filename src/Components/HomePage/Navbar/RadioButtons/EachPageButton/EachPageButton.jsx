@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./EachPageButton.css";
 
 const EachPageButton = ({ name }) => {
