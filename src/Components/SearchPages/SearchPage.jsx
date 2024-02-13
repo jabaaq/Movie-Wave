@@ -9,42 +9,47 @@ import { searchMedia } from "./SearchPagesSlice";
 
 const SearchPage = () => {
   const dispatch = useDispatch();
-  const { loadSearchedMedia } = useSelector((state) => state.SearchPageReducer);
+  const { searchedMedia } = useSelector((state) => state.SearchPageReducer);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("");
+  const [sortBy, setSortBy] = useState("movie");
 
   useEffect(() => {
-    dispatch(searchMedia({ mediaType: "movie", mediaName: "marvel" }));
-  }, []);
+    dispatch(searchMedia({ mediaType: sortBy, mediaName: searchQuery }));
+  }, [searchQuery, sortBy]);
 
   const handleGetSearchQuery = (e) => {
     setSearchQuery(e.target.value);
   };
+  const handleGetSortBy = (e) => {
+    setSortBy(e.target.value);
+  };
 
   useEffect(() => {
-    console.log(searchQuery);
-  }, [searchQuery]);
+    console.log(searchedMedia);
+  }, [searchedMedia]);
 
   return (
     <>
       <div className="search_page_container">
         <div className="search_option_buttons">
-          <RadioOptionButtons />
+          <RadioOptionButtons handleGetSortBy={handleGetSortBy} />
         </div>
         <div className="search_container">
           <SearchBar handleGetSearchQuery={handleGetSearchQuery} />
         </div>
         <div className="searched_persons_container">
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
-          <MediaCard />
+          {searchedMedia &&
+            searchedMedia.map((media, i) => (
+              <MediaCard
+                key={i}
+                id={media.id}
+                poster={media.poster}
+                title={media.title}
+                rating={media.rating}
+                release_date={media.release_date}
+                type={sortBy}
+              />
+            ))}
         </div>
       </div>
       <Footer />

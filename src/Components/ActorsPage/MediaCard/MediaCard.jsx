@@ -1,5 +1,5 @@
 import "./MediaCard.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WatchButton from "../../HomePage/MovieCard/WatchButton/WatchButton";
 import { Rate } from "antd";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ const MediaCard = ({ poster, id, rating, title, type, release_date }) => {
   };
 
   return (
-    <Link to={`/movie-wave/more/${type}/${id}`} className="media_card">
+    <Link to={`/movie-wave/media/${type}/${id}`} className="media_card">
       <div
         className={`media_card_box ${showCardDetails ? "show" : "hide"}`}
         onMouseEnter={handleShowDetails}

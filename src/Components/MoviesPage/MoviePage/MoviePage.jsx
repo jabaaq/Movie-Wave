@@ -28,8 +28,8 @@ const MoviePage = () => {
   const mediaId = +savedMovieDetails.mediaId;
 
   useEffect(() => {
-    console.log(selectedMediaId);
-  }, [selectedMediaId]);
+    console.log(mediaId, mediaType);
+  }, [mediaId, mediaType]);
 
   useEffect(() => {
     //To fetch media details

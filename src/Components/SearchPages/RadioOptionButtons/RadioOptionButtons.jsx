@@ -1,8 +1,8 @@
 import "./RadioOptionButtons.css";
 
-const RadioOptionButtons = () => {
+const RadioOptionButtons = ({ handleGetSortBy }) => {
   return (
-    <div className="radio-input">
+    <div className="radio-input" onChange={handleGetSortBy}>
       <label>
         <input
           type="radio"

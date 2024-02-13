@@ -3,13 +3,12 @@ import { GetUrl } from "../../services/getUrl";
 import { movieDbService } from "../../services/movieDbService";
 import { useHttp } from "../../services/http.hook";
 
-const {} = movieDbService();
+const { _transformMediaCards, _transformActorMediaCard } = movieDbService();
 const { request } = useHttp();
 
 const initialState = {
-  mediaName: [],
-  mediaType: [],
   loadSearchedMedia: false,
+  searchedMedia: [],
 };
 
 export const searchMedia = createAsyncThunk(
@@ -17,10 +16,12 @@ export const searchMedia = createAsyncThunk(
   async ({ mediaType, mediaName }) => {
     const { searchMedia } = GetUrl();
     const updatedUrl = searchMedia(mediaType, mediaName);
-    console.log(updatedUrl);
     const res = await request(updatedUrl);
-    console.log(res);
-    return res;
+
+    // return res.results.map(_transformMediaCards);
+    return mediaType === "person"
+      ? res.results.map(_transformActorMediaCard)
+      : res.results.map(_transformMediaCards);
   }
 );
 
@@ -33,16 +34,13 @@ export const SearchPageSlice = createSlice({
     builder
       .addCase(searchMedia.pending, (state) => {
         state.loadSearchedMedia = false;
-        console.log("pending");
       })
       .addCase(searchMedia.fulfilled, (state, action) => {
-        state.mediaName = action.payload;
+        state.searchedMedia = action.payload;
         state.loadSearchedMedia = true;
-        console.log("fulfilled");
       })
       .addCase(searchMedia.rejected, (state) => {
         state.loadSearchedMedia = false;
-        console.log("nope");
       })
       .addDefaultCase(() => {});
   },

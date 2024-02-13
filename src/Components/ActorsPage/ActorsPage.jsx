@@ -12,14 +12,18 @@ const ActorsPage = () => {
   const { loadActorPage } = useSelector((state) => state.ActorPageReducer);
   const dispatch = useDispatch();
   const params = useParams();
-  const { actorId } = params;
+  const { personId } = params;
+
+  useEffect(() => {
+    console.log(personId);
+  }, []);
 
   useEffect(() => {
     //To fetch actor information
-    dispatch(fetchActorInformation({ actorId }));
+    dispatch(fetchActorInformation({ personId }));
 
     //To fetch actor credits
-    dispatch(fetchActorCredits({ actorId }));
+    dispatch(fetchActorCredits({ personId }));
   }, []);
 
   return (

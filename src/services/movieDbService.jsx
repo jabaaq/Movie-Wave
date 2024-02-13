@@ -120,7 +120,7 @@ const movieDbService = () => {
       popularity: actor.popularity,
       profile_image: `https://image.tmdb.org/t/p/w500/${actor.profile_path}`,
       media_type: actor.media_type,
-      mediaType: "actor",
+      mediaType: "person",
     };
   };
 
@@ -185,7 +185,7 @@ const movieDbService = () => {
             : blankFemale
           : `https://image.tmdb.org/t/p/w500/${cast.profile_path}`,
       gender: cast.gender,
-      mediaType: "actor",
+      mediaType: "person",
     };
   };
 
@@ -247,6 +247,17 @@ const movieDbService = () => {
     };
   };
 
+  const _transformActorMediaCard = (actor) => {
+    return {
+      id: actor.id,
+      poster: actor.profile_path
+        ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+        : noImage,
+      type: actor.media_type,
+      title: actor.name,
+    };
+  };
+
   return {
     _transferTrendingMedias,
     _transferTrendingTv,
@@ -262,6 +273,7 @@ const movieDbService = () => {
     _transferRecommendations,
     _transferActorDetails,
     _transformMediaCards,
+    _transformActorMediaCard,
   };
 };
 export { movieDbService };

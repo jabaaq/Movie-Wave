@@ -13,7 +13,7 @@ const ActorsList = () => {
     <>
       <SectionBuilder name={"Actors"} moviesArr={fetchedActorsList} />
       <div className="load_more_button">
-        <Link to="/movie-wave/search/person">
+        <Link to="/movie-wave/search/media">
           <WaveButton text={"FIND"} />
         </Link>
       </div>

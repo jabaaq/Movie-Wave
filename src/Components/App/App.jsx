@@ -39,7 +39,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/actor/:actor/:actorId"
+            path="/movie-wave/media/:person/:personId"
             element={
               <Suspense fallback={<Spinner />}>
                 <ActorsPage />
@@ -63,7 +63,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/search/person"
+            path="/movie-wave/search/media"
             element={
               <Suspense fallback={<Spinner />}>
                 <SearchPage />

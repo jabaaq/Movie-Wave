@@ -16,8 +16,8 @@ const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {
     <div className="upcoming_slider_content">
       <Link
         to={
-          mediaType === "actor"
-            ? `/movie-wave/actor/${mediaType}/${id}`
+          mediaType === "person"
+            ? `/movie-wave/media/${mediaType}/${id}`
             : `/movie-wave/more/${mediaType}/${id}`
         }
       >

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./CastList.scss";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -38,7 +37,7 @@ const CastList = () => {
         {fetchedCast.map((cast, i) => (
           <SwiperSlide key={i}>
             <Link
-              to={`/movie-wave/actor/${cast.mediaType}/${cast.id}`}
+              to={`/movie-wave/media/${cast.mediaType}/${cast.id}`}
               className="cast_content"
             >
               <div className="cast_name_container">
