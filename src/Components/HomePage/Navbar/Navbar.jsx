@@ -30,13 +30,15 @@ const Navbar = () => {
           Movie<span>Wave</span>
         </h2>
       </Link>
-      <div className={`buttons_container`}>
+      <div className="buttons_container">
         <RadioButtons />
       </div>
       <div className="search_favorites_container">
         <div className="navbar_tools">
-          <MdOutlineSearch size={30} />
-          <MdFavoriteBorder size={30} />
+          <Link to="/search">
+            <MdOutlineSearch size={35} />
+          </Link>
+          <MdFavoriteBorder size={35} />
           <ToggleNavigation />
         </div>
       </div>

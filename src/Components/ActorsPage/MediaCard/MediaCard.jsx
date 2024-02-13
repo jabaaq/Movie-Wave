@@ -11,8 +11,15 @@ const MediaCard = ({ poster, id, rating, title, type, release_date }) => {
     setShowCardDetails(!showCardDetails);
   };
 
+  useEffect(() => {
+    console.log(type);
+  }, [type]);
+
   return (
-    <Link to={`/movie-wave/media/${type}/${id}`} className="media_card">
+    <Link
+      to={type === "person" ? `/person/${id}` : `/${type}/${id}`}
+      className="media_card"
+    >
       <div
         className={`media_card_box ${showCardDetails ? "show" : "hide"}`}
         onMouseEnter={handleShowDetails}

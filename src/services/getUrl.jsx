@@ -26,11 +26,11 @@ const GetUrl = () => {
   const movieImages = (mediaId, mediaType) =>
     `https://api.themoviedb.org/3/${mediaType}/${mediaId}/images?api_key=${APIKEY}`;
 
-  const actorInformation = (actorId) =>
-    `https://api.themoviedb.org/3/person/${actorId}?api_key=${APIKEY}`;
+  const actorInformation = (personId) =>
+    `https://api.themoviedb.org/3/person/${personId}?api_key=${APIKEY}`;
 
-  const actorCredits = (actorId) =>
-    `https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${APIKEY}`;
+  const actorCredits = (personId) =>
+    `https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${APIKEY}`;
 
   const mediaList = (mediaType, pageNum) =>
     `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${APIKEY}&page=${pageNum}`;

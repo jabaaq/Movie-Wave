@@ -11,13 +11,17 @@
     cursor: pointer;
 }
 
+.actual-text {
+    font-size: 20px;
+}
+
 .button {
     --border-right: 6px;
     --text-stroke-color: rgb(255, 255, 255);
     --animation-color: var(--main-red);
     letter-spacing: 3px;
     text-decoration: none;
-    font-size: max(1.5vw, min(15px));
+    font-size: max(1.5vw, min(20px));
     position: relative;
     text-transform: uppercase;
     color: transparent;
@@ -52,6 +56,6 @@
     }
 
     .actual-text {
-        font-size: 30px;
+        font-size: max(3vw, min(10px))
     }
 }

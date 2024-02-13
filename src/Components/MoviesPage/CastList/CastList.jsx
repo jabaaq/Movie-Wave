@@ -36,10 +36,7 @@ const CastList = () => {
       >
         {fetchedCast.map((cast, i) => (
           <SwiperSlide key={i}>
-            <Link
-              to={`/movie-wave/media/${cast.mediaType}/${cast.id}`}
-              className="cast_content"
-            >
+            <Link to={`/person/${cast.id}`} className="cast_content">
               <div className="cast_name_container">
                 <p>{cast.name}</p>
               </div>

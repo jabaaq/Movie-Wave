@@ -31,7 +31,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/more/:mediaType/:mediaId"
+            path="/:mediaType/:mediaId"
             element={
               <Suspense fallback={<Spinner />}>
                 <MoviePage />
@@ -39,7 +39,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/media/:person/:personId"
+            path="/person/:personId"
             element={
               <Suspense fallback={<Spinner />}>
                 <ActorsPage />
@@ -47,7 +47,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/movie/pages"
+            path="/movies"
             element={
               <Suspense fallback={<Spinner />}>
                 <MoviesListPage />
@@ -55,7 +55,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/tv/pages"
+            path="/tv"
             element={
               <Suspense fallback={<Spinner />}>
                 <TvListPage />
@@ -63,7 +63,7 @@ function App() {
             }
           />
           <Route
-            path="/movie-wave/search/media"
+            path="/search"
             element={
               <Suspense fallback={<Spinner />}>
                 <SearchPage />

@@ -12,10 +12,10 @@ const RadioButtons = () => {
         <Link to={"/"}>
           <EachPageButton name={"HOME"} />
         </Link>
-        <Link to={`/movie-wave/movie/pages`}>
+        <Link to={`/movies`}>
           <EachPageButton name={"MOVIES"} type={"movie"} />
         </Link>
-        <Link to={`/movie-wave/tv/pages`}>
+        <Link to={`/tv`}>
           <EachPageButton name={"TV"} type={"tv"} />
         </Link>
       </div>

@@ -16,12 +16,11 @@ const ActorsPage = () => {
 
   useEffect(() => {
     console.log(personId);
-  }, []);
+  }, [personId]);
 
   useEffect(() => {
-    //To fetch actor information
+    // To fetch actor information
     dispatch(fetchActorInformation({ personId }));
-
     //To fetch actor credits
     dispatch(fetchActorCredits({ personId }));
   }, []);

@@ -18,15 +18,17 @@ const SearchPage = () => {
   }, [searchQuery, sortBy]);
 
   const handleGetSearchQuery = (e) => {
-    setSearchQuery(e.target.value);
+    setTimeout(() => {
+      setSearchQuery(e.target.value);
+    }, 1000);
   };
   const handleGetSortBy = (e) => {
     setSortBy(e.target.value);
   };
 
   useEffect(() => {
-    console.log(searchedMedia);
-  }, [searchedMedia]);
+    console.log(searchQuery);
+  }, [searchQuery]);
 
   return (
     <>

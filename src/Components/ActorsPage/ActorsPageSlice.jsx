@@ -18,7 +18,7 @@ export const fetchActorInformation = createAsyncThunk(
   async ({ personId }) => {
     const { actorInformation } = GetUrl();
     const updatedUrl = actorInformation(personId);
-    console.log(updatedUrl);
+
     const res = await request(updatedUrl);
     return _transferActorDetails(res);
   }
@@ -29,7 +29,7 @@ export const fetchActorCredits = createAsyncThunk(
   async ({ personId }) => {
     const { actorCredits } = GetUrl();
     const updatedUrl = actorCredits(personId);
-    console.log(updatedUrl);
+
     const res = await request(updatedUrl);
     return res.cast.map(_transformMediaCards);
   }
@@ -43,11 +43,9 @@ export const ActorPageSlice = createSlice({
     builder
       .addCase(fetchActorInformation.fulfilled, (state, action) => {
         state.fetchedActorInformation = action.payload;
-        console.log(action.payload);
       })
       .addCase(fetchActorCredits.fulfilled, (state, action) => {
         state.fetchedActorCredits = action.payload;
-        console.log(action.payload);
       })
       .addMatcher(
         isAnyOf(fetchActorInformation.pending, fetchActorCredits.pending),

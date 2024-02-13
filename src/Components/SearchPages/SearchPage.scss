@@ -1,9 +1,9 @@
 .search_page_container {
   margin-top: 100px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   gap: 30px;
+  min-height: 100vh;
 
   .search_option_buttons {
     width: 100%;
@@ -23,5 +23,9 @@
     flex-wrap: wrap;
     padding: 30px;
     gap: 10px;
+
+    h1 {
+      color: white;
+    }
   }
 }
