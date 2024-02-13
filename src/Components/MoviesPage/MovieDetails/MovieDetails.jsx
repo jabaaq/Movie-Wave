@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
 import CastList from "../CastList/CastList";
+import { useEffect } from "react";
 
 const MovieDetails = () => {
   const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
@@ -62,7 +63,7 @@ const MovieDetails = () => {
               {fetchedMovieById.description}
             </div>
             <div className="add_watch_container">
-              <AddToFavorites />
+              <AddToFavorites fetchedMovieById={fetchedMovieById} />
               <WaveButton text={"WATCH NOW"} />
             </div>
             <div className="cast_container">

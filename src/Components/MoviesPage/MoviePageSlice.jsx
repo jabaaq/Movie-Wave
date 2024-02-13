@@ -22,6 +22,7 @@ const initialState = {
   fetchedReviews: [],
   fetchedRecommendations: [],
   fetchedImages: [],
+  favoriteMedia: [],
 };
 
 export const fetchMediaDetails = createAsyncThunk(
@@ -91,6 +92,10 @@ export const moviePageSlice = createSlice({
   initialState,
   reducers: {
     //Actions
+    handleAddFavorites: (state, action) => {
+      state.favoriteMedia.push(action.payload);
+      state.addedToFavorites = true;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -151,5 +156,8 @@ export const moviePageSlice = createSlice({
   },
 });
 
-const { reducer, action } = moviePageSlice;
+const { reducer, actions } = moviePageSlice;
+
+export const { handleAddFavorites } = actions;
+
 export default reducer;

@@ -1,5 +1,5 @@
 import "./MediaCard.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import WatchButton from "../../HomePage/MovieCard/WatchButton/WatchButton";
 import { Rate } from "antd";
 import { Link } from "react-router-dom";
@@ -10,10 +10,6 @@ const MediaCard = ({ poster, id, rating, title, type, release_date }) => {
   const handleShowDetails = () => {
     setShowCardDetails(!showCardDetails);
   };
-
-  useEffect(() => {
-    console.log(type);
-  }, [type]);
 
   return (
     <Link
