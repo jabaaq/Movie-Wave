@@ -26,7 +26,6 @@ const initialState = {
 export const fetchBackgroundImages = createAsyncThunk(
   "fetch/fetchBackgroundImages",
   async ({ mediaType }) => {
-    console.log(mediaType);
     const { trendingMedias } = GetUrl();
     const updatedUrl = trendingMedias(mediaType);
     const res = await request(updatedUrl);

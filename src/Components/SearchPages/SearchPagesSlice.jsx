@@ -7,17 +7,47 @@ const {} = movieDbService();
 const { request } = useHttp();
 
 const initialState = {
-  personName: "",
+  mediaName: [],
+  mediaType: [],
+  loadSearchedMedia: false,
 };
+
+export const searchMedia = createAsyncThunk(
+  "search/searchMedia",
+  async ({ mediaType, mediaName }) => {
+    const { searchMedia } = GetUrl();
+    const updatedUrl = searchMedia(mediaType, mediaName);
+    console.log(updatedUrl);
+    const res = await request(updatedUrl);
+    console.log(res);
+    return res;
+  }
+);
 
 export const SearchPageSlice = createSlice({
   name: "SearchPageSlice",
-  initialState: {},
+  initialState,
   reducers: {},
+  //actions
   extraReducers: (builder) => {
-    builder.addDefaultCase(() => {});
+    builder
+      .addCase(searchMedia.pending, (state) => {
+        state.loadSearchedMedia = false;
+        console.log("pending");
+      })
+      .addCase(searchMedia.fulfilled, (state, action) => {
+        state.mediaName = action.payload;
+        state.loadSearchedMedia = true;
+        console.log("fulfilled");
+      })
+      .addCase(searchMedia.rejected, (state) => {
+        state.loadSearchedMedia = false;
+        console.log("nope");
+      })
+      .addDefaultCase(() => {});
   },
 });
 
-const { reducer, action } = SearchPageSlice;
+const { reducer, actions } = SearchPageSlice;
+
 export default reducer;

@@ -16,7 +16,7 @@ const RadioButtons = () => {
           <EachPageButton name={"MOVIES"} type={"movie"} />
         </Link>
         <Link to={`/movie-wave/tv/pages`}>
-          <EachPageButton name={"TV󠀮󠀮SERIES"} type={"tv"} />
+          <EachPageButton name={"TV"} type={"tv"} />
         </Link>
       </div>
     </div>

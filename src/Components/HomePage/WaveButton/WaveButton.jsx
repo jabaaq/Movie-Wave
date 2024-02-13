@@ -1,6 +1,6 @@
 import "./WaveButton.scss";
 import { RiMovie2Fill } from "react-icons/ri";
-import { FaEye } from "react-icons/fa";
+import { MdOutlineSearch } from "react-icons/md";
 
 const WaveButton = ({ text }) => {
   return (
@@ -10,7 +10,7 @@ const WaveButton = ({ text }) => {
         {text === "WATCH NOW" ? (
           <RiMovie2Fill size={25} />
         ) : (
-          <FaEye size={25} />
+          <MdOutlineSearch size={25} />
         )}
       </span>
     </button>

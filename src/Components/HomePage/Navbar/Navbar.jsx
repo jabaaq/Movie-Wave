@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { RadioButtons } from "./RadioButtons/RadioButtons";
 import { ToggleNavigation } from "./ToggleNavigation/ToggleNavigation";
-import { IoSearch } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import { MdOutlineSearch } from "react-icons/md";
 const Navbar = () => {
   const { toggleNavigation } = useSelector((state) => state.HomePageReducer);
   const [scrollY, setScrollY] = useState(0);
@@ -35,7 +35,7 @@ const Navbar = () => {
       </div>
       <div className="search_favorites_container">
         <div className="navbar_tools">
-          <IoSearch size={30} />
+          <MdOutlineSearch size={30} />
           <MdFavoriteBorder size={30} />
           <ToggleNavigation />
         </div>
