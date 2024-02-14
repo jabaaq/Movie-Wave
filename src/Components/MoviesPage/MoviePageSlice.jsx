@@ -22,7 +22,9 @@ const initialState = {
   fetchedReviews: [],
   fetchedRecommendations: [],
   fetchedImages: [],
+  //Favorite:
   favoriteMedia: [],
+  favoriteStatus: false,
 };
 
 export const fetchMediaDetails = createAsyncThunk(
@@ -93,10 +95,21 @@ export const moviePageSlice = createSlice({
   reducers: {
     //Actions
     handleAddFavorites: (state, action) => {
-      state.favoriteMedia.push(action.payload);
-      state.addedToFavorites = true;
+      const mediaIndex = state.favoriteMedia.findIndex(
+        (item) =>
+          item.id === action.payload.id && item.title === action.payload.title
+      );
+
+      if (mediaIndex >= 0) {
+        state.favoriteMedia.splice(mediaIndex, 1);
+        state.favoriteStatus = false;
+      } else {
+        state.favoriteMedia.push(action.payload);
+        state.favoriteStatus = true;
+      }
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchMediaDetails.fulfilled, (state, action) => {
@@ -158,6 +171,10 @@ export const moviePageSlice = createSlice({
 
 const { reducer, actions } = moviePageSlice;
 
-export const { handleAddFavorites } = actions;
+export const {
+  handleAddFavorites,
+  handleRemoveFromFavorites,
+  handleFavoriteStatus,
+} = actions;
 
 export default reducer;

@@ -2,36 +2,27 @@
 import "./AddToFavorites.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { handleAddFavorites } from "../MoviePageSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const AddToFavorites = ({ fetchedMovieById }) => {
   const dispatch = useDispatch();
-  const { favoriteMedia, addedToFavorites } = useSelector(
+  const { favoriteMedia, favoriteStatus } = useSelector(
     (state) => state.MoviePageReducer
   );
 
-  const handleCheckFavoriteList = (list) => {
-    return list.some(
-      (media) =>
-        (media.name === fetchedMovieById.name) &
-        (media.id === fetchedMovieById.id)
-    );
+  const handleAddToFavorites = (media) => {
+    dispatch(handleAddFavorites(media));
   };
-  const favoriteStatus = handleCheckFavoriteList(favoriteMedia);
 
   useEffect(() => {
-    console.log(favoriteStatus, favoriteMedia);
-  }, [favoriteStatus, favoriteMedia]);
+    console.log(favoriteMedia);
+  }, [favoriteMedia]);
 
   return (
     <div
       title="Like"
       className="heart-container"
-      onClick={() => {
-        favoriteMedia.includes(fetchedMovieById)
-          ? null
-          : dispatch(handleAddFavorites(fetchedMovieById));
-      }}
+      onClick={() => handleAddToFavorites(fetchedMovieById)}
     >
       <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
       <div className="svg-container">
@@ -44,15 +35,13 @@ const AddToFavorites = ({ fetchedMovieById }) => {
         </svg>
         <svg
           viewBox="0 0 24 24"
-          className={`svg-filled ${favoriteStatus ? "added_to_favorites" : ""}`}
+          className={`svg-filled ${favoriteStatus ? "block" : "none"}`}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
         </svg>
         <svg
-          className={`svg-celebrate ${
-            favoriteStatus ? "added_to_favorites" : ""
-          }`}
+          className={`svg-celebrate ${favoriteStatus ? "block" : "none"}`}
           width="100"
           height="100"
           xmlns="http://www.w3.org/2000/svg"

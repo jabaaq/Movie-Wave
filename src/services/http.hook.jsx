@@ -1,8 +1,4 @@
-import { useState } from "react";
-
 const useHttp = () => {
-  // const [loading, setLoading] = useState(false);
-
   const request = async (
     url,
     method = "GET",
