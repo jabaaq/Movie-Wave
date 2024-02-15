@@ -112,6 +112,11 @@ export const moviePageSlice = createSlice({
         );
         state.favoriteStatus = true;
       }
+
+      localStorage.setItem(
+        "favoriteMedia",
+        JSON.stringify(state.favoriteMedia)
+      );
     },
   },
 

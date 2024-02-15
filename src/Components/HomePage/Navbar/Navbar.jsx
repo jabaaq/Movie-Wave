@@ -6,10 +6,13 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ClockCircleOutlined } from "@ant-design/icons";
+import { Avatar, Badge, Space } from "antd";
 
 import { MdOutlineSearch } from "react-icons/md";
 const Navbar = () => {
   const { toggleNavigation } = useSelector((state) => state.HomePageReducer);
+  const { favoriteMedia } = useSelector((state) => state.MoviePageReducer);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -18,6 +21,10 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
   }, []);
+
+  const storedFavoriteMediaList = JSON.parse(
+    localStorage.getItem("favoriteMedia")
+  );
 
   return (
     <nav
@@ -38,7 +45,15 @@ const Navbar = () => {
           <Link to="/search">
             <MdOutlineSearch size={35} />
           </Link>
-          <MdFavoriteBorder size={35} />
+          <Badge
+            size="small"
+            offset={[-1, 6]}
+            count={
+              storedFavoriteMediaList ? storedFavoriteMediaList.length : null
+            }
+          >
+            <MdFavoriteBorder color="white" size={35} />
+          </Badge>
           <ToggleNavigation />
         </div>
       </div>
