@@ -31,25 +31,21 @@ $heart-color: rgb(219, 34, 34);
 
     .svg-filled {
       animation: keyframes-svg-filled 1s;
-      // display: none;
+      display: none;
     }
 
     .svg-celebrate {
       position: absolute;
       animation: keyframes-svg-celebrate 0.5s;
       animation-fill-mode: forwards;
-      // display: none;
+      display: none;
       stroke: var(--heart-color);
       fill: var(--heart-color);
       stroke-width: 2px;
     }
 
-    .block {
+    .added_to_favorites {
       display: block;
-    }
-
-    .none {
-      display: none;
     }
   }
 

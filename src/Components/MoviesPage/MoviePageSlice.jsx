@@ -102,9 +102,14 @@ export const moviePageSlice = createSlice({
 
       if (mediaIndex >= 0) {
         state.favoriteMedia.splice(mediaIndex, 1);
+        localStorage.removeItem(action.payload.id);
         state.favoriteStatus = false;
       } else {
         state.favoriteMedia.push(action.payload);
+        localStorage.setItem(
+          action.payload.id,
+          JSON.stringify(state.favoriteMedia)
+        );
         state.favoriteStatus = true;
       }
     },
