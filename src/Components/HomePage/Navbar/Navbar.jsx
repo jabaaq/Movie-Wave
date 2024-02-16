@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { RadioButtons } from "./RadioButtons/RadioButtons";
 import { ToggleNavigation } from "./ToggleNavigation/ToggleNavigation";
-import { MdFavoriteBorder } from "react-icons/md";
+import { FaRegHeart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -45,15 +45,17 @@ const Navbar = () => {
           <Link to="/search">
             <MdOutlineSearch size={35} />
           </Link>
-          <Badge
-            size="small"
-            offset={[-1, 6]}
-            count={
-              storedFavoriteMediaList ? storedFavoriteMediaList.length : null
-            }
-          >
-            <MdFavoriteBorder color="white" size={35} />
-          </Badge>
+          <Link to={"/favorites"}>
+            <Badge
+              size="small"
+              offset={[-1, 6]}
+              count={
+                storedFavoriteMediaList ? storedFavoriteMediaList.length : null
+              }
+            >
+              <FaRegHeart color="white" size={35} />
+            </Badge>
+          </Link>
           <ToggleNavigation />
         </div>
       </div>

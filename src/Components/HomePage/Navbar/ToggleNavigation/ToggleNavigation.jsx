@@ -7,15 +7,15 @@ const ToggleNavigation = () => {
 
   return (
     <div className="toggleButton">
-      <input id="checkbox2" type="checkbox" />
-      <label
-        className="toggle toggle2"
-        htmlFor="checkbox2"
+      <input
+        id="checkbox"
+        type="checkbox"
         onClick={() => dispatch(navbarToggle())}
-      >
-        <div id="bar4" className="bars"></div>
-        <div id="bar5" className="bars"></div>
-        <div id="bar6" className="bars"></div>
+      />
+      <label className="toggle" htmlFor="checkbox">
+        <div id="bar1" className="bars"></div>
+        <div id="bar2" className="bars"></div>
+        <div id="bar3" className="bars"></div>
       </label>
     </div>
   );

@@ -1,10 +1,8 @@
 import "./Accordion.scss";
 import { CaretRightOutlined } from "@ant-design/icons";
 import { Collapse, theme } from "antd";
-import { useSelector } from "react-redux";
 
 const Accordion = ({ getItems, fetchedMovieById }) => {
-  // const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
   const { token } = theme.useToken();
   const panelStyle = {
     marginBottom: 24,

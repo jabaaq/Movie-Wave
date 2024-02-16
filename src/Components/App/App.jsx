@@ -15,6 +15,7 @@ const TvListPage = lazy(() =>
   import("../MediaListPages/TvListPage/TvListPage")
 );
 const SearchPage = lazy(() => import("../SearchPages/SearchPage"));
+const Favorites = lazy(() => import("../Favorites/Favorites"));
 
 function App() {
   return (
@@ -67,6 +68,14 @@ function App() {
             element={
               <Suspense fallback={<Spinner />}>
                 <SearchPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Favorites />
               </Suspense>
             }
           />

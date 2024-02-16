@@ -10,12 +10,6 @@
   --main-red: rgb(230, 34, 34)
 }
 
-.mydict {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 20px;
-}
 
 .section_buttons {
   display: flex;
