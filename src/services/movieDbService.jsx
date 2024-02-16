@@ -150,6 +150,7 @@ const movieDbService = () => {
       country: movie.production_countries.map((item) => item.name),
       number_of_seasons: movie.number_of_seasons,
       number_of_episodes: movie.number_of_episodes,
+      type: movie.runtime ? "Movie" : "Tv",
     };
   };
 
