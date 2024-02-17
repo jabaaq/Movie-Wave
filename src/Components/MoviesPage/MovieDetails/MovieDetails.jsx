@@ -7,7 +7,6 @@ import CastList from "../CastList/CastList";
 import { useEffect } from "react";
 
 const MovieDetails = () => {
-  const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
 
   // useEffect(() => {

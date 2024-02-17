@@ -18,6 +18,7 @@ const AddToFavorites = ({ fetchedMovieById }) => {
   const storagedMedia = JSON.parse(localStorage.getItem(fetchedMovieById.id));
 
   useEffect(() => {
+    setIsInFav(false);
     if (storagedMedia && Array.isArray(storagedMedia)) {
       const isStored = storagedMedia.some(
         (item) =>

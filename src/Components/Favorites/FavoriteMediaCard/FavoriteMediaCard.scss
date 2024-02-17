@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 5px 0;
 
   .favorite_media_card {
     width: 200px;
@@ -39,7 +40,7 @@
   .favorite_media_card_content {
     position: relative;
     width: 95%;
-    height: 80%;
+    height: 85%;
 
     img {
       width: 100%;

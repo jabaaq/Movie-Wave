@@ -137,8 +137,8 @@ const movieDbService = () => {
         : movie.first_air_date,
       tagline: movie.tagline,
       original_title: movie.original_title,
-      title: movie.title,
-      name: movie.name,
+      title: movie.title ? movie.title : movie.name,
+      // name: movie.name,
       description: movie.overview,
       vote_average: +movie.vote_average.toFixed(1),
       budget: movie.budget ? "$" + movie.budget : null,
@@ -150,7 +150,7 @@ const movieDbService = () => {
       country: movie.production_countries.map((item) => item.name),
       number_of_seasons: movie.number_of_seasons,
       number_of_episodes: movie.number_of_episodes,
-      type: movie.runtime ? "Movie" : "Tv",
+      mediaType: movie.runtime ? "Movie" : "Tv",
     };
   };
 
@@ -238,13 +238,15 @@ const movieDbService = () => {
   const _transformMediaCards = (media) => {
     return {
       id: media.id,
-      title: media.title,
+      title: media.title ? media.title : media.name,
       poster: media.poster_path
         ? `https://image.tmdb.org/t/p/w500/${media.poster_path}`
         : noImage,
       rating: (media.vote_average / 2).toFixed(1),
       type: media.media_type,
-      release_date: media.release_date,
+      release_date: media.release_date
+        ? media.release_date
+        : media.first_air_date,
     };
   };
 

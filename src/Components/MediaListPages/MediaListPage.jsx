@@ -5,12 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import { Pagination } from "antd";
 import { handleChangePageNum } from "./MediaListPageSlice";
+import { useEffect } from "react";
 
 const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
   const dispatch = useDispatch();
   const { loadMoviesHomePage } = useSelector(
     (state) => state.MediaHomePageReducer
   );
+
+  useEffect(() => {
+    console.log(mediaList);
+  }, [mediaList]);
 
   return (
     <div className="movies_home_page">
