@@ -1,27 +1,21 @@
 import "./FavoriteMediaCard.scss";
 import Tilt from "react-parallax-tilt";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BsDot } from "react-icons/bs";
 import { IoCloseOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { handleRemoveFromFavorites } from "../../MoviesPage/MoviePageSlice";
 
-const FavoriteMediaCard = ({
-  media,
-  editMode,
-  currItem,
-  storagedFavoriteList,
-}) => {
+const FavoriteMediaCard = ({ media, editMode, removeFromFavorites }) => {
   const { id, title, poster, release_date, mediaType } = media;
-
-  localStorage.getItem("favoriteMedia");
-  const handleMediaRemove = () => {};
+  const dispatch = useDispatch();
 
   return (
     <div className="favorite_media_card_container">
       <button
         className={`remove_from_favorites_btn ${editMode ? "" : "none"}`}
-        onClick={handleMediaRemove}
+        onClick={() => removeFromFavorites(id)}
       >
         <IoCloseOutline size={30} />
       </button>

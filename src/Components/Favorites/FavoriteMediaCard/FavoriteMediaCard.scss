@@ -15,9 +15,8 @@
     height: 50px;
     border-radius: 50%;
     position: absolute;
+    transform: translate(0%, -30%);
     border: none;
-    // transform: translate(0%, -33.33%);
-    bottom: 36%;
     z-index: 2;
     color: rgb(173, 164, 164);
     cursor: pointer;
@@ -31,12 +30,12 @@
 
     &:hover {
       color: white;
-      transform: scale(1.1);
+      transform: scale(1.1) translate(0%, -30%);
       background: rgba(99, 99, 99, 0.866);
     }
 
     &:active {
-      transform: scale(1.2);
+      transform: scale(1.2) translate(0%, -30%);
     }
   }
 

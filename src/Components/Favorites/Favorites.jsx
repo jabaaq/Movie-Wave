@@ -4,13 +4,25 @@ import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { handleRemoveFromFavorites } from "../MoviesPage/MoviePageSlice";
 
 const Favorites = () => {
   const [editMode, setEditMode] = useState(false);
+  const [, forceUpdate] = useState();
+  const dispatch = useDispatch();
 
+  const removeFromFavorites = (id) => {
+    dispatch(handleRemoveFromFavorites(id));
+    forceUpdate({});
+  };
   const storagedFavoriteList = JSON.parse(
     localStorage.getItem("favoriteMedia")
   );
+
+  // useEffect(() => {
+  //   console.log(storagedFavoriteList);
+  // }, [storagedFavoriteList]);
 
   return (
     <>
@@ -33,10 +45,9 @@ const Favorites = () => {
             storagedFavoriteList.map((media, i) => (
               <FavoriteMediaCard
                 key={i}
-                currItem={i}
                 media={media}
                 editMode={editMode}
-                storagedFavoriteList={storagedFavoriteList}
+                removeFromFavorites={removeFromFavorites}
               />
             ))}
         </div>

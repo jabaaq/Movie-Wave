@@ -105,7 +105,7 @@ export const moviePageSlice = createSlice({
         localStorage.removeItem(action.payload.id);
         state.favoriteStatus = false;
       } else {
-        state.favoriteMedia.push(action.payload);
+        state.favoriteMedia.unshift(action.payload);
         localStorage.setItem(
           action.payload.id,
           JSON.stringify(state.favoriteMedia)
@@ -117,6 +117,20 @@ export const moviePageSlice = createSlice({
         "favoriteMedia",
         JSON.stringify(state.favoriteMedia)
       );
+    },
+    handleRemoveFromFavorites: (state, action) => {
+      state.favoriteMedia = JSON.parse(localStorage.getItem("favoriteMedia"));
+
+      state.favoriteMedia = state.favoriteMedia.filter(
+        (item) => item.id !== action.payload
+      );
+      localStorage.setItem(
+        "favoriteMedia",
+        JSON.stringify(state.favoriteMedia)
+      );
+      if (state.favoriteMedia.length === 0) {
+        localStorage.removeItem("favoriteMedia");
+      }
     },
   },
 
