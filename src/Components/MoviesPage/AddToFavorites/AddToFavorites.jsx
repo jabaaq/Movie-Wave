@@ -6,16 +6,13 @@ import { useEffect, useState } from "react";
 
 const AddToFavorites = ({ fetchedMovieById }) => {
   const dispatch = useDispatch();
-  const { favoriteMedia, favoriteStatus } = useSelector(
-    (state) => state.MoviePageReducer
-  );
   const [isInFav, setIsInFav] = useState(false);
 
   const handleAddToFavorites = (media) => {
     dispatch(handleAddFavorites(media));
   };
 
-  const storagedMedia = JSON.parse(localStorage.getItem(fetchedMovieById.id));
+  const storagedMedia = JSON.parse(localStorage.getItem("favoriteMedia"));
 
   useEffect(() => {
     setIsInFav(false);

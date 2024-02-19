@@ -1,11 +1,9 @@
 import "./FavoriteMediaCard.scss";
 import Tilt from "react-parallax-tilt";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { BsDot } from "react-icons/bs";
 import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { handleRemoveFromFavorites } from "../../MoviesPage/MoviePageSlice";
 
 const FavoriteMediaCard = ({ media, editMode, removeFromFavorites }) => {
   const { id, title, poster, release_date, mediaType } = media;

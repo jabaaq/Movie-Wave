@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { handleRemoveFromFavorites } from "../MoviesPage/MoviePageSlice";
+import ClearStorage from "./ClearStorage/ClearStorage";
 
 const Favorites = () => {
   const [editMode, setEditMode] = useState(false);
@@ -20,10 +21,6 @@ const Favorites = () => {
     localStorage.getItem("favoriteMedia")
   );
 
-  // useEffect(() => {
-  //   console.log(storagedFavoriteList);
-  // }, [storagedFavoriteList]);
-
   return (
     <>
       <div className="favorites_container">
@@ -31,14 +28,17 @@ const Favorites = () => {
           <h2>
             <FaHeart /> FAVORITES
           </h2>
-          <button
-            className={`edit_fav_list_btn ${editMode ? "clicked" : ""}`}
-            onClick={() => setEditMode(!editMode)}
-          >
-            <div viewBox="0 0 448 512" className="edit_icon">
-              <MdEdit size={20} />
-            </div>
-          </button>
+          <div className="fav_list_edit_tools">
+            <ClearStorage editMode={editMode} forceUpdate={forceUpdate} />
+            <button
+              className={`edit_fav_list_btn ${editMode ? "clicked" : ""}`}
+              onClick={() => setEditMode(!editMode)}
+            >
+              <div viewBox="0 0 448 512" className="edit_icon">
+                <MdEdit size={20} />
+              </div>
+            </button>
+          </div>
         </div>
         <div className="favorite_media_cards_container">
           {storagedFavoriteList &&
