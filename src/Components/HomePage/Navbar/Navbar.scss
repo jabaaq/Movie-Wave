@@ -19,13 +19,16 @@
 
   .wave_logo,
   .search_favorites_container {
-    margin: 5px 15px;
+    margin: 5px 25px;
   }
 
   .wave_logo {
     cursor: pointer;
-    h2 span {
-      color: var(--main-red);
+    h2 {
+      font-size: 25px;
+      span {
+        color: var(--main-red);
+      }
     }
   }
 

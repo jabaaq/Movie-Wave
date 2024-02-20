@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { fetchBackgroundImages } from "../../HomePage/HomePageSlice";
 import { fetchMediaList } from "../MediaListPageSlice";
 import MediaListPage from "../MediaListPage";
-import Footer from "../../Footer/Footer";
 import { MainPageBackground } from "../../HomePage/MainPageBackground/MainPageBackground";
 
 const MoviesListPage = () => {
@@ -30,7 +29,6 @@ const MoviesListPage = () => {
         mediaType={"MOVIES"}
         type={"movie"}
       />
-      <Footer />
     </div>
   );
 };

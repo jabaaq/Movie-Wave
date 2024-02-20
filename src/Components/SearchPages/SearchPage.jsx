@@ -1,5 +1,4 @@
 import "./SearchPage.scss";
-import Footer from "../Footer/Footer";
 import SearchBar from "./SearchBar/SearchBar";
 import RadioOptionButtons from "./RadioOptionButtons/RadioOptionButtons";
 import MediaCard from "../ActorsPage/MediaCard/MediaCard";
@@ -54,7 +53,6 @@ const SearchPage = () => {
             ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

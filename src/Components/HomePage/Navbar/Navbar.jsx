@@ -6,7 +6,6 @@ import { FaRegHeart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ClockCircleOutlined } from "@ant-design/icons";
 import { Avatar, Badge, Space } from "antd";
 
 import { MdOutlineSearch } from "react-icons/md";

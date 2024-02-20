@@ -3,6 +3,7 @@ import "./ToggleNavigation.css";
 import { navbarToggle } from "../../HomePageSlice";
 
 const ToggleNavigation = () => {
+  const { toggleNavigation } = useSelector((state) => state.HomePageReducer);
   const dispatch = useDispatch();
 
   return (
@@ -10,6 +11,8 @@ const ToggleNavigation = () => {
       <input
         id="checkbox"
         type="checkbox"
+        checked={toggleNavigation}
+        onChange={() => toggleNavigation}
         onClick={() => dispatch(navbarToggle())}
       />
       <label className="toggle" htmlFor="checkbox">

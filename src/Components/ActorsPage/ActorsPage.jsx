@@ -1,6 +1,5 @@
 import "./ActorsPage.scss";
 import ActorInformation from "./ActorInformation/ActorInformation";
-import Footer from "../Footer/Footer";
 import { fetchActorInformation, fetchActorCredits } from "./ActorsPageSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +30,6 @@ const ActorsPage = () => {
         <>
           <ActorInformation />
           <ActorCredits />
-          <Footer />
         </>
       ) : (
         <Spinner />

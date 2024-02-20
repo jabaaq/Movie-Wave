@@ -11,7 +11,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import Footer from "../../Footer/Footer";
 import Spinner from "../../Spinner/Spinner";
 import VideoList from "../VideoList/VideoList";
 import Reviews from "../Reviews/ReviewCard/Reviews";
@@ -64,7 +63,6 @@ const MoviePage = () => {
           <Reviews />
           <MovieImages />
           <Recommendations />
-          <Footer />
         </>
       ) : (
         <Spinner />

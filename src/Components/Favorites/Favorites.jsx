@@ -1,6 +1,5 @@
 import "./Favorites.scss";
 import FavoriteMediaCard from "./FavoriteMediaCard/FavoriteMediaCard";
-import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
@@ -51,7 +50,6 @@ const Favorites = () => {
             ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

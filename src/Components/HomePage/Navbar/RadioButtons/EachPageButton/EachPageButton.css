@@ -12,7 +12,7 @@
 }
 
 .actual-text {
-    font-size: 20px;
+    font-size: max(1.5vw, min(20px));
 }
 
 .button {

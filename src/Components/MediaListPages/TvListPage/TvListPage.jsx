@@ -1,5 +1,4 @@
 import "./TvListPage.scss";
-import Footer from "../../Footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchBackgroundImages } from "../../HomePage/HomePageSlice";
@@ -30,7 +29,6 @@ const TvListPage = () => {
         mediaType={"MOVIES"}
         type={"tv"}
       />
-      <Footer />
     </div>
   );
 };
