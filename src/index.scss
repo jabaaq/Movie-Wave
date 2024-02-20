@@ -13,3 +13,20 @@ a {
   text-decoration: none;
   all: unset;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgb(209, 2, 2);
+  }
+}

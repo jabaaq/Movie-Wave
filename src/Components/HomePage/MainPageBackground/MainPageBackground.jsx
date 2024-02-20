@@ -47,6 +47,7 @@ const MainPageBackground = ({ mediaArr }) => {
                   </div>
                 </div>
                 <div className="movie_description">{movie.description}</div>
+
                 <Link
                   to={`/${mediaType}/${id}`}
                   onClick={() => dispatch(selectMediaId({ id, mediaType }))}

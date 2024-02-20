@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import { Pagination } from "antd";
 import { handleChangePageNum } from "./MediaListPageSlice";
-import { useEffect } from "react";
 
 const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
   const dispatch = useDispatch();
@@ -38,15 +37,15 @@ const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
                   release_date={media.release_date}
                 />
               ))}
-          </div>
-          <div className="pagination_container">
-            <Pagination
-              showSizeChanger
-              responsive={true}
-              defaultCurrent={pageNum}
-              total={5000}
-              onChange={(page) => changePageNum(page)}
-            />
+            <div className="pagination_container">
+              <Pagination
+                showSizeChanger
+                responsive={true}
+                defaultCurrent={pageNum}
+                total={5000}
+                onChange={(page) => changePageNum(page)}
+              />
+            </div>
           </div>
         </>
       ) : (

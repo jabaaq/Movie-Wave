@@ -36,6 +36,10 @@
     gap: 30px;
     max-width: 550px;
 
+    a {
+      width: fit-content;
+    }
+
     .movie_title {
       align-self: flex-start;
       font-size: max(4vw, min(28px));

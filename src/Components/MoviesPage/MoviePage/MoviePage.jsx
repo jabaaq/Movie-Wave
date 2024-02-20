@@ -10,7 +10,7 @@ import {
 } from "../MoviePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Footer from "../../Footer/Footer";
 import Spinner from "../../Spinner/Spinner";
 import VideoList from "../VideoList/VideoList";
@@ -20,12 +20,16 @@ import Recommendations from "../Recommendations/Recommendations";
 import MovieImages from "../MovieImages/MovieImages";
 
 const MoviePage = () => {
-  const { selectedMediaId } = useSelector((state) => state.HomePageReducer);
   const { loadMoviePage } = useSelector((state) => state.MoviePageReducer);
   const dispatch = useDispatch();
   const savedMovieDetails = useParams();
   const mediaType = savedMovieDetails.mediaType;
   const mediaId = +savedMovieDetails.mediaId;
+  const ref = useRef(null);
+
+  const handleScrollToVideos = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     console.log(mediaId, mediaType);
@@ -54,9 +58,9 @@ const MoviePage = () => {
     <div className="movie_page_container">
       {loadMoviePage ? (
         <>
-          <MovieDetails />
+          <MovieDetails handleScrollToVideos={handleScrollToVideos} />
           <MoreInformation />
-          <VideoList />
+          <VideoList ref={ref} />
           <Reviews />
           <MovieImages />
           <Recommendations />

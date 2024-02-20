@@ -4,15 +4,9 @@ import { CircularProgress } from "@mui/material";
 import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
 import CastList from "../CastList/CastList";
-import { useEffect } from "react";
 
-const MovieDetails = () => {
+const MovieDetails = ({ handleScrollToVideos }) => {
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
-
-  // useEffect(() => {
-  //   console.log(fetchedMovieById);
-  // }, [fetchedMovieById]);
-
   return (
     <div
       className="movie_details_container"
@@ -63,7 +57,12 @@ const MovieDetails = () => {
             </div>
             <div className="add_watch_container">
               <AddToFavorites fetchedMovieById={fetchedMovieById} />
-              <WaveButton text={"WATCH NOW"} />
+              <div
+                className="movie_btn_container"
+                onClick={handleScrollToVideos}
+              >
+                <WaveButton text={"WATCH NOW"} />
+              </div>
             </div>
             <div className="cast_container">
               <CastList />

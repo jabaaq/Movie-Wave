@@ -1,6 +1,6 @@
 import "./MoviesListPage.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { fetchBackgroundImages } from "../../HomePage/HomePageSlice";
 import { fetchMediaList } from "../MediaListPageSlice";
 import MediaListPage from "../MediaListPage";

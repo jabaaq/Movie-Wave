@@ -1,15 +1,15 @@
 import "./VideoList.scss";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import SectionName from "../../HomePage/SectionBuilder/SectionName/SectionName";
+import { forwardRef } from "react";
 
-const VideoList = () => {
+const VideoList = forwardRef((props, ref) => {
   const { fetchedVideos } = useSelector((state) => state.MoviePageReducer);
   const [isMounted, setIsMounted] = useState(true);
-
   // useEffect(() => {
   //   setIsMounted(true);
   //   const intervalId = setInterval(() => {
@@ -24,6 +24,7 @@ const VideoList = () => {
   return (
     <div
       className="videos_container"
+      ref={ref}
       style={{ height: fetchedVideos.length === 0 ? "0vh" : "100vh" }}
     >
       <SectionName name={`VIDEOS (${fetchedVideos.length})`} />
@@ -52,6 +53,6 @@ const VideoList = () => {
       </Swiper>
     </div>
   );
-};
+});
 
 export default VideoList;
