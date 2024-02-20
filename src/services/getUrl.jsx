@@ -39,6 +39,8 @@ const GetUrl = () => {
     return `https://api.themoviedb.org/3/search/${mediaType}?query=${mediaName}&api_key=${APIKEY}`;
   };
 
+  const favoritesRecs = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${APIKEY}`;
+
   return {
     trendingMedias,
     upcomingMovies,
@@ -54,6 +56,7 @@ const GetUrl = () => {
     actorCredits,
     mediaList,
     searchMedia,
+    favoritesRecs,
   };
 };
 

@@ -34,7 +34,7 @@ const FavoriteMediaCard = ({ media, editMode, removeFromFavorites }) => {
               <div
                 className={`card_edit_mode ${editMode ? "block" : ""}`}
               ></div>
-              <img src={poster} alt={`${title}'s Poster`} />
+              <img src={poster} loading="lazy" alt={`${title}'s Poster`} />
               <h4 className="favorite_media_name">
                 {title.length > 15 ? title.slice(0, 15) + "..." : title}
               </h4>

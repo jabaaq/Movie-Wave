@@ -1,5 +1,4 @@
 import "./ClearStorage.css";
-import { useState } from "react";
 
 const ClearStorage = ({ editMode, forceUpdate }) => {
   const handleClearStorage = () => {

@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 import MovieCard from "../MovieCard/MovieCard";
 import EachPageButton from "../Navbar/RadioButtons/EachPageButton/EachPageButton";
-import { useEffect } from "react";
 
 const SectionBuilder = ({ moviesArr, name }) => {
   return (
@@ -38,19 +37,22 @@ const SectionBuilder = ({ moviesArr, name }) => {
           className="mySwiper"
           grabCursor={true}
         >
-          {moviesArr.map((item, i) => (
-            <SwiperSlide key={i}>
-              <MovieCard
-                id={item.id}
-                title={item.title ? item.title : item.name}
-                poster={item.poster_img ? item.poster_img : item.profile_image}
-                rating={item.fixedVote ? item.fixedVote : null}
-                date={item.release_date ? item.release_date : null}
-                type={item.media_type}
-                mediaType={item.mediaType}
-              />
-            </SwiperSlide>
-          ))}
+          {moviesArr &&
+            moviesArr.map((item, i) => (
+              <SwiperSlide key={i}>
+                <MovieCard
+                  id={item.id}
+                  title={item.title ? item.title : item.name}
+                  poster={
+                    item.poster_img ? item.poster_img : item.profile_image
+                  }
+                  rating={item.fixedVote ? item.fixedVote : null}
+                  date={item.release_date ? item.release_date : null}
+                  type={item.media_type}
+                  mediaType={item.mediaType}
+                />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </>

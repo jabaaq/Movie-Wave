@@ -13,9 +13,10 @@ const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
     (state) => state.MediaHomePageReducer
   );
 
-  useEffect(() => {
-    console.log(mediaList);
-  }, [mediaList]);
+  const changePageNum = (page) => {
+    dispatch(handleChangePageNum(page));
+    window.scrollTo({ top: 630, behavior: "smooth" });
+  };
 
   return (
     <div className="movies_home_page">
@@ -37,14 +38,15 @@ const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
                   release_date={media.release_date}
                 />
               ))}
-            <div className="pagination_container">
-              <Pagination
-                showSizeChanger
-                defaultCurrent={pageNum}
-                total={5000}
-                onChange={(page) => dispatch(handleChangePageNum(page))}
-              />
-            </div>
+          </div>
+          <div className="pagination_container">
+            <Pagination
+              showSizeChanger
+              responsive={true}
+              defaultCurrent={pageNum}
+              total={5000}
+              onChange={(page) => changePageNum(page)}
+            />
           </div>
         </>
       ) : (

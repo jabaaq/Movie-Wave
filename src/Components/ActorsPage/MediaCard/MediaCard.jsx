@@ -21,7 +21,7 @@ const MediaCard = ({ poster, id, rating, title, type, release_date }) => {
         onMouseEnter={handleShowDetails}
         onMouseLeave={handleShowDetails}
       >
-        <WatchButton />
+        {type !== "person" ? <WatchButton /> : null}
         <h4>{title}</h4>
         {rating === 0 ? (
           <Rate

@@ -4,10 +4,9 @@ import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleRemoveFromFavorites } from "../MoviesPage/MoviePageSlice";
 import ClearStorage from "./ClearStorage/ClearStorage";
-
 const Favorites = () => {
   const [editMode, setEditMode] = useState(false);
   const [, forceUpdate] = useState();
