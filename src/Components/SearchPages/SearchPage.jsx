@@ -1,10 +1,10 @@
 import "./SearchPage.scss";
-import SearchBar from "./SearchBar/SearchBar";
 import RadioOptionButtons from "./RadioOptionButtons/RadioOptionButtons";
 import MediaCard from "../ActorsPage/MediaCard/MediaCard";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchMedia } from "./SearchPagesSlice";
+import SearchBar from "./SearchBar/Searchbar";
 
 const SearchPage = () => {
   const dispatch = useDispatch();

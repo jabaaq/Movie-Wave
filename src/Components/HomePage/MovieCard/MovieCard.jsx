@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./MovieCard.scss";
 import { Rate } from "antd";
 import WatchButton from "./WatchButton/WatchButton";
-import { selectMediaId } from "../HomePageSlice";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ title, poster, rating, date, id, type, mediaType }) => {

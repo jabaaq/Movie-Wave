@@ -16,10 +16,6 @@ const MovieDetails = ({ handleScrollToVideos }) => {
       : fetchedMovieById.first_air_date.slice(0, 4)
   })`;
 
-  useEffect(() => {
-    console.log(mediaData);
-  }, [mediaData]);
-
   return (
     <HelmetProvider>
       <Helmet>
@@ -30,7 +26,7 @@ const MovieDetails = ({ handleScrollToVideos }) => {
         <title>
           {`${
             fetchedMovieById.title
-              ? `${fetchedMovieById.title} ${mediaData}`
+              ? `${fetchedMovieById.title} ${mediaData ? mediaData : ""}`
               : ""
           }`}{" "}
           - MovieWave

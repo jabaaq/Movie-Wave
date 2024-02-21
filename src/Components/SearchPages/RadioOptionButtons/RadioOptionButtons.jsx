@@ -1,6 +1,13 @@
 import "./RadioOptionButtons.css";
+import { motion } from "framer-motion";
 
 const RadioOptionButtons = ({ handleGetSortBy }) => {
+  const motionSettings = {
+    whileHover: { scale: 1.1 },
+    whileTap: { scale: 1 },
+    transition: { type: "spring", stiffness: 400, damping: 17 },
+  };
+
   return (
     <div className="radio-input" onChange={handleGetSortBy}>
       <label>
@@ -11,15 +18,15 @@ const RadioOptionButtons = ({ handleGetSortBy }) => {
           value="movie"
           defaultChecked
         />
-        <span>MOVIE</span>
+        <motion.span {...motionSettings}>MOVIE</motion.span>
       </label>
       <label>
         <input type="radio" id="value-2" name="value-radio" value="tv" />
-        <span>TV</span>
+        <motion.span {...motionSettings}>TV</motion.span>
       </label>
       <label>
         <input type="radio" id="value-3" name="value-radio" value="person" />
-        <span>PERSON</span>
+        <motion.span {...motionSettings}>PERSON</motion.span>
       </label>
       <span className="selection"></span>
     </div>

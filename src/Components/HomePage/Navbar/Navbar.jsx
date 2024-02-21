@@ -25,6 +25,12 @@ const Navbar = () => {
     localStorage.getItem("favoriteMedia")
   );
 
+  const motionSettings = {
+    whileHover: { scale: 1.1 },
+    whileTap: { scale: 1 },
+    transition: { type: "spring", stiffness: 400, damping: 17 },
+  };
+
   return (
     <nav
       className={`navbar_container ${
@@ -32,9 +38,9 @@ const Navbar = () => {
       }`}
     >
       <Link to={`/`} className="wave_logo">
-        <h2>
+        <motion.h2 {...motionSettings}>
           Movie<span>Wave</span>
-        </h2>
+        </motion.h2>
       </Link>
       <div className="buttons_container">
         <RadioButtons />
@@ -42,18 +48,24 @@ const Navbar = () => {
       <div className="search_favorites_container">
         <div className="navbar_tools">
           <Link to="/search">
-            <MdOutlineSearch size={35} />
+            <motion.div {...motionSettings}>
+              <MdOutlineSearch size={38} />
+            </motion.div>
           </Link>
           <Link to={"/favorites"}>
-            <Badge
-              size="small"
-              offset={[-1, 6]}
-              count={
-                storedFavoriteMediaList ? storedFavoriteMediaList.length : null
-              }
-            >
-              <FaRegHeart color="white" size={35} />
-            </Badge>
+            <motion.div {...motionSettings}>
+              <Badge
+                size="small"
+                offset={[-1, 6]}
+                count={
+                  storedFavoriteMediaList
+                    ? storedFavoriteMediaList.length
+                    : null
+                }
+              >
+                <FaRegHeart color="white" size={35} />
+              </Badge>
+            </motion.div>
           </Link>
           <ToggleNavigation />
         </div>
