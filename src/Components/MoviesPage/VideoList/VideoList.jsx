@@ -10,16 +10,17 @@ import { forwardRef } from "react";
 const VideoList = forwardRef((props, ref) => {
   const { fetchedVideos } = useSelector((state) => state.MoviePageReducer);
   const [isMounted, setIsMounted] = useState(true);
-  // useEffect(() => {
-  //   setIsMounted(true);
-  //   const intervalId = setInterval(() => {
-  //     console.clear();
-  //   }, 10000);
-  //   return () => {
-  //     setIsMounted(false);
-  //     clearTimeout(intervalId);
-  //   };
-  // }, [isMounted]);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const intervalId = setInterval(() => {
+      console.clear();
+    }, 10000);
+    return () => {
+      setIsMounted(false);
+      clearTimeout(intervalId);
+    };
+  }, [isMounted]);
 
   return (
     <div

@@ -31,10 +31,7 @@ const MoviePage = () => {
   };
 
   useEffect(() => {
-    console.log(mediaId, mediaType);
-  }, [mediaId, mediaType]);
-
-  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     //To fetch media details
     dispatch(fetchMediaDetails({ mediaId, mediaType }));
     //Movie cast:

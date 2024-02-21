@@ -25,10 +25,6 @@ const SearchPage = () => {
     setSortBy(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(searchQuery);
-  }, [searchQuery]);
-
   return (
     <>
       <div className="search_page_container">

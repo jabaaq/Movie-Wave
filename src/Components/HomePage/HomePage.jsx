@@ -5,6 +5,7 @@ import TvSeries from "./TvSeries/TvSeries";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import ActorsList from "./ActorsList/ActorsList";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import {
   fetchBackgroundImages,
@@ -31,11 +32,19 @@ const HomePage = () => {
     <>
       {loadWebsite ? (
         <>
-          <MainPageBackground mediaArr={fetchedBackgroundMovies} />
-          <UpcomingMovies />
-          <TvSeries />
-          <ActorsList />
-          {/* <Footer /> */}
+          <HelmetProvider>
+            <Helmet>
+              <meta name="description" content={`MovieWave`} />
+              <title>
+                MovieWave - Ratings, Reviews, and Where to Watch the Best Movies
+                & TV Shows
+              </title>
+            </Helmet>
+            <MainPageBackground mediaArr={fetchedBackgroundMovies} />
+            <UpcomingMovies />
+            <TvSeries />
+            <ActorsList />
+          </HelmetProvider>
         </>
       ) : (
         <Spinner />

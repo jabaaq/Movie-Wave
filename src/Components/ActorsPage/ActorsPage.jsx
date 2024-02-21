@@ -14,10 +14,6 @@ const ActorsPage = () => {
   const { personId } = params;
 
   useEffect(() => {
-    console.log(personId);
-  }, [personId]);
-
-  useEffect(() => {
     // To fetch actor information
     dispatch(fetchActorInformation({ personId }));
     //To fetch actor credits
