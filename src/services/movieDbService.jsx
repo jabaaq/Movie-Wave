@@ -138,7 +138,6 @@ const movieDbService = () => {
       tagline: movie.tagline,
       original_title: movie.original_title,
       title: movie.title ? movie.title : movie.name,
-      // name: movie.name,
       description: movie.overview,
       vote_average: +movie.vote_average.toFixed(1),
       budget: movie.budget ? "$" + movie.budget : null,
@@ -151,6 +150,11 @@ const movieDbService = () => {
       number_of_seasons: movie.number_of_seasons,
       number_of_episodes: movie.number_of_episodes,
       mediaType: movie.runtime ? "Movie" : "Tv",
+      tabData: `(${
+        movie.release_date
+          ? movie.release_date.slice(0, 4)
+          : movie.first_air_date.slice(0, 4)
+      })`,
     };
   };
 

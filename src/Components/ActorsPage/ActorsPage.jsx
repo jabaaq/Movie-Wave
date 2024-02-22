@@ -18,6 +18,8 @@ const ActorsPage = () => {
     dispatch(fetchActorInformation({ personId }));
     //To fetch actor credits
     dispatch(fetchActorCredits({ personId }));
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (

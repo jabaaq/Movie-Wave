@@ -5,16 +5,9 @@ import AddToFavorites from "../AddToFavorites/AddToFavorites";
 import WaveButton from "../../HomePage/WaveButton/WaveButton";
 import CastList from "../CastList/CastList";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { useEffect } from "react";
 
 const MovieDetails = ({ handleScrollToVideos }) => {
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
-
-  const mediaData = `(${
-    fetchedMovieById.release_date && fetchedMovieById.release_date
-      ? fetchedMovieById.release_date.slice(0, 4)
-      : fetchedMovieById.first_air_date.slice(0, 4)
-  })`;
 
   return (
     <HelmetProvider>
@@ -26,7 +19,9 @@ const MovieDetails = ({ handleScrollToVideos }) => {
         <title>
           {`${
             fetchedMovieById.title
-              ? `${fetchedMovieById.title} ${mediaData ? mediaData : ""}`
+              ? `${fetchedMovieById.title} ${
+                  fetchedMovieById.tabData ? fetchedMovieById.tabData : ""
+                }`
               : ""
           }`}{" "}
           - MovieWave
