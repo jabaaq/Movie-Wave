@@ -11,7 +11,7 @@ const MovieDetails = ({ handleScrollToVideos }) => {
   const { fetchedMovieById } = useSelector((state) => state.MoviePageReducer);
 
   const mediaData = `(${
-    fetchedMovieById.release_date
+    fetchedMovieById.release_date && fetchedMovieById.release_date
       ? fetchedMovieById.release_date.slice(0, 4)
       : fetchedMovieById.first_air_date.slice(0, 4)
   })`;
