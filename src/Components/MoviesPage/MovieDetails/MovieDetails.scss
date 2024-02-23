@@ -17,7 +17,7 @@
     align-items: flex-start;
     flex-direction: row;
     margin-top: 10%;
-    padding: 35px;
+    padding: 60px max(3vw, min(0));
 
     .add_watch_container {
       display: flex;

@@ -16,6 +16,10 @@ const SearchPage = () => {
     dispatch(searchMedia({ mediaType: sortBy, mediaName: searchQuery }));
   }, [searchQuery, sortBy]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const handleGetSearchQuery = (e) => {
     setTimeout(() => {
       setSearchQuery(e.target.value);

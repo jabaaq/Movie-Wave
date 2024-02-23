@@ -19,13 +19,14 @@
 
   .wave_logo,
   .search_favorites_container {
-    margin: 5px 25px;
+    margin: 5px 25px 5px;
   }
 
   .wave_logo {
+    text-shadow: 0px 0px 30px black;
     cursor: pointer;
     h2 {
-      font-size: 25px;
+      font-size: max(2vw, min(25px));
       span {
         color: var(--main-red);
       }
@@ -44,7 +45,6 @@
 }
 @media only screen and (max-width: 600px) {
   .navbar_container {
-    flex-direction: column;
     align-items: flex-start;
   }
 

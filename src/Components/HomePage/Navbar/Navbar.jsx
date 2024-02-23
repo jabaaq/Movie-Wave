@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="navbar_tools">
           <Link to="/search">
             <motion.div {...motionSettings}>
-              <MdOutlineSearch size={38} />
+              <MdOutlineSearch style={{ fontSize: "max(3vw, min(40px))" }} />
             </motion.div>
           </Link>
           <Link to={"/favorites"}>
@@ -63,7 +63,10 @@ const Navbar = () => {
                     : null
                 }
               >
-                <FaRegHeart color="white" size={35} />
+                <FaRegHeart
+                  color="white"
+                  style={{ fontSize: "max(3vw, min(35px))" }}
+                />
               </Badge>
             </motion.div>
           </Link>

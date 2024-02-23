@@ -16,8 +16,9 @@
     justify-content: center;
     color: white;
     font-family: "Poppins", sans-serif;
-    font-size: 25px;
+    font-size: max(2vw, min(25px));
     cursor: pointer;
+    height: fit-content;
 
     span {
       color: var(--main-red);

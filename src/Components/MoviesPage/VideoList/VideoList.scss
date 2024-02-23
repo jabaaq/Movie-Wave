@@ -12,7 +12,7 @@
   }
 
   .swiper {
-    width: 100%;
+    width: 60%;
     height: 80%;
   }
 
@@ -28,6 +28,11 @@
 
 @media only screen and (max-width: 1300px) {
   .videos_container {
-    height: 70vh;
+    height: 70vh !important;
+
+    .swiper {
+      width: 100%;
+      height: 80%;
+    }
   }
 }
