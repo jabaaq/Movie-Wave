@@ -26,7 +26,7 @@ const VideoList = forwardRef((props, ref) => {
     <div
       className="videos_container"
       ref={ref}
-      style={{ height: fetchedVideos.length === 0 ? "0vh" : "100vh" }}
+      style={{ height: fetchedVideos.length === 0 ? "0vh" : "80vh" }}
     >
       <SectionName name={`VIDEOS (${fetchedVideos.length})`} />
 

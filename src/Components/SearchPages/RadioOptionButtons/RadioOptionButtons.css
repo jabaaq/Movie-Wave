@@ -9,7 +9,9 @@
     align-items: center;
     background-color: transparent;
     color: #000000;
-    width: var(--container_width);
+    min-width: var(--container_width);
+    height: 3vw;
+    min-height: 40px;
     overflow: hidden;
     color: white;
 }
@@ -25,8 +27,9 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     letter-spacing: -1px;
-    font-size: 14px;
+    font-size: max(0.9vw, min(14px));
 }
+
 
 .selection {
     display: none;

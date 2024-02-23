@@ -9,7 +9,8 @@
   width: 80%;
   height: 100%;
   outline: none;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: max(1vw, min(14px));
   font-weight: 500;
   background-color: #343438;
   caret-color: #f7f7f8;

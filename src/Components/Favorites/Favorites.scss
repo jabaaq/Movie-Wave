@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    margin-top: 80px;
+    margin-top: max(10%, min(80px));
 
     h2 {
       display: flex;

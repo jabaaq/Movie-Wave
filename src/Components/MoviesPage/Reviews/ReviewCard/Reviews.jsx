@@ -14,7 +14,7 @@ const Reviews = () => {
   return (
     <div
       className="reviews_container"
-      style={{ height: fetchedReviews.length === 0 ? "50vh" : "" }}
+      style={{ height: fetchedReviews.length === 0 ? "20vh" : "" }}
     >
       <SectionName name={`REVIEWS (${fetchedReviews.length})`} />
       <Swiper

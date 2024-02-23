@@ -45,6 +45,7 @@
 }
 @media only screen and (max-width: 600px) {
   .navbar_container {
+    flex-direction: column;
     align-items: flex-start;
   }
 

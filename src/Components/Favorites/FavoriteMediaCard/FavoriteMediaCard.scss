@@ -1,12 +1,10 @@
 .favorite_media_card_container {
-  width: 220px;
-  height: 300px;
   background-color: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px 0;
-  // cursor: pointer;
+  cursor: pointer;
 
   .remove_from_favorites_btn {
     background: rgba(71, 71, 71, 0.522);
@@ -45,8 +43,10 @@
   }
 
   .favorite_media_card {
-    width: 200px;
-    height: 300px;
+    min-width: 200px;
+    width: 15vw;
+    min-height: 300px;
+    height: 25vw;
     border-radius: 20px;
     padding: 10px;
     display: flex;

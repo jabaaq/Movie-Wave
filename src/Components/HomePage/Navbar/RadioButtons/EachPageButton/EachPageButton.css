@@ -13,6 +13,7 @@
 
 .actual-text {
     font-size: max(1.5vw, min(20px));
+    text-shadow: 2px 0px 20px black;
 }
 
 .button {
@@ -41,6 +42,7 @@
     overflow: hidden;
     transition: 0.5s;
     -webkit-text-stroke: 1px var(--animation-color);
+    text-shadow: 0px 0px 10px black;
 }
 
 .button:hover .hover-text {
