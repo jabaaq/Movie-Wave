@@ -16,7 +16,6 @@ export const fetchFavoritePageRecommendations = createAsyncThunk(
   async () => {
     const { favoritesRecs } = GetUrl();
     const res = await request(favoritesRecs);
-    // console.log(res.results.map(_transferRecommendations));
     return res.results.map(_transferRecommendations);
   }
 );

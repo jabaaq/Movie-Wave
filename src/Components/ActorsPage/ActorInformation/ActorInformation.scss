@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: max(5%, min(80px));
 
   .actor_details_container {
     height: 80%;
@@ -12,8 +13,18 @@
     color: white;
 
     .biography_container {
+      .actor_name,
+      h3 {
+        color: white;
+        font-size: max(2vw, min(20px));
+      }
       width: 100%;
       padding: 25px;
+      color: #b3adae;
+
+      .actor_biography {
+        font-size: max(1.2vw, min(20px));
+      }
     }
 
     .actor_profile_image {
@@ -37,12 +48,14 @@
 
         p {
           margin: 0;
-          font-size: 13px;
+          font-size: max(1vw, min(13px));
+          color: #b3adae;
         }
 
         b {
           margin-top: 10px;
-          font-size: 17px;
+          font-size: max(1.2vw, min(17px));
+          color: white;
         }
       }
 

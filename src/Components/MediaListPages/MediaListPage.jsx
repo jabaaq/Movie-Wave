@@ -39,6 +39,7 @@ const MediaListPage = ({ mediaList, pageNum, mediaType, type }) => {
               ))}
             <div className="pagination_container">
               <Pagination
+                size="medium"
                 showSizeChanger
                 responsive={true}
                 defaultCurrent={pageNum}

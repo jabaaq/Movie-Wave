@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
+    padding: 0 max(10vw, min(20px));
     margin-top: max(10%, min(80px));
 
     h2 {
@@ -21,15 +21,16 @@
       align-items: center;
       font-weight: 300;
       gap: 7px;
-      color: white;
+      color: #b3adae;
       font-weight: 600;
+      font-size: 20px;
     }
 
     .fav_list_edit_tools {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
 
       .edit_fav_list_btn {
         width: 50px;

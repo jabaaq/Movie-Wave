@@ -27,6 +27,9 @@ const SectionBuilder = ({ moviesArr, name }) => {
             1024: {
               slidesPerView: 6,
             },
+            2000: {
+              slidesPerView: 9,
+            },
           }}
           freeMode={true}
           pagination={{

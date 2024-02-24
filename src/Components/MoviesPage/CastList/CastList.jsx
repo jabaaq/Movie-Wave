@@ -25,6 +25,9 @@ const CastList = () => {
           1024: {
             slidesPerView: 5,
           },
+          2000: {
+            slidesPerView: 8,
+          },
         }}
         spaceBetween={20}
         freeMode={true}
