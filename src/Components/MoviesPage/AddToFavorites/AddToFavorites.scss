@@ -3,8 +3,10 @@ $heart-color: rgb(219, 34, 34);
 .heart-container {
   --heart-color: #{$heart-color};
   position: relative;
-  width: 20px;
-  height: 50px;
+  width: 2vw;
+  min-width: 20px;
+  height: 2vw;
+  min-height: 50px;
   transition: 0.3s;
 
   .checkbox {

@@ -87,7 +87,7 @@ const movieDbService = () => {
       release_date: media.release_date
         ? media.release_date
         : media.first_air_date,
-      mediaType: "movie",
+      mediaType: mediaType,
     };
   };
 

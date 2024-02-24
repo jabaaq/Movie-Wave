@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import "./Recommendations.scss";
-import { useEffect } from "react";
 import SectionBuilder from "../../HomePage/SectionBuilder/SectionBuilder";
 import { useParams } from "react-router-dom";
 import SectionName from "../../HomePage/SectionBuilder/SectionName/SectionName";
