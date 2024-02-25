@@ -25,6 +25,7 @@
 - MUI
   
 <h2>Movie Wave Mockup</h2>
+
 ![MovieWave mockup](https://github.com/jabaaq/Movie-Wave/assets/113661042/63c1d1f8-46d8-4f56-9806-37ffde8f35f2)
 
 
