@@ -17,6 +17,7 @@
 <h2>🛠️Built with</h2>
 
 - React
+- Redux
 - SASS
 - Swiper
 - Frame Motion
