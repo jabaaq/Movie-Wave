@@ -15,7 +15,7 @@ dist-ssr
 src/services/apiKey.jsx
 src/services/getUrl.jsx
 
-# Editor directories and files
+# Editor directories and files.
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -25,3 +25,4 @@ src/services/getUrl.jsx
 *.njsproj
 *.sln
 *.sw?
+.vercel
